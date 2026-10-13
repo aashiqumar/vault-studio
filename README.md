@@ -21,6 +21,7 @@ npm run studio        # → http://localhost:4747
 | Library | Every piece made: filter, search, view files, **copy caption + hashtags**, set status, date, time and metrics, and **send feedback to Claude** |
 | Grid preview | How your Instagram grid will look, including planned posts |
 | Live | What Claude is doing right now: activity feed, renders appearing as they're made, reel progress |
+| 📱 Phone | QR code to open the dashboard on your phone (when phone access is on) |
 | Idea bank | Unused and used ideas. Click one to turn it into a card |
 
 Leave it open while a Claude session works in this folder. It updates live.
@@ -41,6 +42,21 @@ It adds a **Vault Studio** icon (the V. app icon) to your desktop and app menu. 
 - **Stop the server:** right-click the icon → *Stop dashboard server*, or run `npm run stop`.
 - **From a terminal:** `npm run open` does the same thing as clicking the icon.
 - **If you move the folder:** re-run `npm run shortcut`.
+
+### Use it on your phone
+**At home or in the office (same Wi-Fi):**
+1. Right-click the Vault Studio icon → **Open with phone access**, or run `npm run open:lan`.
+2. The dashboard opens with a QR code (also under **📱 Phone** in the sidebar). Scan it with your phone camera.
+3. In the phone browser, use **Add to Home screen** to get an app icon.
+
+On the phone you get a bottom tab bar, a list-style calendar, and **Move** buttons (−1 day, +1 day, +1 week, Unschedule) on every card, because touch screens can't drag. Status, captions, metrics and feedback for Claude all work the same.
+- **Security:** the QR link contains a private key. Your phone remembers it, and anyone without it gets a "private" page. To change the key, delete `.studio-token` and restart.
+- **If the phone can't connect:** check both devices are on the same Wi-Fi, and if Ubuntu's firewall is on, run `sudo ufw allow 4747/tcp`.
+- **Your computer must stay on**, because the dashboard and files live there.
+
+**From anywhere (mobile data, another city):** install [Tailscale](https://tailscale.com) (free) on the computer and the phone and sign in to both. Start phone access as above, then open `http://<computer's Tailscale IP>:4747/?key=…` (the same link, with the Tailscale IP instead of the Wi-Fi IP). Don't expose the dashboard to the public internet with port forwarding.
+
+**Talking to Claude from your phone:** in this folder on your computer, run `claude remote-control`. The session shows up in the Claude app on your phone, so you can ask it to make posts while you watch the dashboard on the same phone.
 
 ## 3. Start a Claude session in this folder
 Open Claude Code in `vault-studio/` (pick the Sonnet model). `CLAUDE.md` and the skills in `.claude/skills/` load automatically, and the start hook shows Claude the content library, so it knows everything made so far. Paste the prompt from `START-PROMPT.md` the first time.
