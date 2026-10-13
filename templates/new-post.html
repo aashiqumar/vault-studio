@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — new post starter</title>
+<!-- Copy this file for any new static asset. One <section data-export="name"> per output image. -->
+<link rel="stylesheet" href="../brand/tokens.css">
+<style>
+body{background:#888}
+.post{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:40px;background:var(--paper)}
+.kick{font-size:30px;font-weight:800;letter-spacing:.12em;color:var(--rose)}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1.02}.h em{font-style:normal;color:var(--rose)}
+.p{font-size:42px;line-height:1.4;color:var(--ink-2);font-weight:600}
+.foot{position:absolute;left:80px;right:80px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-size:30px;font-weight:700}
+.card{background:#fff;border:2px solid var(--line);border-radius:var(--r-card);padding:40px}
+</style>
+</head>
+<body>
+
+<!-- Light post: kicker, headline, body card, Dot bottom-right, wordmark footer -->
+<section class="post" id="a" data-export="vault-xx-example-light">
+  <div style="position:absolute;left:80px;right:80px;top:130px">
+    <div class="kick">DOT'S TIP #2</div>
+    <div class="h" style="font-size:96px;margin-top:22px">Keep every receipt, <em>even the small ones.</em></div>
+    <div class="p" style="margin-top:36px;max-width:820px">A Rs 300 tea bill with no receipt is the one the auditor asks about.</div>
+  </div>
+  <div class="foot"><span data-logo data-h="43"></span><span style="color:var(--mute)">vaultpro.cloud</span></div>
+</section>
+
+<!-- Dark post: wordmark white with rose dot -->
+<section class="post" id="b" data-export="vault-xx-example-dark" style="background:var(--ink);color:#fff">
+  <div style="position:absolute;left:80px;right:80px;top:150px">
+    <div class="h" style="font-size:104px">Your club's books, <em style="color:#FF6F98">always balanced.</em></div>
+  </div>
+  <div class="foot"><span data-logo data-h="43" data-color="#FFFFFF"></span><span style="color:#9A9CAB">vaultpro.cloud</span></div>
+</section>
+
+<script src="../kit/glyphs.js"></script><script src="../kit/logo.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script><script src="../kit/mount.js"></script>
+<script>
+mountLogos();
+placeDot('a', 'receipt', 300, 860, 1150);              // feet at (860,1150)
+placeDot('b', 'party', 340, 820, 1190, { dark: true });  // dark:true = white motion lines
+</script>
+</body>
+</html>

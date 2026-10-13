@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node scripts/library.cjs status 2>/dev/null || echo 'Run ./setup.sh first'" }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/*)",
+      "Bash(python3 scripts/*)",
+      "Bash(npm run *)"
+    ]
+  }
+}

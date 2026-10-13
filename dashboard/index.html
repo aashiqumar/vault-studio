@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vault Studio</title>
+<link rel="stylesheet" href="/brand/tokens.css">
+<link rel="stylesheet" href="/dashboard/style.css">
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><span id="wm"></span><span class="tag">Studio</span></div>
+  <nav id="nav">
+    <a href="#overview" data-v="overview"><i>◎</i>Overview</a>
+    <a href="#timeline" data-v="timeline"><i>▦</i>Timeline</a>
+    <a href="#library" data-v="library"><i>❏</i>Library</a>
+    <a href="#grid" data-v="grid"><i>▤</i>Grid preview</a>
+    <a href="#live" data-v="live"><i>●</i>Live<b id="liveBadge" class="badge" hidden>0</b></a>
+    <a href="#ideas" data-v="ideas"><i>✦</i>Idea bank</a>
+  </nav>
+  <div class="side-foot"><span id="conn" class="conn off">offline</span><div id="sideDot"></div></div>
+</aside>
+<main id="main"></main>
+<div id="drawer" class="drawer" hidden></div>
+<div id="toasts"></div>
+<script src="/kit/glyphs.js"></script><script src="/kit/logo.js"></script>
+<script src="/kit/dot.js"></script><script src="/kit/poses.js"></script>
+<script src="/dashboard/app.js"></script>
+</body>
+</html>

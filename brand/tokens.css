@@ -1,0 +1,29 @@
+/* Vault brand tokens. Link from a template with: <link rel="stylesheet" href="../brand/tokens.css"> */
+@font-face{font-family:'PJS';font-weight:400;src:url(fonts/plus-jakarta-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:500;src:url(fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:600;src:url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:700;src:url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:800;src:url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+/* dot.js draws text in these two family names */
+@font-face{font-family:'Plus Jakarta Sans';font-weight:800;src:url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url(fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Gelasio';font-weight:700;src:url(fonts/gelasio-latin-700-normal.woff2) format('woff2')}
+
+:root{
+  --rose:#D91E5C;      /* primary */
+  --rose-dark:#A3123F; /* shading, pressed */
+  --rose-logo:#C41850; /* Dot's antenna ball only */
+  --tint:#FCE7EE;      /* soft rose backgrounds, discs behind Dot on rose */
+  --plum:#5446D0;      /* secondary accent, events */
+  --plum-tint:#ECEAFB;
+  --teal:#1F8A70;      /* success, ticks */
+  --amber:#F2B33D;     /* coins, sparkles only */
+  --ink:#14151F;       /* text, dark backgrounds */
+  --ink-2:#3A3D4D;     /* body text on light */
+  --mute:#6B6F80;      /* captions, labels */
+  --paper:#F7F6F2;     /* default light background */
+  --line:#E8E6E0;      /* borders */
+  --r-control:6px; --r-card:8px; --r-chip:4px;   /* corners: a little rounded, never pill-shaped cards */
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'PJS',sans-serif;color:var(--ink)}

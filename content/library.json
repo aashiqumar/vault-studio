@@ -1,0 +1,374 @@
+{
+  "_about": "Vault content ledger. One entry per published or planned piece. Every session reads this (node scripts/library.cjs status) and MUST add/update entries after making or scheduling anything. Fields: id, type (post|carousel|reel|story|graphic|brand-asset), pillar (tips|product|problem|community|brand|conversion), topic, angle, hook, keywords[], dot_pose, background (paper|ink|rose|plum|tint), layout, hashtag_set, status (idea|draft|ready|scheduled|posted|retired), post_date (YYYY-MM-DD), files[], caption, notes, metrics{reach,likes,saves,shares,comments,profile_visits,link_clicks,demo_requests}.",
+  "hashtag_sets": {
+    "A": "#Rotaract #ClubTreasurer #NonprofitFinance #RotaractSriLanka #VaultForClubs",
+    "B": "#Rotaract #ServiceProjects #VolunteerHours #RotaractSriLanka #VaultForClubs",
+    "C": "#DotsTips #TreasurerTips #ClubTreasurer #Rotaract #VaultForClubs",
+    "D": "#Rotaract #Rotaractors #RotaractSriLanka #SriLankaStartups #VaultForClubs"
+  },
+  "pillar_targets": {
+    "tips": 0.35,
+    "product": 0.3,
+    "community": 0.15,
+    "problem": 0.1,
+    "brand": 0.05,
+    "conversion": 0.05
+  },
+  "items": [
+    {
+      "id": "L01",
+      "type": "post",
+      "pillar": "problem",
+      "topic": "Clubs run on WhatsApp groups and Excel",
+      "angle": "Relatable chaos: lost receipts, ledger versions, audit panic",
+      "hook": "Still running your club on WhatsApp and Excel?",
+      "keywords": [
+        "whatsapp",
+        "excel",
+        "receipts",
+        "audit",
+        "chaos"
+      ],
+      "dot_pose": "worried",
+      "background": "paper",
+      "layout": "headline + struck-out chips + Dot right",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "2026-10-19",
+      "files": [
+        "assets/2026-10-launch/vault-01-hook.png"
+      ],
+      "caption": "Still running your club on WhatsApp and Excel? 😅\nReceipts lost in a group chat. Three versions of the ledger. A panic the week before the audit.\nThere's a better way, and it's coming this week.\nFollow so you don't miss it 👀",
+      "notes": "Launch post.",
+      "metrics": {}
+    },
+    {
+      "id": "L02",
+      "type": "reel",
+      "pillar": "product",
+      "topic": "Whole-app overview reel",
+      "angle": "Problem → logo reveal (full stop becomes Dot) → home, entry flow, event check-in, audit dashboard → end card",
+      "hook": "Running a Rotaract club?",
+      "keywords": [
+        "overview",
+        "treasury",
+        "events",
+        "check-in",
+        "audit",
+        "reel"
+      ],
+      "dot_pose": "multiple (worried, wave, balanced, party, proud)",
+      "background": "paper + ink",
+      "layout": "27s 9:16 GSAP reel",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "2026-10-21",
+      "files": [
+        "assets/2026-10-launch/vault-reel-v3-poster.jpg",
+        "assets/2026-10-launch/vault-reel-v3.mp4",
+        "templates/reel.html"
+      ],
+      "caption": "Your whole club, in one place. ✨\nMembers log what they paid in plain words. The treasurer approves with one tap. Events, check-ins and service hours sort themselves out.\nAnd yes, that little pink thing is Dot. You'll be seeing a lot of Dot 🤖\n🔗 Book a free 15-min demo, link in bio",
+      "notes": "Soundtrack: scripts/audio/compose_reel.py",
+      "metrics": {}
+    },
+    {
+      "id": "L03",
+      "type": "post",
+      "pillar": "brand",
+      "topic": "Meet Dot, the mascot",
+      "angle": "Character intro and the promise of weekly tips",
+      "hook": "Say hello to Dot 👋",
+      "keywords": [
+        "dot",
+        "mascot",
+        "intro"
+      ],
+      "dot_pose": "waveSpark",
+      "background": "paper",
+      "layout": "big headline + large Dot centre + 3 chips",
+      "hashtag_set": "C",
+      "status": "ready",
+      "post_date": "2026-10-23",
+      "files": [
+        "assets/2026-10-launch/dot-post-meet-dot.png"
+      ],
+      "caption": "Say hello to Dot 👋\nDot is Vault's tiny vault-bot. Dot files every receipt, balances the books, and absolutely lives for event day 🎉\nDot's one rule: every rupee in its place.\nEvery Monday Dot shares one money tip for club treasurers. Turn on notifications so you catch them.\n💬 Tag your club's treasurer. They need a Dot.",
+      "notes": "Pin to profile until 12 Nov.",
+      "metrics": {}
+    },
+    {
+      "id": "L04",
+      "type": "carousel",
+      "pillar": "tips",
+      "topic": "3 money mistakes that fail club audits",
+      "angle": "Mistake + fix per slide: transfers counted as income, mixing club and project money, paying from own pocket",
+      "hook": "3 money mistakes that fail club audits",
+      "keywords": [
+        "audit",
+        "transfers",
+        "income",
+        "funds",
+        "project money",
+        "own pocket",
+        "reimbursement",
+        "mistakes"
+      ],
+      "dot_pose": "thinking, clipboard, receipt, party",
+      "background": "rose cover, paper slides, ink CTA",
+      "layout": "5-slide carousel, THE FIX card, Dot speech bubble",
+      "hashtag_set": "A",
+      "status": "ready",
+      "post_date": "2026-10-26",
+      "files": [
+        "assets/2026-10-launch/vault-06-carousel-1-cover.png",
+        "assets/2026-10-launch/vault-07-carousel-2-transfers.png",
+        "assets/2026-10-launch/vault-08-carousel-3-funds.png",
+        "assets/2026-10-launch/vault-09-carousel-4-own-pocket.png",
+        "assets/2026-10-launch/vault-10-carousel-5-cta.png"
+      ],
+      "caption": "3 money mistakes that fail club audits 🧾 (swipe →)\n1️⃣ Counting transfers as income\n2️⃣ Mixing club and project money\n3️⃣ Paying from your own pocket, then forgetting\nEach one is easy to fix once you know it. Slide 5 shows how Vault handles them for you.\n📌 Save this for year-end, and send it to your treasurer.",
+      "notes": "CLAIMS: 'Vault does this for you' depends on Finance V2 being live. Change to 'built to' if not.",
+      "metrics": {}
+    },
+    {
+      "id": "L05",
+      "type": "post",
+      "pillar": "product",
+      "topic": "Member logs a reimbursement without accounting words",
+      "angle": "Paid for the hall yourself? Tap 'I paid for something'",
+      "hook": "Paid for the hall yourself? 🙋",
+      "keywords": [
+        "reimbursement",
+        "own pocket",
+        "entry",
+        "receipt",
+        "member"
+      ],
+      "dot_pose": "receipt",
+      "background": "paper",
+      "layout": "headline + two tilted phones + Dot top-right",
+      "hashtag_set": "A",
+      "status": "ready",
+      "post_date": "2026-10-28",
+      "files": [
+        "assets/2026-10-launch/vault-03-treasury-entry.png"
+      ],
+      "caption": "Paid for the hall yourself? 🙋\nYou don't need to know what \"debit\" means. In Vault you just tap \"I paid for something for the club\", add the amount and a photo of the receipt. Done.\nThe treasurer approves, and the club pays you back. No chasing, no lost slips.",
+      "notes": "",
+      "metrics": {}
+    },
+    {
+      "id": "L06",
+      "type": "post",
+      "pillar": "product",
+      "topic": "Events: RSVP, QR check-in, service hours",
+      "angle": "No more paper sign-in sheets",
+      "hook": "RSVP. Scan. Hours logged. ✅",
+      "keywords": [
+        "events",
+        "rsvp",
+        "qr",
+        "check-in",
+        "service hours",
+        "sign-in sheet"
+      ],
+      "dot_pose": "scan",
+      "background": "plum",
+      "layout": "headline + two phones + Dot scanning",
+      "hashtag_set": "B",
+      "status": "ready",
+      "post_date": "2026-10-30",
+      "files": [
+        "assets/2026-10-launch/vault-04-events.png"
+      ],
+      "caption": "RSVP. Scan. Hours logged. ✅\nNo more paper sign-in sheets that go missing after the project. Members RSVP in the app, scan a QR code at the venue, and their service hours count automatically.\nDot handles the scanning 📲",
+      "notes": "",
+      "metrics": {}
+    },
+    {
+      "id": "L07",
+      "type": "post",
+      "pillar": "tips",
+      "topic": "Dot's Tip #1: never mix club money and project money",
+      "angle": "Separate drawers metaphor",
+      "hook": "Dot's Tip #1 💡 Never mix club money and project money.",
+      "keywords": [
+        "funds",
+        "project money",
+        "club money",
+        "mixing",
+        "drawers"
+      ],
+      "dot_pose": "point",
+      "background": "ink",
+      "layout": "headline + Dot + two-drawer cabinet",
+      "hashtag_set": "C",
+      "status": "ready",
+      "post_date": "2026-11-02",
+      "files": [
+        "assets/2026-10-launch/dot-post-tip-1.png"
+      ],
+      "caption": "Dot's Tip #1 💡 Never mix club money and project money.\nMoney raised for a project gets spent on that project. Dues run the club. Keep each one in its own drawer, and if one ever pays for the other, write down that it's owed back.\nVault keeps the drawers separate for you.\n📌 Save it · 📤 Share it with your board",
+      "notes": "FRESHNESS WARNING: repeats carousel L04 slide 3 one week later. Consider replacing with a fresh tip (e.g. 'keep every receipt, even small ones') and moving this to week 7+.",
+      "metrics": {}
+    },
+    {
+      "id": "L08",
+      "type": "post",
+      "pillar": "product",
+      "topic": "Audit-ready treasury dashboard",
+      "angle": "Every rupee traced; voucher numbers, approvals, year-end pack",
+      "hook": "An audit-ready treasury. Every rupee traced. 🔍",
+      "keywords": [
+        "audit",
+        "dashboard",
+        "vouchers",
+        "approvals",
+        "year-end",
+        "report"
+      ],
+      "dot_pose": "proud",
+      "background": "paper",
+      "layout": "headline + dashboard card + Dot on corner",
+      "hashtag_set": "A",
+      "status": "ready",
+      "post_date": "2026-11-04",
+      "files": [
+        "assets/2026-10-launch/vault-05-audit-ready.png"
+      ],
+      "caption": "An audit-ready treasury. Every rupee traced. 🔍\nEvery entry gets a voucher number, a receipt and an approval, so at year-end your report is ready for the auditor's signature instead of a weekend of spreadsheets.\nTreasurers, how long did your last audit take? 👇",
+      "notes": "CLAIMS: vouchers and audit pack are Finance V2.",
+      "metrics": {}
+    },
+    {
+      "id": "L09",
+      "type": "post",
+      "pillar": "product",
+      "topic": "Product hero: all modules in one app",
+      "angle": "One app instead of six group chats",
+      "hook": "One app instead of six group chats. 🙌",
+      "keywords": [
+        "overview",
+        "members",
+        "dues",
+        "events",
+        "treasury",
+        "reports"
+      ],
+      "dot_pose": "wave",
+      "background": "ink",
+      "layout": "wordmark + feature list + tilted phone + Dot",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "2026-11-06",
+      "files": [
+        "assets/2026-10-launch/vault-02-product-hero.png"
+      ],
+      "caption": "Members and dues. Events and check-in. Treasury and approvals. Year-end reports.\nOne app instead of six group chats. 🙌\nBuilt in Sri Lanka, for Rotaract clubs.\n🔗 Free demo, link in bio",
+      "notes": "",
+      "metrics": {}
+    },
+    {
+      "id": "L10",
+      "type": "graphic",
+      "pillar": "conversion",
+      "topic": "Webinar: Audit-ready books in 30 minutes (Sat 14 Nov)",
+      "angle": "Free live session for treasurers and incoming boards",
+      "hook": "Free live session: Audit-ready books in 30 minutes",
+      "keywords": [
+        "webinar",
+        "live",
+        "audit",
+        "training"
+      ],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "A",
+      "status": "idea",
+      "post_date": "2026-11-09",
+      "files": [],
+      "caption": "Free live session: Audit-ready books in 30 minutes 🗓️ Sat 14 Nov\nFor treasurers, presidents and anyone who'll be handed the books next year. We'll cover the 3 mistakes, a simple monthly routine, and a live look at Vault.\nComment \"DOT\" and we'll send you the link 💬",
+      "notes": "Graphic NOT made yet. Needs 1080x1350 post + 1080x1920 story with countdown space.",
+      "metrics": {}
+    },
+    {
+      "id": "L11",
+      "type": "post",
+      "pillar": "conversion",
+      "topic": "Book a 15-minute demo",
+      "angle": "No-pressure demo on your own club's numbers",
+      "hook": "Bring your club on board 🚀",
+      "keywords": [
+        "demo",
+        "cta",
+        "onboarding"
+      ],
+      "dot_pose": "happy (as the logo's full stop)",
+      "background": "tint",
+      "layout": "centred lockup + CTA button",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "2026-11-12",
+      "files": [
+        "assets/2026-10-launch/vault-11-demo-cta.png"
+      ],
+      "caption": "Bring your club on board 🚀\nA 15-minute call, no pressure. We'll show you Vault on your own club's numbers and help you set it up.\n🔗 vaultpro.cloud, or DM us \"DEMO\"",
+      "notes": "Pin to profile from 12 Nov.",
+      "metrics": {}
+    },
+    {
+      "id": "B01",
+      "type": "brand-asset",
+      "pillar": "brand",
+      "topic": "Logo system v1 and Instagram profile picture",
+      "angle": "Evolved serif wordmark + V. app icon",
+      "hook": "",
+      "keywords": [
+        "logo",
+        "icon",
+        "profile picture"
+      ],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "status": "posted",
+      "post_date": "2026-10-13",
+      "files": [
+        "brand/logo/"
+      ],
+      "caption": "",
+      "notes": "Instagram handle: vaultpro.cloud, display name: Vault.",
+      "metrics": {}
+    },
+    {
+      "id": "B02",
+      "type": "brand-asset",
+      "pillar": "brand",
+      "topic": "Dot character, expression and pose sheets",
+      "angle": "Mascot reference",
+      "hook": "",
+      "keywords": [
+        "dot",
+        "mascot",
+        "sheet"
+      ],
+      "dot_pose": "all",
+      "background": "paper",
+      "layout": "",
+      "hashtag_set": "",
+      "status": "ready",
+      "post_date": "",
+      "files": [
+        "examples/dot-01-character-sheet.png",
+        "examples/dot-02-expressions.png",
+        "examples/dot-03-poses.png"
+      ],
+      "caption": "",
+      "notes": "Expression sheet planned as a story (25 Oct: 'Which Dot are you this week?').",
+      "metrics": {}
+    }
+  ]
+}
