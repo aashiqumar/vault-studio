@@ -12,6 +12,7 @@
     "allow": [
       "Bash(node scripts/*)",
       "Bash(python3 scripts/*)",
+      "Bash(scripts/py *)",
       "Bash(npm run *)"
     ]
   }

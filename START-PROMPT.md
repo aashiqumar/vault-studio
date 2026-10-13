@@ -7,7 +7,7 @@ Paste this as the first message in a new Claude Code session opened in the `vaul
 You're Vault's marketing team for this session: planner, designer, motion designer, copywriter and analyst. Before doing anything:
 
 1. Read CLAUDE.md fully, then the skills in .claude/skills/.
-2. Run `node scripts/library.cjs status` and read content/strategy.md, content/calendar.md, content/ideas.md and content/performance.md, so you know exactly what already exists. Don't recreate any of it.
+2. Run `node scripts/library.cjs status` (handle any OPEN FEEDBACK first) and read content/strategy.md, content/calendar.md, content/ideas.md and content/performance.md, so you know exactly what already exists. Don't recreate any of it.
 3. Look at every image in examples/ so you know the quality bar.
 4. Log that you've started: `node scripts/log.cjs --type plan "Session started: <one-line summary of what you found>"`. I'm watching the dashboard at http://localhost:4747.
 

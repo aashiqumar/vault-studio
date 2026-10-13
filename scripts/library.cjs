@@ -1,108 +1,123 @@
 // Vault content ledger CLI: memory of everything made, so new work stays fresh.
-//   node scripts/library.cjs status                         # what exists, what's next, what was used recently, warnings
+//   node scripts/library.cjs status                         # what exists, what's next, open feedback, warnings
 //   node scripts/library.cjs check --topic "..." [--keywords a,b] [--pose x] [--bg y] [--pillar p] [--date YYYY-MM-DD]
 //   node scripts/library.cjs add '<json>'  |  add path/to/entry.json      # append (id auto-assigned if missing)
-//   node scripts/library.cjs set <id> status=posted post_date=2026-10-19 metrics.saves=42 files=a.png,b.png
+//   node scripts/library.cjs set <id> status=ready metrics.saves=42 files=a.png,b.png
+//   node scripts/library.cjs move <id> <YYYY-MM-DD|none> [HH:MM] [--force]   # reschedule (respects 🔒 user-set dates)
+//   node scripts/library.cjs feedback <id> "note"           # leave a note on an item
+//   node scripts/library.cjs resolve <id> <n|all> "what you changed"        # close the user's feedback with a reply
+//   node scripts/library.cjs calendar                        # regenerate content/calendar.md
 //   node scripts/library.cjs grid [out/grid.jpg]            # Instagram grid preview of posted + scheduled items
 const fs = require('fs'), path = require('path');
-const ROOT = path.resolve(__dirname, '..'), FILE = path.join(ROOT, 'content/library.json');
+const L = require('./ledger.cjs');
 const { log } = require('./log.cjs');
-const lib = JSON.parse(fs.readFileSync(FILE, 'utf8'));
-const save = () => fs.writeFileSync(FILE, JSON.stringify(lib, null, 2) + '\n');
-const items = lib.items;
-const feed = items.filter(i => i.type !== 'brand-asset');
-const live = feed.filter(i => ['ready', 'scheduled', 'posted'].includes(i.status) && i.post_date);
-const byDate = [...live].sort((a, b) => a.post_date.localeCompare(b.post_date));
-const today = new Date().toISOString().slice(0, 10);
-const days = (a, b) => Math.round((new Date(b) - new Date(a)) / 864e5);
-const STOP = new Set('the a an and or of to for in on your you is are with how why what vault club clubs dot tip'.split(' '));
-const words = s => new Set(String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !STOP.has(w)));
-const sim = (a, b) => { const A = new Set([...a]), B = new Set([...b]); const inter = [...A].filter(x => B.has(x)).length; return inter / Math.max(1, Math.min(A.size, B.size)); };
-const sig = i => new Set([...words(i.topic), ...words(i.angle), ...(i.keywords || []).flatMap(k => [...words(k)])]);
-const TARGET = { tips: .35, product: .30, problem: .10, community: .15, brand: .05, conversion: .05 };
+const lib = L.load(), items = lib.items;
+const TARGET = lib.pillar_targets || { tips: .35, product: .30, community: .15, problem: .10, brand: .05, conversion: .05 };
+const feed = items.filter(L.isFeed), live = L.liveFeed(lib), t = L.today();
 const args = process.argv.slice(2), cmd = args.shift();
 const flag = k => { const i = args.indexOf('--' + k); return i >= 0 ? args[i + 1] : ''; };
-
-function warnings() {
-  const w = [];
-  for (let i = 0; i < byDate.length; i++) for (let j = i + 1; j < byDate.length; j++) {
-    const a = byDate[i], b = byDate[j], d = days(a.post_date, b.post_date);
-    if (d <= 42 && sim(sig(a), sig(b)) >= 0.4 && !(a.type === 'reel' || b.type === 'reel'))
-      w.push(`Topic overlap: ${a.id} (${a.post_date}) and ${b.id} (${b.post_date}), ${d} days apart: "${a.topic}" / "${b.topic}"`);
-  }
-  for (let i = 2; i < byDate.length; i++) {
-    const bg = byDate.slice(i - 2, i + 1).map(x => x.background.split(/[ ,+]/)[0]);
-    if (bg[0] && bg.every(x => x === bg[0])) w.push(`Grid: 3 ${bg[0]} backgrounds in a row ending ${byDate[i].id}`);
-  }
-  return w;
-}
+const force = args.includes('--force');
+const find = id => { const it = items.find(i => i.id === id); if (!it) { console.error('no item ' + id); process.exit(1); } return it; };
+const pose0 = i => String(i.dot_pose || '').split(/[ ,(]/)[0];
 
 if (cmd === 'status' || !cmd) {
   const count = s => feed.filter(i => i.status === s).length;
-  console.log(`VAULT CONTENT LIBRARY: ${feed.length} feed items (posted ${count('posted')}, scheduled ${count('scheduled')}, ready ${count('ready')}, draft ${count('draft')}, ideas ${count('idea')})  · today ${today}`);
-  console.log('\nTIMELINE (date · id · pillar · type · topic · Dot · bg · status)');
-  for (const i of byDate) console.log(`  ${i.post_date} ${i.post_date < today ? ' ' : '›'} ${i.id.padEnd(4)} ${i.pillar.padEnd(10)} ${i.type.padEnd(8)} ${i.topic.slice(0, 58).padEnd(58)} · ${String(i.dot_pose).split(/[ ,(]/)[0].padEnd(10)} · ${i.background.split(/[ ,+]/)[0].padEnd(5)} · ${i.status}`);
-  const ideas = feed.filter(i => i.status === 'idea');
-  if (ideas.length) { console.log('\nNOT MADE YET'); ideas.forEach(i => console.log(`  ${i.id} ${i.post_date || '(no date)'} ${i.topic}: ${i.notes}`)); }
-  const last = byDate.slice(-6);
+  console.log(`VAULT CONTENT LIBRARY: ${feed.length} feed items (posted ${count('posted')}, scheduled ${count('scheduled')}, ready ${count('ready')}, draft ${count('draft')}, ideas ${count('idea')})  · today ${L.fmt(t)}`);
+  const open = items.filter(i => (i.feedback || []).some(f => !f.resolved));
+  if (open.length) {
+    console.log('\nOPEN FEEDBACK FROM THE USER: handle these first, then `resolve`');
+    open.forEach(i => i.feedback.forEach((f, n) => { if (!f.resolved) console.log(`  💬 ${i.id} #${n} (${f.ts.slice(0, 10)}): ${f.text}`); }));
+  }
+  console.log('\nFEED TIMELINE (date time · id · pillar · type · topic · Dot · bg · status)   🔒 = date set by the user');
+  for (const i of L.datedFeed(lib)) console.log(`  ${i.post_date} ${(i.post_time || '').padEnd(5)} ${i.post_date < t ? ' ' : '›'} ${(i.id + (i.date_locked ? '🔒' : '')).padEnd(6)} ${String(i.pillar).padEnd(10)} ${i.type.padEnd(8)} ${i.topic.slice(0, 54).padEnd(54)} · ${pose0(i).padEnd(10)} · ${L.bg0(i).padEnd(5)} · ${i.status}`);
+  const other = items.filter(i => L.OTHER_TYPES.includes(i.type) && i.post_date && i.status !== 'retired' && L.days(t, i.post_date) >= -1 && L.days(t, i.post_date) <= 21).sort(L.byDate);
+  if (other.length) { console.log('\nSTORIES & TASKS (next 3 weeks)'); other.forEach(i => console.log(`  ${i.post_date} ${(i.post_time || '').padEnd(5)}  ${i.id.padEnd(5)} ${i.type.padEnd(6)} ${i.topic} · ${i.status}`)); }
+  const todo = items.filter(i => L.onCalendar(i) && ['idea', 'draft'].includes(i.status) && i.type !== 'task');
+  if (todo.length) { console.log('\nNOT MADE YET'); todo.sort(L.byDate).forEach(i => console.log(`  ${i.id} ${i.post_date || '(unscheduled)'} ${i.type} · ${i.topic}${i.notes ? ': ' + i.notes : ''}`)); }
+  const last = live.slice(-6);
   console.log('\nRECENTLY USED (avoid repeating in the next 3 posts)');
-  console.log('  Dot poses:  ' + last.map(i => String(i.dot_pose).split(/[ ,(]/)[0]).join(', '));
-  console.log('  Backgrounds: ' + last.map(i => i.background.split(/[ ,+]/)[0]).join(', '));
-  console.log('  Hooks:      ' + last.map(i => `"${(i.hook || '').slice(0, 40)}"`).join(' | '));
-  const mix = {}; byDate.slice(-12).forEach(i => mix[i.pillar] = (mix[i.pillar] || 0) + 1);
-  const n = Math.min(12, byDate.length) || 1;
-  console.log('\nPILLAR MIX (last 12 vs target): ' + Object.keys(TARGET).map(p => `${p} ${Math.round((mix[p] || 0) / n * 100)}%/${TARGET[p] * 100}%`).join(' · '));
-  const posted = feed.filter(i => i.metrics && Object.keys(i.metrics).length);
-  if (posted.length) { console.log('\nTOP BY SAVES+SHARES'); posted.sort((a, b) => ((b.metrics.saves || 0) + (b.metrics.shares || 0)) - ((a.metrics.saves || 0) + (a.metrics.shares || 0))).slice(0, 5).forEach(i => console.log(`  ${i.id} ${i.topic.slice(0, 50)} saves ${i.metrics.saves || 0} shares ${i.metrics.shares || 0} reach ${i.metrics.reach || 0}`)); }
-  const w = warnings(); if (w.length) { console.log('\nWARNINGS'); w.forEach(x => console.log('  ! ' + x)); }
-  console.log('\nRules: run `check` before designing anything new; `add`/`set` after. Ideas bank: content/ideas.md');
+  console.log('  Dot poses:   ' + last.map(pose0).join(', '));
+  console.log('  Backgrounds: ' + last.map(L.bg0).join(', '));
+  console.log('  Hooks:       ' + last.map(i => `"${(i.hook || '').slice(0, 40)}"`).join(' | '));
+  const mix = {}; live.slice(-12).forEach(i => mix[i.pillar] = (mix[i.pillar] || 0) + 1);
+  const n = Math.min(12, live.length) || 1;
+  console.log('\nPILLAR MIX (last 12 vs target): ' + Object.keys(TARGET).map(p => `${p} ${Math.round((mix[p] || 0) / n * 100)}%/${Math.round(TARGET[p] * 100)}%`).join(' · '));
+  const perf = feed.filter(i => i.metrics && (i.metrics.saves || i.metrics.reach));
+  if (perf.length) { console.log('\nTOP BY SAVES+SHARES'); perf.sort((a, b) => ((b.metrics.saves || 0) + (b.metrics.shares || 0)) - ((a.metrics.saves || 0) + (a.metrics.shares || 0))).slice(0, 5).forEach(i => console.log(`  ${i.id} ${i.topic.slice(0, 50)} saves ${i.metrics.saves || 0} shares ${i.metrics.shares || 0} reach ${i.metrics.reach || 0}`)); }
+  const w = L.warnings(lib).filter(x => x.kind !== 'feedback'); if (w.length) { console.log('\nWARNINGS'); w.forEach(x => console.log('  ! ' + x.msg)); }
+  console.log('\nRules: `check` before designing; `add`/`set` after; never move a 🔒 date without asking. The user edits this library from the dashboard too, so re-run `status` before each new task.');
 }
 else if (cmd === 'check') {
   const cand = { topic: flag('topic'), angle: flag('angle'), keywords: (flag('keywords') || '').split(',').filter(Boolean) };
-  const S = sig(cand), date = flag('date') || today, pose = flag('pose'), bg = flag('bg'), pillar = flag('pillar');
+  const S = L.sig(cand), date = flag('date') || t, pose = flag('pose'), bg = flag('bg'), pillar = flag('pillar');
   let bad = 0;
   for (const i of feed) {
-    const s = sim(S, sig(i)); if (s < 0.4) continue;
-    const d = i.post_date ? Math.abs(days(i.post_date, date)) : null;
+    const s = L.sim(S, L.sig(i)); if (s < 0.4) continue;
+    const d = i.post_date ? Math.abs(L.days(i.post_date, date)) : null;
     const level = s >= 0.6 && (d === null || d <= 42) ? 'REPEAT' : 'similar';
     if (level === 'REPEAT') bad++;
     console.log(`${level.padEnd(7)} ${i.id} (${i.post_date || 'no date'}, ${d ?? '?'}d away, overlap ${Math.round(s * 100)}%): ${i.topic}`);
   }
-  const near = byDate.filter(i => i.post_date <= date).slice(-3);
-  if (pose && near.some(i => String(i.dot_pose).includes(pose))) { bad++; console.log(`POSE    "${pose}" used in the last 3 posts (${near.map(i => i.id + ':' + String(i.dot_pose).split(/[ ,(]/)[0]).join(', ')})`); }
-  if (bg && near.slice(-2).every(i => i.background.startsWith(bg))) { bad++; console.log(`BG      "${bg}" would make 3 in a row on the grid`); }
-  if (pillar) { const mix = byDate.slice(-12).filter(i => i.pillar === pillar).length / Math.max(1, Math.min(12, byDate.length)); if (TARGET[pillar] && mix > TARGET[pillar] + .1) console.log(`PILLAR  ${pillar} is already ${Math.round(mix * 100)}% of the last 12 (target ${TARGET[pillar] * 100}%)`); }
+  const near = live.filter(i => i.post_date <= date).slice(-3);
+  if (pose && near.some(i => String(i.dot_pose).includes(pose))) { bad++; console.log(`POSE    "${pose}" used in the last 3 posts (${near.map(i => i.id + ':' + pose0(i)).join(', ')})`); }
+  if (bg && near.length >= 2 && near.slice(-2).every(i => L.bg0(i) === bg)) { bad++; console.log(`BG      "${bg}" would make 3 in a row on the grid`); }
+  const sameDay = L.datedFeed(lib).filter(i => i.post_date === date);
+  if (flag('date') && sameDay.length) console.log(`DATE    ${L.fmt(date)} already has ${sameDay.map(i => i.id).join(', ')}`);
+  if (pillar) { const mix = live.slice(-12).filter(i => i.pillar === pillar).length / Math.max(1, Math.min(12, live.length)); if (TARGET[pillar] && mix > TARGET[pillar] + .1) console.log(`PILLAR  ${pillar} is already ${Math.round(mix * 100)}% of the last 12 (target ${Math.round(TARGET[pillar] * 100)}%)`); }
   log('check', `Freshness check "${cand.topic}": ${bad ? bad + ' problem(s)' : 'fresh'}`);
   console.log(bad ? `\n✗ ${bad} freshness problem(s): change the angle, pose or background, or justify it in notes.` : '\n✓ Fresh: no repeats found.');
   process.exit(bad ? 2 : 0);
 }
 else if (cmd === 'add') {
   const src = args[0]; const e = JSON.parse(fs.existsSync(src) ? fs.readFileSync(src, 'utf8') : src);
-  for (const k of ['type', 'pillar', 'topic', 'status']) if (!e[k]) { console.error('missing field: ' + k); process.exit(1); }
-  if (!e.id) { const n = items.filter(i => /^N\d+$/.test(i.id)).length + 1; e.id = 'N' + String(n).padStart(3, '0'); }
-  if (items.some(i => i.id === e.id)) { console.error('id exists: ' + e.id); process.exit(1); }
-  items.push(Object.assign({ angle: '', hook: '', keywords: [], dot_pose: '', background: '', layout: '', hashtag_set: '', post_date: '', files: [], caption: '', notes: '', metrics: {} }, e));
-  save(); log('library', `Added ${e.id}: ${e.topic}`, { id: e.id }); console.log('added ' + e.id);
+  if (L.isFeed(e)) for (const k of ['pillar', 'status']) if (!e[k]) { console.error('missing field: ' + k); process.exit(1); }
+  try { const it = L.newItem(lib, e); L.save(lib); log('library', `Added ${it.id}: ${it.topic}`, { id: it.id }); console.log('added ' + it.id); }
+  catch (err) { console.error(err.message); process.exit(1); }
 }
 else if (cmd === 'set') {
-  const id = args.shift(), it = items.find(i => i.id === id); if (!it) { console.error('no item ' + id); process.exit(1); }
-  for (const kv of args) { const [k, ...v] = kv.split('='); const val = isNaN(+v.join('=')) || v.join('=') === '' ? v.join('=') : +v.join('=');
-    if (k.startsWith('metrics.')) { it.metrics = it.metrics || {}; it.metrics[k.slice(8)] = val; }
-    else if (k === 'files' || k === 'keywords') it[k] = v.join('=').split(',').map(x => x.trim()).filter(Boolean);
-    else it[k] = String(val); }
-  save(); log('library', `Updated ${id}: ${args.join(' ')}`, { id }); console.log('updated ' + id);
+  const it = find(args.shift());
+  for (const kv of args.filter(a => a !== '--force')) {
+    const [k, ...v] = kv.split('='); const raw = v.join('=');
+    if (k === 'post_date' && it.date_locked && !force) { console.error(`✗ ${it.id}'s date was set by the user (🔒). Ask them first, then re-run with --force.`); process.exit(3); }
+    if (k.startsWith('metrics.')) { it.metrics = it.metrics || {}; it.metrics[k.slice(8)] = isNaN(+raw) ? raw : +raw; }
+    else if (k === 'files' || k === 'keywords') it[k] = raw.split(',').map(x => x.trim()).filter(Boolean);
+    else it[k] = raw;
+  }
+  L.save(lib); log('library', `Updated ${it.id}: ${args.filter(a => a !== '--force').join(' ')}`, { id: it.id }); console.log('updated ' + it.id);
 }
+else if (cmd === 'move') {
+  const it = find(args[0]); const date = args[1] === 'none' ? '' : args[1], time = args[2] && /^\d{2}:\d{2}$/.test(args[2]) ? args[2] : undefined;
+  if (it.date_locked && !force) { console.error(`✗ ${it.id}'s date was set by the user (🔒 ${it.post_date}). Ask them first, then re-run with --force.`); process.exit(3); }
+  try { const { from } = L.move(lib, it.id, date, time, 'claude'); L.save(lib);
+    log('library', `Moved ${it.id} from ${from ? L.fmt(from) : 'unscheduled'} to ${date ? L.fmt(date) : 'unscheduled'}`, { id: it.id });
+    console.log(`moved ${it.id}: ${from || 'unscheduled'} → ${date || 'unscheduled'}`);
+    L.warnings(lib).filter(w => w.ids.includes(it.id)).forEach(w => console.log('  ! ' + w.msg));
+  } catch (err) { console.error(err.message); process.exit(1); }
+}
+else if (cmd === 'feedback') {
+  const it = find(args[0]); const text = args.slice(1).join(' '); if (!text) { console.error('usage: feedback <id> "note"'); process.exit(1); }
+  (it.feedback = it.feedback || []).push({ ts: new Date().toISOString(), by: 'claude', text, resolved: false });
+  L.save(lib); log('library', `Note on ${it.id}: ${text}`, { id: it.id }); console.log('noted on ' + it.id);
+}
+else if (cmd === 'resolve') {
+  const it = find(args[0]); const which = args[1], reply = args.slice(2).join(' ');
+  const fb = it.feedback || []; const idx = which === 'all' ? fb.map((_, n) => n) : [+which];
+  if (!idx.length || idx.some(n => !fb[n])) { console.error('no such feedback; see `status`'); process.exit(1); }
+  idx.forEach(n => Object.assign(fb[n], { resolved: true, resolved_at: new Date().toISOString(), reply }));
+  L.save(lib); log('done', `Resolved feedback on ${it.id}: ${reply}`, { id: it.id }); console.log('resolved ' + idx.length + ' on ' + it.id);
+}
+else if (cmd === 'calendar') { L.writeCalendar(lib); console.log('wrote content/calendar.md'); }
 else if (cmd === 'grid') {
   const out = args[0] || 'out/grid.jpg';
-  const tiles = [...byDate].reverse().map(i => ({ i, f: (i.files || []).find(f => /\.(png|jpe?g)$/i.test(f)) })).filter(t => t.f && fs.existsSync(path.join(ROOT, t.f)));
+  const tiles = [...live].reverse().map(i => ({ i, f: (i.files || []).find(f => /\.(png|jpe?g)$/i.test(f)) })).filter(x => x.f && fs.existsSync(path.join(L.ROOT, x.f)));
   const { chromium } = require('playwright');
   (async () => {
-    const tmp = path.join(ROOT, 'out', '.grid.html'); fs.mkdirSync(path.dirname(tmp), { recursive: true });
-    fs.writeFileSync(tmp, `<html><body style="margin:0;background:#fff;font:12px sans-serif"><div id="g" style="display:grid;grid-template-columns:repeat(3,300px);gap:3px;padding:3px">${tiles.map(t => `<div style="position:relative;width:300px;height:400px;overflow:hidden"><img src="file://${path.join(ROOT, t.f)}" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;left:4px;top:4px;background:#000a;color:#fff;padding:2px 5px">${t.i.post_date} ${t.i.id}</span></div>`).join('')}</div></body></html>`);
+    const tmp = path.join(L.ROOT, 'out', '.grid.html'); fs.mkdirSync(path.dirname(tmp), { recursive: true });
+    fs.writeFileSync(tmp, `<html><body style="margin:0;background:#fff;font:12px sans-serif"><div id="g" style="display:grid;grid-template-columns:repeat(3,300px);gap:3px;padding:3px">${tiles.map(x => `<div style="position:relative;width:300px;height:400px;overflow:hidden"><img src="file://${path.join(L.ROOT, x.f)}" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;left:4px;top:4px;background:#000a;color:#fff;padding:2px 5px">${x.i.post_date} ${x.i.id}</span></div>`).join('')}</div></body></html>`);
     const b = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
     const p = await b.newPage({ viewport: { width: 915, height: 800 } });
     await p.goto('file://' + tmp, { waitUntil: 'load' }); await p.locator('#g').screenshot({ path: out, type: 'jpeg', quality: 85 });
     fs.rmSync(tmp); await b.close(); console.log('wrote ' + out + ' (newest first, 3:4 grid crop)');
   })();
 }
-else { console.error('commands: status | check | add | set | grid'); process.exit(1); }
+else { console.error('commands: status | check | add | set | move | feedback | resolve | calendar | grid'); process.exit(1); }

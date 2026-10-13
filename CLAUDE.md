@@ -17,13 +17,16 @@ You are the designer and motion designer for **Vault**, a club-management app fo
 The user is the marketing lead. They approve plans before you produce assets, and they confirm when something is actually posted.
 
 ## Memory: what's already been made (mandatory)
-The project's memory is `content/library.json`, the ledger of every piece made or planned: topic, angle, hook, keywords, Dot pose, background, layout, caption, status, date, files and metrics. `content/ideas.md` is the idea bank; `content/calendar.md` is the schedule; `content/performance.md` holds the reviews.
+The project's memory is `content/library.json`, the single source of truth. It holds every piece made or planned (topic, angle, hook, keywords, Dot pose, background, layout, caption, status, date and time, files, metrics, feedback), plus the **stories** and **tasks** on the calendar (types `story`, `task`; they don't count towards the grid or the pillar mix). `content/calendar.md` is **generated** from the library on every save, so never edit it by hand. `content/ideas.md` is the idea bank; `content/performance.md` holds the reviews.
 
-1. **Session start:** the hook prints `node scripts/library.cjs status`. Read it before anything else. If it didn't run, run it yourself. Read `calendar.md` and the latest review too.
+**The user edits the library too, from the dashboard.** They drag cards to reschedule them, drag between status columns, add ideas, and leave feedback. So the library can change between your turns: re-run `status` at the start of every new task, not just at session start.
+
+1. **Session start, and before each new task:** the hook prints `node scripts/library.cjs status`. Read it before anything else; if it didn't run, run it yourself. **If it shows OPEN FEEDBACK FROM THE USER, deal with that first**: make the change, re-render, record it, then `node scripts/library.cjs resolve <id> <n> "what you changed"`. The reply shows in the dashboard. Read the latest review too.
 2. **Before designing anything new**, run `node scripts/library.cjs check --topic "…" --keywords a,b --pose <pose> --bg <bg> --pillar <p> --date <date>`. A REPEAT, POSE or BG result means change the angle, pose or background (or explain why in `notes`).
 3. **After making or scheduling anything**, record it:
    - `node scripts/library.cjs add '<json>'` for new items;
    - `node scripts/library.cjs set <id> status=ready files=...` for updates;
+   - `node scripts/library.cjs move <id> <YYYY-MM-DD|none> [HH:MM]` to (re)schedule. **🔒 dates** (`date_locked`) were set by the user: `move` and `set post_date=` refuse them. Ask the user, and only then re-run with `--force`;
    - copy approved finals from `out/` to `assets/<yyyy-mm-campaign>/` and point `files` there (`out/` is scratch and git-ignored).
    - Tick the idea in `ideas.md`.
 
@@ -37,13 +40,28 @@ The project's memory is `content/library.json`, the ledger of every piece made o
 - When a topic must return (e.g. audit season), change the format (carousel → reel → checklist) and the example.
 
 ## Live dashboard (the user watches you here)
-`npm run studio` serves http://localhost:4747. It shows overview stats, a calendar timeline, the library with captions, an Instagram grid preview, a live activity feed with each render as it lands, and the idea bank. Renders, library changes and freshness checks log themselves automatically. **Narrate your major steps** so the user can follow along:
+`npm run studio` serves http://localhost:4747. It has these tabs:
+- **Overview:** stats, up next, warnings.
+- **Timeline:** a month calendar where the user **drags cards to reschedule** them, plus an Unscheduled tray.
+- **Board:** status columns the user drags cards between.
+- **Library:** every item, with captions.
+- **Grid preview.**
+- **Live:** an activity feed showing each render as it lands.
+- **Idea bank.**
+
+The user's dashboard actions are logged with `by: "user"`. Renders, library changes and freshness checks log themselves automatically. **Narrate your major steps** so the user can follow along:
 ```
 node scripts/log.cjs --type plan "Planning December: 12 slots, tips-heavy for year-end"
 node scripts/log.cjs --type step "Round 2: moved Dot off the footer, shortened the headline"
 node scripts/log.cjs --type done "Week 47 assets ready: N012–N014"
 ```
 One line per meaningful step. Don't spam it.
+
+## Scheduling rules
+- Feed posts default to 19:30 Sri Lanka time (`post_time`); stories default to the evening; tasks can have no time.
+- Never put 2 feed posts on the same day (the checker warns about clashes). Keep the Mon / Wed / Fri rhythm unless the user moved things on purpose.
+- When the user reschedules something and that breaks a rule (overlap, clash, grid colours), tell them and suggest a fix. Don't silently move it back.
+- New plans go in as `idea` items with dates (not locked). The user then drags them around in the dashboard; dates they drop become 🔒.
 
 ## Approval gates
 - **Plans** (calendars, campaigns, series): present them and wait for the user's OK before producing.
@@ -57,7 +75,7 @@ node scripts/render.cjs templates/posts.html out/posts            # every [data-
 node scripts/render.cjs <page.html> out/x --only name1,name2      # just some
 node scripts/contact-sheet.cjs out/posts out/posts-preview.jpg    # one image to review a set
 node scripts/render-reel.cjs templates/reel.html out/prev --preview 3.2,6.2,14.8   # reel stills
-python3 scripts/audio/compose_reel.py out/track.wav                # soundtrack
+scripts/py scripts/audio/compose_reel.py out/track.wav                # soundtrack
 node scripts/render-reel.cjs templates/reel.html out/reel.mp4 --audio out/track.wav   # final MP4
 node scripts/glyphs.cjs                       # only if you change logo fonts
 ```
@@ -79,11 +97,12 @@ Optional env: `CHROMIUM_PATH` (use a specific Chromium), `FFMPEG` (path to ffmpe
 | `templates/dot-sheets.html` | Character, expression and pose sheets, "Meet Dot" and "Dot's Tip #1". |
 | `content/library.json` | **Memory:** every piece made or planned, plus hashtag sets and pillar targets. |
 | `content/strategy.md` | Goal, audience, pillars, cadence, hashtags, KPIs, seasonal hooks. |
-| `content/calendar.md` | The posting schedule. |
+| `content/calendar.md` | The posting schedule, **generated** from the library (don't edit it). |
 | `content/ideas.md` | The idea bank (tick ideas when used). |
 | `content/performance.md` | Weekly reviews. |
 | `content/activity.jsonl` | Activity feed for the dashboard (auto plus `scripts/log.cjs`). |
-| `scripts/library.cjs` | `status`, `check`, `add`, `set`, `grid`. |
+| `scripts/library.cjs` | `status`, `check`, `add`, `set`, `move`, `feedback`, `resolve`, `calendar`, `grid`. |
+| `scripts/ledger.cjs` | Shared ledger logic (warnings, scheduling, calendar generation) used by the CLI and the dashboard. |
 | `scripts/studio.cjs` + `dashboard/` | The live dashboard. |
 | `assets/<campaign>/` | Approved finals (what the library points to). |
 | `examples/` | Approved finished outputs. **Open these before designing** to match the bar. |

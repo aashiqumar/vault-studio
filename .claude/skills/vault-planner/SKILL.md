@@ -7,7 +7,7 @@ description: Plan Vault's social media: monthly or weekly content calendars, cam
 
 1. **Know what exists.**
    - Run `node scripts/library.cjs status` (the session start hook shows it too).
-   - Read `content/calendar.md`, `content/strategy.md`, the latest review in `content/performance.md`, and `content/ideas.md`.
+   - Read `content/calendar.md` (generated from the library), `content/strategy.md`, the latest review in `content/performance.md`, and `content/ideas.md`.
    - Note any WARNINGS and fix them first.
 2. **Set the frame.** Work out the date range, the season (see Seasonal hooks in strategy.md), and any events the user mentions (webinars, launches, district events). Verify every weekday with `date -d 2026-11-16 +%a` or similar. Never guess weekdays.
 3. **Pick the slots.**
@@ -22,8 +22,9 @@ description: Plan Vault's social media: monthly or weekly content calendars, cam
    - Plan the grid: alternate backgrounds, and use rose only for covers.
 5. **Write a brief per item:** id, date, slot, pillar, format and size, the single message, hook, outline (slides or scenes), Dot pose and mood, background, CTA, hashtag set, claim check (⚑ live?), and the files to produce.
 6. **Record it.**
-   - Add each item to the library as `status=idea` (`node scripts/library.cjs add '<json>'`), including hook, keywords, pose and background.
-   - Add rows to `content/calendar.md`.
+   - Add each item to the library as `status=idea` (`node scripts/library.cjs add '<json>'`), with `post_date`, `post_time`, hook, keywords, pose and background. The calendar regenerates automatically.
+   - Add the supporting **stories** (`type: story`) and **tasks** (`type: task`, e.g. ads, webinars, reviews) the same way, so they show on the dashboard calendar too.
+   - Never move a 🔒 (`date_locked`) item. The user placed it; plan around it, or ask.
    - Mark the ideas used in `content/ideas.md`.
-7. **Present** the plan as a week-by-week table plus briefs, and ask the user to approve or swap items **before** producing assets.
+7. **Present** the plan as a week-by-week table plus briefs. Tell the user they can rearrange it by dragging cards on the dashboard Timeline, and ask them to approve **before** you produce assets. Re-run `status` after they reply, because they may have moved things.
 8. **After approval:** produce each item with `vault-post` / `vault-reel` / `vault-captions`, then `set <id> status=ready files=...`. When the user confirms an item is posted: `set <id> status=posted`.

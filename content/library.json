@@ -1,5 +1,5 @@
 {
-  "_about": "Vault content ledger. One entry per published or planned piece. Every session reads this (node scripts/library.cjs status) and MUST add/update entries after making or scheduling anything. Fields: id, type (post|carousel|reel|story|graphic|brand-asset), pillar (tips|product|problem|community|brand|conversion), topic, angle, hook, keywords[], dot_pose, background (paper|ink|rose|plum|tint), layout, hashtag_set, status (idea|draft|ready|scheduled|posted|retired), post_date (YYYY-MM-DD), files[], caption, notes, metrics{reach,likes,saves,shares,comments,profile_visits,link_clicks,demo_requests}.",
+  "_about": "Vault content ledger: the single source of truth. One entry per published or planned piece, plus stories and tasks on the calendar. Every session reads it (node scripts/library.cjs status) and MUST add/update entries after making or scheduling anything. The user also edits it from the dashboard (drag to reschedule, status, feedback). content/calendar.md is generated from it. Fields: id, type (post|carousel|reel|graphic = feed; story|task = calendar only; brand-asset), pillar (tips|product|problem|community|brand|conversion), topic, angle, hook, keywords[], dot_pose, background (paper|ink|rose|plum|tint), layout, hashtag_set, status (idea|draft|ready|scheduled|posted|retired), post_date (YYYY-MM-DD), post_time (HH:MM Sri Lanka), date_locked (true = user set the date; ask before moving), files[], caption, notes, feedback[{ts,by,text,resolved,reply}], metrics{reach,likes,saves,shares,comments,profile_visits,link_clicks,demo_requests}.",
   "hashtag_sets": {
     "A": "#Rotaract #ClubTreasurer #NonprofitFinance #RotaractSriLanka #VaultForClubs",
     "B": "#Rotaract #ServiceProjects #VolunteerHours #RotaractSriLanka #VaultForClubs",
@@ -40,7 +40,9 @@
       ],
       "caption": "Still running your club on WhatsApp and Excel? 😅\nReceipts lost in a group chat. Three versions of the ledger. A panic the week before the audit.\nThere's a better way, and it's coming this week.\nFollow so you don't miss it 👀",
       "notes": "Launch post.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L02",
@@ -70,7 +72,9 @@
       ],
       "caption": "Your whole club, in one place. ✨\nMembers log what they paid in plain words. The treasurer approves with one tap. Events, check-ins and service hours sort themselves out.\nAnd yes, that little pink thing is Dot. You'll be seeing a lot of Dot 🤖\n🔗 Book a free 15-min demo, link in bio",
       "notes": "Soundtrack: scripts/audio/compose_reel.py",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L03",
@@ -95,7 +99,9 @@
       ],
       "caption": "Say hello to Dot 👋\nDot is Vault's tiny vault-bot. Dot files every receipt, balances the books, and absolutely lives for event day 🎉\nDot's one rule: every rupee in its place.\nEvery Monday Dot shares one money tip for club treasurers. Turn on notifications so you catch them.\n💬 Tag your club's treasurer. They need a Dot.",
       "notes": "Pin to profile until 12 Nov.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L04",
@@ -129,7 +135,9 @@
       ],
       "caption": "3 money mistakes that fail club audits 🧾 (swipe →)\n1️⃣ Counting transfers as income\n2️⃣ Mixing club and project money\n3️⃣ Paying from your own pocket, then forgetting\nEach one is easy to fix once you know it. Slide 5 shows how Vault handles them for you.\n📌 Save this for year-end, and send it to your treasurer.",
       "notes": "CLAIMS: 'Vault does this for you' depends on Finance V2 being live. Change to 'built to' if not.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L05",
@@ -156,7 +164,9 @@
       ],
       "caption": "Paid for the hall yourself? 🙋\nYou don't need to know what \"debit\" means. In Vault you just tap \"I paid for something for the club\", add the amount and a photo of the receipt. Done.\nThe treasurer approves, and the club pays you back. No chasing, no lost slips.",
       "notes": "",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L06",
@@ -184,7 +194,9 @@
       ],
       "caption": "RSVP. Scan. Hours logged. ✅\nNo more paper sign-in sheets that go missing after the project. Members RSVP in the app, scan a QR code at the venue, and their service hours count automatically.\nDot handles the scanning 📲",
       "notes": "",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L07",
@@ -211,7 +223,9 @@
       ],
       "caption": "Dot's Tip #1 💡 Never mix club money and project money.\nMoney raised for a project gets spent on that project. Dues run the club. Keep each one in its own drawer, and if one ever pays for the other, write down that it's owed back.\nVault keeps the drawers separate for you.\n📌 Save it · 📤 Share it with your board",
       "notes": "FRESHNESS WARNING: repeats carousel L04 slide 3 one week later. Consider replacing with a fresh tip (e.g. 'keep every receipt, even small ones') and moving this to week 7+.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L08",
@@ -239,7 +253,9 @@
       ],
       "caption": "An audit-ready treasury. Every rupee traced. 🔍\nEvery entry gets a voucher number, a receipt and an approval, so at year-end your report is ready for the auditor's signature instead of a weekend of spreadsheets.\nTreasurers, how long did your last audit take? 👇",
       "notes": "CLAIMS: vouchers and audit pack are Finance V2.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L09",
@@ -267,7 +283,9 @@
       ],
       "caption": "Members and dues. Events and check-in. Treasury and approvals. Year-end reports.\nOne app instead of six group chats. 🙌\nBuilt in Sri Lanka, for Rotaract clubs.\n🔗 Free demo, link in bio",
       "notes": "",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L10",
@@ -291,7 +309,9 @@
       "files": [],
       "caption": "Free live session: Audit-ready books in 30 minutes 🗓️ Sat 14 Nov\nFor treasurers, presidents and anyone who'll be handed the books next year. We'll cover the 3 mistakes, a simple monthly routine, and a live look at Vault.\nComment \"DOT\" and we'll send you the link 💬",
       "notes": "Graphic NOT made yet. Needs 1080x1350 post + 1080x1920 story with countdown space.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "L11",
@@ -316,7 +336,9 @@
       ],
       "caption": "Bring your club on board 🚀\nA 15-minute call, no pressure. We'll show you Vault on your own club's numbers and help you set it up.\n🔗 vaultpro.cloud, or DM us \"DEMO\"",
       "notes": "Pin to profile from 12 Nov.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "19:30",
+      "feedback": []
     },
     {
       "id": "B01",
@@ -341,7 +363,9 @@
       ],
       "caption": "",
       "notes": "Instagram handle: vaultpro.cloud, display name: Vault.",
-      "metrics": {}
+      "metrics": {},
+      "post_time": "",
+      "feedback": []
     },
     {
       "id": "B02",
@@ -367,8 +391,201 @@
         "examples/dot-03-poses.png"
       ],
       "caption": "",
-      "notes": "Expression sheet planned as a story (25 Oct: 'Which Dot are you this week?').",
-      "metrics": {}
+      "notes": "Expression sheet is used by story S03 (25 Oct).",
+      "metrics": {},
+      "post_time": "",
+      "feedback": []
+    },
+    {
+      "id": "T01",
+      "type": "task",
+      "pillar": "",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "Window: 13–18 Oct. Profile picture: brand/logo/vault-instagram-profile-1080.png",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Setup: profile, bio, highlights, Business Suite scheduling, warm list of 30 contacts",
+      "status": "idea",
+      "post_date": "2026-10-14",
+      "post_time": ""
+    },
+    {
+      "id": "S01",
+      "type": "story",
+      "pillar": "community",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "Run Sat 17 and Sun 18. Asset not made yet.",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Teaser: Dot worried face, \"Someone's moving in on Monday 👀\" + countdown",
+      "status": "idea",
+      "post_date": "2026-10-17",
+      "post_time": "19:30"
+    },
+    {
+      "id": "S02",
+      "type": "story",
+      "pillar": "community",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Poll: \"How does your club track money? WhatsApp / Excel / Notebook / Treasurer's memory 😅\"",
+      "status": "idea",
+      "post_date": "2026-10-20",
+      "post_time": "19:30"
+    },
+    {
+      "id": "S03",
+      "type": "story",
+      "pillar": "community",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [
+        "examples/dot-02-expressions.png"
+      ],
+      "caption": "",
+      "notes": "",
+      "feedback": [],
+      "metrics": {},
+      "topic": "\"Which Dot are you this week?\": expression sheet + slider sticker",
+      "status": "ready",
+      "post_date": "2026-10-25",
+      "post_time": "19:30"
+    },
+    {
+      "id": "T02",
+      "type": "task",
+      "pillar": "",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "See content/strategy.md → Paid",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Ads phase 1: boost the reel + carousel (~LKR 1,500/day, 7 days)",
+      "status": "idea",
+      "post_date": "2026-10-29",
+      "post_time": ""
+    },
+    {
+      "id": "S04",
+      "type": "story",
+      "pillar": "community",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "Answers feed a future carousel",
+      "feedback": [],
+      "metrics": {},
+      "topic": "\"Ask Dot anything about club money\" question box",
+      "status": "idea",
+      "post_date": "2026-11-01",
+      "post_time": "19:30"
+    },
+    {
+      "id": "T03",
+      "type": "task",
+      "pillar": "",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Retargeting ads start: carousel + demo to reel viewers and profile visitors",
+      "status": "idea",
+      "post_date": "2026-11-02",
+      "post_time": ""
+    },
+    {
+      "id": "T04",
+      "type": "task",
+      "pillar": "",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "Promo graphic is L10",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Live webinar: \"Audit-ready books in 30 minutes\"",
+      "status": "idea",
+      "post_date": "2026-11-14",
+      "post_time": "10:00"
+    },
+    {
+      "id": "T05",
+      "type": "task",
+      "pillar": "",
+      "angle": "",
+      "hook": "",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "files": [],
+      "caption": "",
+      "notes": "",
+      "feedback": [],
+      "metrics": {},
+      "topic": "Review the month (vault-review) and plan the next one (vault-planner)",
+      "status": "idea",
+      "post_date": "2026-11-15",
+      "post_time": ""
     }
   ]
 }
