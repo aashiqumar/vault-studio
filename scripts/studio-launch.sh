@@ -30,7 +30,8 @@ if ! up; then
 fi
 
 for b in google-chrome google-chrome-stable chromium chromium-browser microsoft-edge brave-browser; do
-  if command -v "$b" >/dev/null; then nohup "$b" --app="$URL" --class=VaultStudio >/dev/null 2>&1 & exit 0; fi
+  # Own profile dir = its own browser process, so --class sticks and the dock groups the window under the Vault Studio icon.
+  if command -v "$b" >/dev/null; then nohup "$b" --app="$URL" --class=VaultStudio --user-data-dir="$DIR/out/app-profile" --no-first-run --no-default-browser-check >/dev/null 2>&1 & exit 0; fi
 done
 if command -v xdg-open >/dev/null; then xdg-open "$URL" >/dev/null 2>&1 &
 elif command -v open >/dev/null; then open "$URL"

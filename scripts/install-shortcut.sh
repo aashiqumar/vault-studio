@@ -33,5 +33,7 @@ if [ -d "$DESKTOP" ]; then
   command -v gio >/dev/null && gio set "$DESKTOP/vault-studio.desktop" metadata::trusted true 2>/dev/null || true
   echo "✓ Desktop icon: $DESKTOP/vault-studio.desktop"
 fi
-echo "✓ App menu entry: $ENTRY (search \"Vault Studio\", right-click the dock icon → Add to Favorites)"
+echo "✓ App menu entry: $ENTRY"
+echo "  To pin it to the dock: open Show Apps (the ⋮⋮⋮ button), search \"Vault Studio\", right-click → Pin to Dash / Add to Favorites."
+echo "  (Ubuntu doesn't let you drag desktop icons onto the dock.)"
 echo "  If the desktop icon shows a warning, right-click it → Allow Launching."
