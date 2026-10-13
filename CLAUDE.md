@@ -57,7 +57,7 @@ node scripts/render.cjs templates/posts.html out/posts            # every [data-
 node scripts/render.cjs <page.html> out/x --only name1,name2      # just some
 node scripts/contact-sheet.cjs out/posts out/posts-preview.jpg    # one image to review a set
 node scripts/render-reel.cjs templates/reel.html out/prev --preview 3.2,6.2,14.8   # reel stills
-python3 scripts/audio/compose_reel.py out/track.wav                # soundtrack
+scripts/py scripts/audio/compose_reel.py out/track.wav                # soundtrack
 node scripts/render-reel.cjs templates/reel.html out/reel.mp4 --audio out/track.wav   # final MP4
 node scripts/glyphs.cjs                       # only if you change logo fonts
 ```

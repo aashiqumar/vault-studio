@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Runs Python from the project's .venv if it exists, otherwise the system python3.
+# Usage: scripts/py scripts/audio/compose_reel.py out/track.wav
+DIR="$(cd "$(dirname "$0")/.." && pwd)"
+if [ -x "$DIR/.venv/bin/python" ]; then exec "$DIR/.venv/bin/python" "$@"; else exec python3 "$@"; fi

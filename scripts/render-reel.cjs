@@ -14,8 +14,11 @@ if (!html || !out) { console.error('usage: node scripts/render-reel.cjs <reel.ht
 function ffmpegBin() {
   if (process.env.FFMPEG) return process.env.FFMPEG;
   if (spawnSync('ffmpeg', ['-version']).status === 0) return 'ffmpeg';
-  const r = spawnSync('python3', ['-c', 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())']);
-  if (r.status === 0) return r.stdout.toString().trim();
+  const venv = path.resolve(__dirname, '../.venv/bin/python');
+  for (const py of [venv, 'python3']) {
+    const r = spawnSync(py, ['-c', 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())']);
+    if (r.status === 0) return r.stdout.toString().trim();
+  }
   throw new Error('ffmpeg not found: install it, or `pip install imageio-ffmpeg`, or set FFMPEG=/path/to/ffmpeg');
 }
 

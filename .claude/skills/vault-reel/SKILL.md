@@ -17,7 +17,7 @@ description: Create or edit Vault motion videos (Instagram/TikTok reels, 9:16, 1
    - End with `window.DURATION = tl.duration(); window.seek = t => tl.time(t,false)`.
    - Use eases `power3/4.out` for entrances and `back.out(1.6–2.6)` for Dot pops. Use `bounce.out` only for the full stop.
 4. **Preview.** Run `node scripts/render-reel.cjs templates/<name>-reel.html out/<name>-prev --preview <one time per scene, at its busiest moment>`. Read every still and check safe areas (250px top, 340px bottom), overlaps and caption length. Fix and re-preview.
-5. **Audio.** Copy `scripts/audio/compose_reel.py`, then set `DUR` and the SFX times at the bottom so they land on the timeline's taps, pops and reveals. Run `python3 scripts/audio/<name>.py out/<name>.wav`.
+5. **Audio.** Copy `scripts/audio/compose_reel.py`, then set `DUR` and the SFX times at the bottom so they land on the timeline's taps, pops and reveals. Run `scripts/py scripts/audio/<name>.py out/<name>.wav`.
 6. **Render.** Run `node scripts/render-reel.cjs templates/<name>-reel.html out/<name>.mp4 --audio out/<name>.wav`.
 7. **Verify.** Pull 3–4 frames from the MP4 at key moments (`ffmpeg -ss <t> -i out/<name>.mp4 -frames:v 1 out/chk-<t>.jpg`) and Read them. Confirm the duration and that audio is present.
 8. **Record.** Save a `<name>-poster.jpg` (a strong frame) next to the MP4 in `assets/<campaign>/` (the dashboard uses it as the thumbnail), then `library.cjs add` the reel with its scene summary in `angle`.

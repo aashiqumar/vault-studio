@@ -3,3 +3,4 @@ out/
 .frames-*/
 __pycache__/
 .DS_Store
+.venv/
