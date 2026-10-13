@@ -30,6 +30,18 @@ Leave it open while a Claude session works in this folder. It updates live.
 - **Request changes:** open a card → *Feedback for Claude* → "make the headline shorter". Claude handles open feedback first at the start of its next task and replies on the card.
 - **Add ideas:** use **+ New**, or click an idea in the Idea bank. Then ask Claude to "make N001".
 
+### Desktop shortcut (Linux)
+Run this once from a terminal in the project folder:
+```bash
+npm run shortcut
+```
+It adds a **Vault Studio** icon (the V. app icon) to your desktop and app menu. Clicking it starts the dashboard server in the background if it isn't running, then opens it in its own app window (Chrome, Chromium, Edge or Brave in `--app` mode, otherwise your default browser).
+- **Keep it handy:** search "Vault Studio" in the app menu, then right-click the dock icon → *Add to Favorites*.
+- **Desktop icon warning:** right-click it → *Allow Launching*.
+- **Stop the server:** right-click the icon → *Stop dashboard server*, or run `npm run stop`.
+- **From a terminal:** `npm run open` does the same thing as clicking the icon.
+- **If you move the folder:** re-run `npm run shortcut`.
+
 ## 3. Start a Claude session in this folder
 Open Claude Code in `vault-studio/` (pick the Sonnet model). `CLAUDE.md` and the skills in `.claude/skills/` load automatically, and the start hook shows Claude the content library, so it knows everything made so far. Paste the prompt from `START-PROMPT.md` the first time.
 

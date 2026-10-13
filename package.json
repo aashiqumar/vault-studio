@@ -7,7 +7,10 @@
     "status": "node scripts/library.cjs status",
     "render": "node scripts/render.cjs",
     "reel": "node scripts/render-reel.cjs",
-    "sheet": "node scripts/contact-sheet.cjs"
+    "sheet": "node scripts/contact-sheet.cjs",
+    "open": "bash scripts/studio-launch.sh",
+    "stop": "bash scripts/studio-launch.sh --stop",
+    "shortcut": "bash scripts/install-shortcut.sh"
   },
   "dependencies": {
     "playwright": "^1.61.1",
