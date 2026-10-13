@@ -10,6 +10,7 @@ const MEDIA = /\.(png|jpe?g|mp4|webp)$/i;
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.mp4': 'video/mp4', '.woff2': 'font/woff2', '.md': 'text/plain; charset=utf-8', '.webp': 'image/webp' };
 const read = (f, d = '') => { try { return fs.readFileSync(f, 'utf8'); } catch { return d; } };
 const { log } = require('./log.cjs');
+const L = require('./ledger.cjs');
 
 function scanMedia() {
   const out = [];
@@ -22,9 +23,10 @@ function scanMedia() {
 }
 function activity(n = 300) { return read(ACT).trim().split('\n').filter(Boolean).slice(-n).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean); }
 function state() {
-  return { library: JSON.parse(read(LIB, '{"items":[]}')), media: scanMedia().slice(0, 400), activity: activity(),
+  const library = JSON.parse(read(LIB, '{"items":[]}'));
+  return { library, warnings: L.warnings(library), media: scanMedia().slice(0, 400), activity: activity(),
     docs: { calendar: read(path.join(ROOT, 'content/calendar.md')), ideas: read(path.join(ROOT, 'content/ideas.md')), performance: read(path.join(ROOT, 'content/performance.md')), strategy: read(path.join(ROOT, 'content/strategy.md')) },
-    today: new Date().toISOString().slice(0, 10) };
+    today: L.today() };
 }
 
 // ---- live: poll files (portable), push changes to every open dashboard
@@ -34,7 +36,7 @@ let seen = new Map(scanMedia().map(m => [m.file, m.mtime])), libM = 0, actSize =
 try { libM = fs.statSync(LIB).mtimeMs; } catch {} try { actSize = fs.statSync(ACT).size; } catch {}
 setInterval(() => {
   for (const m of scanMedia()) if (seen.get(m.file) !== m.mtime) { seen.set(m.file, m.mtime); push('media', m); }
-  try { const m = fs.statSync(LIB).mtimeMs; if (m !== libM) { libM = m; push('library', JSON.parse(read(LIB))); } } catch {}
+  try { const m = fs.statSync(LIB).mtimeMs; if (m !== libM) { libM = m; const library = JSON.parse(read(LIB)); push('library', { library, warnings: L.warnings(library) }); } } catch {}
   try { const s = fs.statSync(ACT).size; if (s > actSize) { const fd = fs.openSync(ACT, 'r'); const buf = Buffer.alloc(s - actSize); fs.readSync(fd, buf, 0, buf.length, actSize); fs.closeSync(fd); actSize = s;
     buf.toString().trim().split('\n').forEach(l => { try { push('activity', JSON.parse(l)); } catch {} }); } else if (s < actSize) actSize = s; } catch {}
 }, 1000);
@@ -62,18 +64,41 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive' });
     res.write('retry: 2000\n\n'); clients.add(res); req.on('close', () => clients.delete(res)); return;
   }
-  const m = p.match(/^\/api\/item\/([\w-]+)$/);
+  // ---- write API (all writes go through the ledger, which also regenerates content/calendar.md)
+  const m = p.match(/^\/api\/item(?:\/([\w-]+))?(?:\/(move|feedback))?$/);
   if (m && req.method === 'POST') {
     let body = ''; req.on('data', c => body += c); req.on('end', () => {
+      const send = (code, obj) => { res.writeHead(code, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(obj)); };
       try {
-        const patch = JSON.parse(body || '{}'), lib = JSON.parse(read(LIB)), it = lib.items.find(i => i.id === m[1]);
-        if (!it) { res.writeHead(404); return res.end('{"error":"not found"}'); }
-        for (const k of ['status', 'post_date', 'caption', 'notes', 'hashtag_set']) if (k in patch) it[k] = patch[k];
-        if (patch.metrics) { it.metrics = it.metrics || {}; for (const [k, v] of Object.entries(patch.metrics)) if (v !== '' && v != null) it.metrics[k] = +v; }
-        fs.writeFileSync(LIB, JSON.stringify(lib, null, 2) + '\n');
-        log('library', `Dashboard updated ${it.id}: ${Object.keys(patch).join(', ')}`, { id: it.id });
-        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(it));
-      } catch (e) { res.writeHead(400); res.end(JSON.stringify({ error: e.message })); }
+        const patch = JSON.parse(body || '{}'), lib = L.load(), [, id, action] = m;
+        let it, msg;
+        if (!id) {                                   // create
+          const e = { type: patch.type || 'post', pillar: patch.pillar || '', topic: String(patch.topic || '').trim(), notes: patch.notes || '',
+            post_date: patch.post_date || '', status: patch.status || 'idea', date_locked: !!patch.post_date };
+          if (patch.post_time) e.post_time = patch.post_time;
+          it = L.newItem(lib, e);
+          msg = `You added ${it.id}: ${it.topic}${it.post_date ? ' on ' + L.fmt(it.post_date) : ''}`;
+        } else if (action === 'move') {
+          const r = L.move(lib, id, patch.date || '', patch.time, 'user'); it = r.item;
+          if ('lock' in patch) it.date_locked = !!patch.lock && !!it.post_date;   // undo restores the previous lock state
+          msg = `You moved ${id} from ${r.from ? L.fmt(r.from) : 'unscheduled'} to ${it.post_date ? L.fmt(it.post_date) : 'unscheduled'}`;
+        } else if (action === 'feedback') {
+          it = lib.items.find(i => i.id === id); if (!it) return send(404, { error: 'not found' });
+          const text = String(patch.text || '').trim(); if (!text) return send(400, { error: 'empty feedback' });
+          (it.feedback = it.feedback || []).push({ ts: new Date().toISOString(), by: 'user', text, resolved: false });
+          msg = `You requested a change on ${id}: ${text}`;
+        } else {                                     // patch fields
+          it = lib.items.find(i => i.id === id); if (!it) return send(404, { error: 'not found' });
+          for (const k of ['status', 'caption', 'notes', 'hashtag_set', 'topic', 'pillar', 'type', 'post_time']) if (k in patch) it[k] = patch[k];
+          if ('post_date' in patch && patch.post_date !== it.post_date) { it.post_date = patch.post_date; it.date_locked = !!patch.post_date; }
+          if (patch.metrics) { it.metrics = it.metrics || {}; for (const [k, v] of Object.entries(patch.metrics)) if (v !== '' && v != null) it.metrics[k] = +v; }
+          if (patch.resolve != null && it.feedback && it.feedback[patch.resolve]) Object.assign(it.feedback[patch.resolve], { resolved: true, resolved_at: new Date().toISOString(), reply: patch.reply || 'closed by you' });
+          if (patch.status && !L.STATUSES.includes(patch.status)) return send(400, { error: 'bad status' });
+          msg = `You updated ${id}: ${Object.keys(patch).join(', ')}`;
+        }
+        L.save(lib); log('library', msg, { id: it.id, by: 'user' });
+        send(200, { item: it, warnings: L.warnings(lib).filter(w => w.ids.includes(it.id)) });
+      } catch (e) { send(400, { error: e.message }); }
     }); return;
   }
   sendFile(res, p.slice(1));
