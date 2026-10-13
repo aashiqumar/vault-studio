@@ -36,7 +36,7 @@ Run this once from a terminal in the project folder:
 npm run shortcut
 ```
 It adds a **Vault Studio** icon (the V. app icon) to your desktop and app menu. Clicking it starts the dashboard server in the background if it isn't running, then opens it in its own app window (Chrome, Chromium, Edge or Brave in `--app` mode, otherwise your default browser).
-- **Keep it handy:** search "Vault Studio" in the app menu, then right-click the dock icon → *Add to Favorites*.
+- **Pin it to the dock:** click **Show Apps** (⋮⋮⋮ at the end of the dock), search "Vault Studio", right-click → *Pin to Dash* / *Add to Favorites*. Ubuntu doesn't let you drag desktop icons onto the dock.
 - **Desktop icon warning:** right-click it → *Allow Launching*.
 - **Stop the server:** right-click the icon → *Stop dashboard server*, or run `npm run stop`.
 - **From a terminal:** `npm run open` does the same thing as clicking the icon.
