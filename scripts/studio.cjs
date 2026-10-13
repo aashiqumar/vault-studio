@@ -1,7 +1,9 @@
-// Vault Studio dashboard server. No dependencies. Usage: node scripts/studio.cjs [--port 4747]  → http://localhost:4747
+// Vault Studio dashboard server. Usage: node scripts/studio.cjs [--port 4747] [--lan]  → http://localhost:4747
+// --lan also listens on your Wi-Fi so a phone can open it; every non-local request then needs the secret key
+// (in .studio-token, shared via the QR code the server prints and the dashboard's 📱 Phone button).
 // Serves dashboard/, streams live updates (new renders, activity, library edits) over Server-Sent Events,
 // and lets the dashboard update status / date / metrics of library items.
-const http = require('http'), fs = require('fs'), path = require('path');
+const http = require('http'), fs = require('fs'), path = require('path'), os = require('os'), crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const PORT = +(process.argv[process.argv.indexOf('--port') + 1] || 0) || 4747;
 const LIB = path.join(ROOT, 'content/library.json'), ACT = path.join(ROOT, 'content/activity.jsonl');
@@ -11,6 +13,33 @@ const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const read = (f, d = '') => { try { return fs.readFileSync(f, 'utf8'); } catch { return d; } };
 const { log } = require('./log.cjs');
 const L = require('./ledger.cjs');
+
+// ---- phone / LAN access
+const LAN = process.argv.includes('--lan') || process.env.VAULT_STUDIO_LAN === '1';
+const TOKEN_FILE = path.join(ROOT, '.studio-token');   // outside every served folder
+function loadToken() {
+  try { const t = fs.readFileSync(TOKEN_FILE, 'utf8').trim(); if (t.length >= 16) return t; } catch {}
+  const t = crypto.randomBytes(18).toString('base64url'); fs.writeFileSync(TOKEN_FILE, t + '\n', { mode: 0o600 }); return t;
+}
+const TOKEN = LAN ? loadToken() : null;
+const isLocal = req => ['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress);
+const same = (a, b) => { const A = Buffer.from(String(a)), B = Buffer.from(String(b)); return A.length === B.length && crypto.timingSafeEqual(A, B); };
+const lanIPs = () => Object.values(os.networkInterfaces()).flat().filter(i => i && i.family === 'IPv4' && !i.internal).map(i => i.address);
+const phoneUrls = () => lanIPs().map(ip => `http://${ip}:${PORT}/?key=${TOKEN}`);
+let QR = null; try { QR = require('qrcode'); } catch {}
+function authorised(req, res, url) {
+  if (!TOKEN || isLocal(req)) return true;
+  const q = url.searchParams.get('key');
+  if (q && same(q, TOKEN)) {   // first visit from the QR code: remember the phone with a cookie, drop the key from the URL
+    res.writeHead(302, { 'Set-Cookie': `vs_key=${TOKEN}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000`, Location: url.pathname });
+    res.end(); return false;
+  }
+  const ck = (req.headers.cookie || '').split(/;\s*/).find(c => c.startsWith('vs_key='));
+  if (ck && same(ck.slice(7), TOKEN)) return true;
+  res.writeHead(401, { 'Content-Type': 'text/html; charset=utf-8' });
+  res.end('<meta name="viewport" content="width=device-width,initial-scale=1"><body style="font-family:sans-serif;padding:32px;background:#F7F6F2;color:#14151F"><h2>Vault Studio</h2><p>This dashboard is private. On your computer, open the dashboard and click <b>📱 Phone</b>, then scan the QR code.</p></body>');
+  return false;
+}
 
 function scanMedia() {
   const out = [];
@@ -58,6 +87,13 @@ function sendFile(res, rel) {
 
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x'); const p = decodeURIComponent(url.pathname);
+  if (!authorised(req, res, url)) return;
+  if (p === '/api/phone') {
+    const urls = LAN ? phoneUrls() : [];
+    const done = qr => { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ lan: LAN, urls, qr })); };
+    if (LAN && urls[0] && QR) QR.toString(urls[0], { type: 'svg', margin: 1, color: { dark: '#14151F', light: '#FFFFFF' } }).then(done, () => done(null)); else done(null);
+    return;
+  }
   if (p === '/') return sendFile(res, 'dashboard/index.html');
   if (p === '/api/state') { res.writeHead(200, { 'Content-Type': 'application/json' }); return res.end(JSON.stringify(state())); }
   if (p === '/api/events') {
@@ -102,4 +138,11 @@ http.createServer((req, res) => {
     }); return;
   }
   sendFile(res, p.slice(1));
-}).listen(PORT, '127.0.0.1', () => console.log(`Vault Studio dashboard → http://localhost:${PORT}`));
+}).listen(PORT, LAN ? '0.0.0.0' : '127.0.0.1', async () => {
+  console.log(`Vault Studio dashboard → http://localhost:${PORT}`);
+  if (!LAN) return;
+  const urls = phoneUrls();
+  console.log(`\n📱 Phone access is ON (same Wi-Fi). Open on your phone:\n${urls.map(u => '   ' + u).join('\n') || '   (no Wi-Fi/LAN address found)'}`);
+  if (urls[0] && QR) console.log('\n' + await QR.toString(urls[0], { type: 'terminal', small: true }));
+  console.log('Keep the key private: anyone with it on your network can edit the library. Delete .studio-token to change it.');
+});

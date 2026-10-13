@@ -179,3 +179,45 @@ body.is-dragging .day:not(.out){transition:background .1s}
 .tbtn:hover{background:#262838}
 .warn[data-id]{cursor:pointer}
 .date small{font-size:11px}
+
+/* ---------- phone access + touch ---------- */
+.phone-btn{background:#262838;color:#fff;border:1px solid #3A3C4E;border-radius:6px;padding:6px 10px;font-weight:700;font-size:12px;cursor:pointer;margin-bottom:10px;display:block}
+.phone-btn:hover{background:#30324A}
+.qr{width:240px;height:240px;margin:6px auto}.qr svg{width:100%;height:100%}
+.qmove{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.qmove .fld{margin-right:4px}
+.btn.sm{padding:6px 10px;font-size:12px}
+
+/* ---------- mobile layout ---------- */
+@media (max-width: 760px){
+  body{display:block;font-size:14px}
+  .side{position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;width:auto;flex-direction:row;padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:25;box-shadow:0 -6px 20px rgba(0,0,0,.25)}
+  .brand,.side-foot{display:none}
+  #nav{display:flex;width:100%;justify-content:space-around;overflow-x:auto}
+  #nav a{flex-direction:column;gap:2px;padding:6px 8px;font-size:10px;margin:0;white-space:nowrap}
+  #nav a i{font-size:17px;width:auto}
+  #nav a[data-v="grid"],#nav a[data-v="ideas"]{display:none}
+  .badge{position:absolute;top:2px;right:2px;margin:0;font-size:9px;padding:0 5px}
+  main{padding:18px 14px 96px}
+  .top{margin-bottom:14px}.top h1{font-size:24px}
+  .top > div:last-child{flex-wrap:wrap}
+  .row{gap:10px;margin-bottom:10px}
+  .r4{grid-template-columns:1fr 1fr}.r2,.r3{grid-template-columns:1fr}
+  .tile .n{font-size:26px}
+  .card{padding:14px}
+  .tl{grid-template-columns:1fr}
+  .cal{display:none}
+  .tl .legend{display:none}
+  .tray{position:static;max-height:none}
+  .item{padding:8px 4px}.date{width:62px}
+  .kanban{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:82vw;scroll-snap-type:x mandatory}
+  .col{scroll-snap-align:start;min-height:50vh}
+  .cards{grid-template-columns:1fr 1fr;gap:10px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .search{min-width:0;width:100%}
+  .drawer{width:100%;padding:18px 16px 110px}
+  .media img,.media video{height:260px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .live{grid-template-columns:1fr}.stream{max-height:none}
+  #toasts{left:10px;right:10px;bottom:84px}.toast{max-width:none}
+  .ig{width:100%}
+}

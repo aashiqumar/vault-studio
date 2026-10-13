@@ -18,7 +18,11 @@ Icon=$DIR/brand/logo/vault-icon.png
 Terminal=false
 Categories=Office;Graphics;
 StartupWMClass=VaultStudio
-Actions=stop;
+Actions=phone;stop;
+
+[Desktop Action phone]
+Name=Open with phone access (Wi-Fi)
+Exec=env NODE_BIN=$NODE "$DIR/scripts/studio-launch.sh" --lan
 
 [Desktop Action stop]
 Name=Stop dashboard server

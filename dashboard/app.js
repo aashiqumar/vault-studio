@@ -159,7 +159,7 @@ function timeline() {
   const unsched = calItems().filter(i => !i.post_date && i.status !== 'posted').sort((a, b) => a.id.localeCompare(b.id));
   const clash = d => (by[d] || []).filter(isFeed).length > 1;
   $('#main').innerHTML = `
-  <div class="top"><div><h1>${calMonth.toLocaleString('en', { month: 'long' })} ${y}<em>.</em></h1><div class="sub">${month.filter(isFeed).length} feed posts · ${month.length - month.filter(isFeed).length} stories & tasks · <b>drag any card to reschedule</b></div></div>
+  <div class="top"><div><h1>${calMonth.toLocaleString('en', { month: 'long' })} ${y}<em>.</em></h1><div class="sub">${month.filter(isFeed).length} feed posts · ${month.length - month.filter(isFeed).length} stories & tasks · <b>${matchMedia('(pointer: coarse)').matches ? 'tap a card to move it' : 'drag any card to reschedule'}</b></div></div>
     <div style="display:flex;gap:8px"><button class="btn" data-new>+ New</button><button class="btn" id="pm">←</button><button class="btn" id="tm">Today</button><button class="btn" id="nm">→</button></div></div>
   <div class="tl">
     <div>
@@ -268,6 +268,22 @@ function ideas() {
   });
 }
 
+// ---------- phone access
+async function phoneModal() {
+  const j = await (await fetch('/api/phone')).json().catch(() => ({ lan: false }));
+  const d = document.createElement('div'); d.className = 'modal-bg';
+  d.innerHTML = `<div class="modal card" style="text-align:center;align-items:center">
+    <h2 style="margin:0">Open on your phone</h2>
+    ${j.lan && j.urls.length ? `<div class="idle">Phone and computer on the <b>same Wi-Fi</b>. Scan with your phone camera:</div>
+      <div class="qr">${j.qr || ''}</div><div style="font:500 12px 'JetBrains Mono';word-break:break-all;color:var(--mute)">${esc(j.urls[0])}</div>
+      <div class="idle" style="font-size:12px">The link contains a private key, so don't share it. Tip: in your phone browser, use "Add to Home screen" to get an app icon.</div>`
+    : `<div class="idle" style="line-height:1.6">Phone access is off. The dashboard only listens on this computer right now.<br>Turn it on with <b>right-click the Vault Studio icon → Open with phone access</b>, or run <code>npm run open:lan</code>.</div>`}
+    <button class="btn" data-x style="margin-top:6px">Close</button></div>`;
+  document.body.appendChild(d); d.onclick = e => { if (e.target === d || e.target.hasAttribute('data-x')) d.remove(); };
+}
+$('#phoneBtn').onclick = phoneModal;
+if (new URLSearchParams(location.search).get('phone')) { history.replaceState(null, '', location.pathname + location.hash); setTimeout(phoneModal, 300); }
+
 // ---------- new item modal
 function newModal(pre = {}) {
   const d = document.createElement('div'); d.className = 'modal-bg';
@@ -305,6 +321,7 @@ function openItem(id) {
   <div class="sec"><div class="fld" style="margin-bottom:8px">Feedback for Claude ${openFb(i) ? `<span class="bdg fb">💬${openFb(i)} open</span>` : ''}</div>${fbs}
     <textarea id="fbt" style="min-height:70px" placeholder="e.g. Make the headline shorter, use the coin pose, move Dot left…"></textarea>
     <div style="display:flex;gap:8px;align-items:center;margin-top:8px"><button class="btn pri" id="fbs">Send to Claude</button><span class="idle" style="font-size:12px">Claude picks this up at the start of its next task.</span></div></div>
+  ${i.status !== 'posted' ? `<div class="sec qmove"><span class="fld">Move</span>${[['−1 day', -1], ['+1 day', 1], ['+1 week', 7]].map(([l, n]) => `<button class="btn sm" data-shift="${n}">${l}</button>`).join('')}${i.post_date ? '<button class="btn sm" data-shift="none">Unschedule</button>' : ''}</div>` : ''}
   <div class="sec" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
     <label class="fld">Status<select id="st">${STATUSES.map(s => `<option${s === i.status ? ' selected' : ''}>${s}</option>`).join('')}</select></label>
     <label class="fld">Date<input type="date" id="pd" value="${esc(i.post_date)}"></label>
@@ -319,6 +336,11 @@ function openItem(id) {
   if ($('#cp')) $('#cp').onclick = async () => { await navigator.clipboard.writeText($('#cap').value + (tags ? '\n.\n' + tags : '')); $('#cp').textContent = 'Copied ✓'; setTimeout(() => $('#cp') && ($('#cp').textContent = 'Copy caption + hashtags'), 1500); };
   $('#fbs').onclick = async () => { const text = $('#fbt').value.trim(); if (!text) return;
     try { const r = await api(`/api/item/${id}/feedback`, { text }); upsert(r.item); openItem(id); render(true); toast(`<div>Sent to Claude: <b>${esc(id)}</b></div>`); } catch (e) { alert(e.message); } };
+  dr.querySelectorAll('[data-shift]').forEach(b => b.onclick = async () => {
+    if (b.dataset.shift === 'none') return moveItem(id, '').then(() => openItem(id));
+    const base = new Date((i.post_date || S.today) + 'T00:00:00'); base.setDate(base.getDate() + +b.dataset.shift);
+    await moveItem(id, iso(base)); openItem(id);
+  });
   dr.querySelectorAll('[data-res]').forEach(a => a.onclick = async e => { e.preventDefault(); const r = await api(`/api/item/${id}`, { resolve: +a.dataset.res }); upsert(r.item); openItem(id); render(true); });
   $('#sv').onclick = async () => {
     const body = { status: $('#st').value, post_time: $('#pt').value };
