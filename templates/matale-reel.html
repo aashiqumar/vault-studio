@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — Matale partner story reel</title>
+<style>
+@font-face{font-family:'Gelasio';font-weight:700;src:url(../brand/fonts/gelasio-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:500;src:url(../brand/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:600;src:url(../brand/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:700;src:url(../brand/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:800;src:url(../brand/fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#F7F6F2}
+body{font-family:'PJS',sans-serif;color:#14151F;position:relative}
+.layer{position:absolute;inset:0}
+.cap{position:absolute;left:90px;right:90px;top:220px;text-align:center;font-weight:800;font-size:64px;line-height:1.15;letter-spacing:-.03em}
+.cap em{font-style:normal;color:#D91E5C}
+.kick{position:absolute;left:0;right:0;top:140px;text-align:center;font-weight:800;font-size:28px;letter-spacing:.12em;color:#D91E5C}
+.wm{position:absolute;left:0;right:0;text-align:center;font-family:'Gelasio',Georgia,serif;font-weight:700;letter-spacing:-.04em;color:#14151F;line-height:1}
+.wm span{display:inline-block}
+.wm .dot{color:#D91E5C}
+.tableWrap{position:absolute;left:90px;right:90px;top:560px;bottom:260px}
+.tableBase{position:absolute;inset:0;background:#FFFFFF;border:2px solid #EFEAE0;border-radius:64px;box-shadow:0 40px 90px rgba(20,21,31,.08)}
+.gridline{position:absolute;top:0;bottom:0;width:2px;background:#EFEAE0}
+.prop{position:absolute}
+.card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#FFFFFF;border:3px solid #14151F;border-radius:28px;padding:50px 46px;width:760px;box-shadow:0 30px 70px rgba(20,21,31,.16);text-align:center}
+.card .k{font-size:24px;font-weight:800;letter-spacing:.1em;color:#D91E5C}
+.card .n{font-size:52px;font-weight:800;letter-spacing:-.03em;margin-top:16px;line-height:1.1}
+.card .chips{display:flex;gap:16px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.chip2{padding:12px 22px;border-radius:12px;background:#F7F6F2;border:1.5px solid #EFEAE0;font-weight:700;font-size:22px}
+.foot{position:absolute;left:0;right:0;text-align:center;font-weight:600;font-size:34px;color:#6B6F80}
+.mdot{position:absolute;line-height:0;z-index:30}
+.memberm{position:absolute;line-height:0;z-index:20}
+</style>
+</head>
+<body>
+
+<!-- cold open -->
+<div class="layer" id="s0" style="background:#14151F">
+  <div class="cap" id="s0cap" style="color:#fff;top:850px;font-size:72px">Every club hits this.</div>
+</div>
+
+<!-- main story: one persistent table scene, props/captions change over it -->
+<div class="layer" id="main">
+  <div class="kick" id="kick"></div>
+  <div class="cap" id="cap" style="color:#14151F"></div>
+
+  <div class="tableWrap" id="tableWrap">
+    <div class="tableBase" id="tableBase"></div>
+    <div class="gridline" style="left:33%"></div>
+    <div class="gridline" style="left:66%"></div>
+
+    <!-- scattered chaos props -->
+    <div class="prop" id="paper1" style="left:120px;top:140px;width:160px;height:110px;background:#fff;border:1.5px solid #E4DED3;border-radius:6px;transform:rotate(-8deg)"></div>
+    <div class="prop" id="paper2" style="right:140px;top:200px;width:150px;height:100px;background:#fff;border:1.5px solid #E4DED3;border-radius:6px;transform:rotate(10deg)"></div>
+    <div class="prop" id="paper3" style="left:300px;bottom:160px;width:140px;height:95px;background:#fff;border:1.5px solid #E4DED3;border-radius:6px;transform:rotate(5deg)"></div>
+    <div class="prop" id="phoneBuzz" style="left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:200px;background:#14151F;border-radius:22px;border:5px solid #14151F"></div>
+    <div class="prop" id="buzzDot1" style="left:50%;top:40%;width:20px;height:20px;border-radius:50%;background:#D91E5C"></div>
+    <div class="prop" id="buzzDot2" style="left:54%;top:46%;width:16px;height:16px;border-radius:50%;background:#F2B33D"></div>
+    <div class="prop" id="buzzDot3" style="left:47%;top:52%;width:14px;height:14px;border-radius:50%;background:#5446D0"></div>
+
+    <!-- tidy card (Matale reveal) -->
+    <div class="card" id="matCard">
+      <div class="k">OFFICIAL PARTNER CLUB</div>
+      <div class="n">Rotaract Club<br>of Matale</div>
+      <div class="chips"><span class="chip2">Treasury</span><span class="chip2">Events</span><span class="chip2">Reports</span></div>
+    </div>
+
+    <div id="memberTop" style="position:absolute;left:50%;top:-40px;transform:translateX(-50%)"></div>
+    <div id="memberLeft" style="position:absolute;left:-30px;bottom:40px"></div>
+    <div id="memberRight" style="position:absolute;right:-30px;bottom:40px"></div>
+    <div id="dotSpot" style="position:absolute"></div>
+    <div id="checkL" style="position:absolute;left:150px;bottom:220px;width:64px;height:64px"></div>
+    <div id="checkR" style="position:absolute;right:150px;bottom:220px;width:64px;height:64px"></div>
+  </div>
+
+  <div class="foot" id="foot1" style="top:1740px">vaultpro.cloud</div>
+</div>
+
+<!-- end card -->
+<div class="layer" id="s7" style="background:#14151F;color:#fff">
+  <div class="wm" id="wm2" style="top:820px;font-size:160px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="mdot" id="dE"></div>
+  <div class="foot" id="tag2" style="top:1120px;font-weight:700;font-size:40px;color:#fff">Official partner · Rotaract Club of Matale</div>
+  <div class="foot" id="url" style="top:1200px;font-weight:800;font-size:52px">vaultpro.cloud</div>
+</div>
+
+<script src="../kit/vendor/gsap.min.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script><script src="../kit/members.js"></script>
+<script>
+function putDot(id, name, w, fx, fy, opt) {
+  opt = opt || {};
+  var s = pose(name, w, opt), vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number), k = w / vb[2];
+  var el = document.getElementById(id); el.innerHTML = s;
+  el.style.left = (fx - (100 - vb[0]) * k) + 'px'; el.style.top = (fy - (206 - vb[1]) * k) + 'px';
+}
+function lockDot(wmId, id, F) {
+  var wm = document.getElementById(wmId), sp = wm.querySelector('.dot');
+  var fx = wm.offsetLeft + sp.offsetLeft + sp.offsetWidth * 0.5 + F * 0.22;
+  var fy = wm.offsetTop + sp.offsetTop + F * 0.80;
+  putDot(id, 'wave', F * 0.86, fx, fy, { dark: true, noShadow: true });
+}
+
+// place the three members once (worried by default; mood swapped via re-render at key times)
+function renderMembers(mood) {
+  document.getElementById('memberTop').innerHTML = member({ mood: mood, cloth: '#5446D0', skin: MEMBER_SKINS[0], hair: MEMBER_HAIR[0] });
+  document.getElementById('memberLeft').innerHTML = member({ mood: mood, cloth: '#1F8A70', skin: MEMBER_SKINS[2], hair: MEMBER_HAIR[2], armL: { a: 10 }, armR: { a: -40 } });
+  document.getElementById('memberRight').innerHTML = member({ mood: mood, cloth: '#D91E5C', skin: MEMBER_SKINS[1], hair: MEMBER_HAIR[1], armL: { a: 40 }, armR: { a: -10 } });
+  gsap.set(['#memberTop', '#memberLeft', '#memberRight'], { width: 190 });
+}
+renderMembers('worried');
+putDot('dotSpot', 'balanced', 240, 450, 960);
+document.getElementById('checkL').innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1F8A70"/><path d="M6.5 12.5l3.5 3.5 7.5-8" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+document.getElementById('checkR').innerHTML = document.getElementById('checkL').innerHTML;
+
+var dotsPlaced = false;
+function placeLocks() { if (dotsPlaced || document.fonts.status !== 'loaded') return; lockDot('wm2', 'dE', 150); dotsPlaced = true; }
+placeLocks();
+gsap.set('#dE', { autoAlpha: 0 });
+gsap.set('#dotSpot', { autoAlpha: 0, y: 60 });
+gsap.set(['#s7'], { autoAlpha: 0 });
+gsap.set(['#cap', '#kick'], { autoAlpha: 0, y: 24 });
+gsap.set(['#paper1', '#paper2', '#paper3'], { autoAlpha: 0, scale: .7 });
+gsap.set(['#phoneBuzz'], { autoAlpha: 0, scale: .8 });
+gsap.set(['#buzzDot1', '#buzzDot2', '#buzzDot3'], { autoAlpha: 0, scale: 0 });
+gsap.set('#matCard', { autoAlpha: 0, scale: .85 });
+gsap.set(['#memberTop', '#memberLeft', '#memberRight'], { autoAlpha: 0, y: 30 });
+gsap.set(['#foot1', '#tag2', '#url'], { autoAlpha: 0 });
+gsap.set('#tableWrap', { autoAlpha: 0 });
+gsap.set(['#checkL', '#checkR'], { autoAlpha: 0, scale: 0 });
+
+var tl = gsap.timeline({ paused: true, defaults: { duration: 0.6, ease: 'power3.out' } });
+
+function setCaption(text, kicker) {
+  return function () {
+    document.getElementById('cap').textContent = text;
+    document.getElementById('kick').textContent = kicker || '';
+  };
+}
+
+// ===== S0: cold open, 0 - 2.2 =====
+tl.to('#s0cap', { autoAlpha: 1, y: 0, duration: 0.8 }, 0.2)
+  .to('#s0cap', { autoAlpha: 0, duration: 0.4 }, 1.9)
+  .set('#s0', { autoAlpha: 0 }, 2.3);
+
+// ===== S1: the table + chaos establishes, 2.3 - 7.5 =====
+tl.to('#tableWrap', { autoAlpha: 1, duration: 0.6 }, 2.3)
+  .to(['#memberTop', '#memberLeft', '#memberRight'], { autoAlpha: 1, y: 0, stagger: 0.15, duration: 0.5 }, 2.6)
+  .to(['#paper1', '#paper2', '#paper3'], { autoAlpha: 1, scale: 1, stagger: 0.12, duration: 0.4, ease: 'back.out(1.6)' }, 3.2)
+  .to('#phoneBuzz', { autoAlpha: 1, scale: 1, duration: 0.3 }, 3.6)
+  .to(['#buzzDot1', '#buzzDot2', '#buzzDot3'], { autoAlpha: 1, scale: 1, stagger: 0.1, duration: 0.3, ease: 'back.out(2)' }, 3.9)
+  // visual has settled by ~4.3s -- NOW bring the caption in, and hold
+  .call(setCaption('Matale’s exco was buried in paperwork.', 'THE PROBLEM'), null, 4.4)
+  .to(['#kick', '#cap'], { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5 }, 4.4)
+  .to(['#kick', '#cap'], { autoAlpha: 0, duration: 0.35 }, 7.1);
+
+// ===== S2: Dot arrives, chaos clears, 7.5 - 11.5 =====
+tl.to(['#paper1', '#paper2', '#paper3', '#phoneBuzz', '#buzzDot1', '#buzzDot2', '#buzzDot3'],
+    { autoAlpha: 0, y: 20, duration: 0.5, stagger: 0.04 }, 7.5)
+  .to('#dotSpot', { autoAlpha: 1, y: 0, duration: 0.7, ease: 'back.out(1.7)' }, 7.9)
+  .call(function () { renderMembers('hopeful'); }, null, 8.3)
+  .call(setCaption('Then they brought in Vault.', 'THE ARRIVAL'), null, 8.7)
+  .to(['#kick', '#cap'], { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5 }, 8.7)
+  .to(['#kick', '#cap'], { autoAlpha: 0, duration: 0.35 }, 11.2);
+
+// ===== S3: Dot helps (two quick, clear beats, each with a named person), 11.5 - 18 =====
+tl.call(setCaption('Reports, done in minutes.', 'HOW VAULT HELPED'), null, 11.6)
+  .to(['#kick', '#cap'], { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5 }, 11.6)
+  .to('#dotSpot', { x: -190, y: 20, duration: 0.5, ease: 'power3.inOut' }, 11.9)
+  .fromTo('#checkL', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.2)' }, 12.7)
+  .to(['#kick', '#cap'], { autoAlpha: 0, duration: 0.35 }, 14.6)
+  .call(setCaption('Approvals, one tap.', 'HOW VAULT HELPED'), null, 15.0)
+  .to(['#kick', '#cap'], { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5 }, 15.0)
+  .to('#checkL', { autoAlpha: 0, scale: 0, duration: 0.3 }, 15.0)
+  .to('#dotSpot', { x: 190, y: 20, duration: 0.5, ease: 'power3.inOut' }, 15.1)
+  .fromTo('#checkR', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.2)' }, 15.9)
+  .to(['#kick', '#cap'], { autoAlpha: 0, duration: 0.35 }, 17.5)
+  .to('#checkR', { autoAlpha: 0, scale: 0, duration: 0.3 }, 17.5)
+  .to('#dotSpot', { x: 0, y: 0, duration: 0.5, ease: 'power3.inOut' }, 17.5);
+
+// ===== S4: celebration, 18 - 22 =====
+tl.call(function () { renderMembers('happy'); }, null, 18.0)
+  .to(['#memberTop', '#memberLeft', '#memberRight'], { y: -16, duration: 0.3, yoyo: true, repeat: 1, ease: 'sine.inOut', stagger: 0.08 }, 18.1)
+  .call(setCaption('Now the whole team’s on the same page.', 'TOGETHER'), null, 18.6)
+  .to(['#kick', '#cap'], { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5 }, 18.6)
+  .to(['#kick', '#cap'], { autoAlpha: 0, duration: 0.35 }, 21.4);
+
+// ===== S5: Matale reveal -- card alone, held, 22 - 26.5 =====
+tl.to(['#memberTop', '#memberLeft', '#memberRight', '#dotSpot'], { autoAlpha: 0.25, duration: 0.5 }, 21.6)
+  .to('#matCard', { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'back.out(1.5)' }, 22.0)
+  .to('#foot1', { autoAlpha: 1, duration: 0.5 }, 22.6)
+  .to(['#matCard', '#foot1', '#memberTop', '#memberLeft', '#memberRight', '#dotSpot'], { autoAlpha: 0, duration: 0.45 }, 26.0);
+
+// ===== S6: end card, 26.5 - 29.5 =====
+tl.set('#s7', { autoAlpha: 1 }, 26.5)
+  .fromTo('#wm2 span:not(.dot)', { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, stagger: 0.05, duration: 0.5, ease: 'power4.out' }, 26.6)
+  .to('#wm2 .dot', { scale: 0, duration: 0.12, ease: 'power2.in' }, 27.05)
+  .fromTo('#dE', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(2.6)' }, 27.1)
+  .to('#tag2', { autoAlpha: 1, duration: 0.5 }, 27.6)
+  .to('#url', { autoAlpha: 1, duration: 0.5 }, 27.9)
+  .to({}, { duration: 1.2 }, 28.4);
+
+window.DURATION = tl.duration();
+window.seek = function (t) { placeLocks(); tl.time(t, false); };
+window.seek(0);
+</script>
+</body>
+</html>

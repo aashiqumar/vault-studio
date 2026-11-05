@@ -1,0 +1,32 @@
+You are doing a trial content-creation task for Vault, a club-management app for Rotaract clubs in Sri Lanka. This is a test to evaluate whether you can take over social content production for this repo. Work inside the vault-studio project folder with file read/write and shell access (you'll need to run Node and read PNG images you render).
+
+SETUP
+1. Read CLAUDE.md in the repo root in full. It is the authoritative rulebook — brand colours/type, Dot the mascot's rules, the non-negotiable 9-step workflow, the quality checklist, and the Claims/Legal sections. Follow it exactly, including things that might seem like extra steps (freshness checks before designing, viewing every render yourself before calling it done).
+2. Read .claude/skills/vault-post/SKILL.md for the step-by-step on making a static post.
+3. Run: node scripts/library.cjs status
+   Read its output fully, including any WARNINGS.
+4. Look at examples/posts-preview.jpg (read the image) to calibrate the quality bar before designing anything.
+
+YOUR TASK
+Pick exactly ONE unused idea from content/ideas.md (any pillar) that is NOT already represented in content/library.json. Before building anything, run:
+  node scripts/library.cjs check --topic "..." --keywords a,b,c --pose <pose> --bg <bg> --pillar <pillar> --date 2026-10-22
+If it returns a freshness problem (REPEAT/POSE/BG), change the angle, pose, or background and re-check until it passes — do not just add a "notes" justification to skip a real conflict.
+
+Then produce ONE finished static post (1080x1350) following the full vault-post workflow:
+- Build it from a copy of templates/new-post.html, reusing the Dot/logo kit (kit/dot.js, kit/poses.js, kit/mount.js, kit/logo.js) — do not hand-draw Dot or retype the "Vault." wordmark.
+- Render it with scripts/render.cjs.
+- Read the rendered PNG yourself and grade it against the "Quality checklist" section of CLAUDE.md line by line. Fix and re-render at least once if anything fails — I want to see you catch and correct a real issue, not just pass on the first try.
+- Write one caption (hook, 2-3 value lines, one CTA) plus alt text, using one of the hashtag_sets from content/library.json.
+
+GUARDRAILS FOR THIS TEST (important — this is a sandboxed trial, not a real publish)
+- Record the new item in content/library.json via node scripts/library.cjs add, but set "status": "draft" and leave "post_date" unset/null. Do NOT schedule a real date and do NOT touch any existing item's date, status, or files.
+- Do not modify, delete, or re-render any file that already exists in assets/ or templates/ — only add new files.
+- Do not run node scripts/library.cjs calendar (don't regenerate the live calendar for this test).
+
+DELIVER BACK TO ME
+1. The rendered PNG, shown/attached.
+2. Your own line-by-line checklist grading (what passed, what you had to fix and why).
+3. The idea you picked, the freshness-check command you ran and its output, and the final caption + hashtags.
+4. Anything in CLAUDE.md or the skill file you found ambiguous or had to guess about.
+
+Be honest in your self-grading — I'm specifically trying to find out where you're weak at this (visual judgment on overlaps/spacing/contrast, brand-voice writing, following a long rulebook precisely), not just get a pretty picture.

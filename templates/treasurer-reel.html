@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — The Treasurer's Day</title>
+<style>
+@font-face{font-family:'Gelasio';font-weight:700;src:url(../brand/fonts/gelasio-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:500;src:url(../brand/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:600;src:url(../brand/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:700;src:url(../brand/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:800;src:url(../brand/fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url(../brand/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#F7F6F2}
+body{font-family:'PJS',sans-serif;color:#14151F;position:relative}
+.layer{position:absolute;inset:0}
+
+/* Chaos text stabs */
+.stab{position:absolute;left:80px;right:80px;text-align:center;font-weight:800;line-height:1.1;letter-spacing:-.03em}
+.stab em{font-style:normal;color:#D91E5C}
+
+/* Red flash overlay */
+.flash{position:absolute;inset:0;background:#D91E5C;opacity:0}
+
+/* Dark screens */
+.dark{position:absolute;inset:0;background:#14151F}
+
+/* Wordmark */
+.wm{position:absolute;left:0;right:0;text-align:center;font-family:'Gelasio',Georgia,serif;font-weight:700;letter-spacing:-.04em;color:#FFFFFF;line-height:1}
+.wm span{display:inline-block}
+.wm .dot{color:#D91E5C}
+.tag{position:absolute;left:0;right:0;text-align:center;color:#FFFFFF}
+
+/* Snap-into-place cards */
+.snapcard{position:absolute;left:100px;right:100px;background:#1A1B26;border-radius:32px;padding:48px 44px;border:1px solid rgba(255,255,255,.08);box-shadow:0 50px 120px rgba(0,0,0,.45)}
+.kick{position:absolute;left:0;right:0;text-align:center;font-weight:800;font-size:28px;letter-spacing:.14em;color:#FF8FB1}
+.scap{position:absolute;left:90px;right:90px;text-align:center;font-weight:800;font-size:72px;line-height:1.08;letter-spacing:-.035em;color:#FFFFFF}
+.scap em{font-style:normal;color:#FF6F98}
+.t2{font-size:26px;font-weight:700;color:#8E8FA3;letter-spacing:.04em}
+.bal{font-size:100px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:12px;color:#FFFFFF}
+.bar{height:22px;border-radius:11px;transform-origin:left center;margin-top:24px}
+.row{display:flex;align-items:center;gap:18px}
+.ic{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.t1{font-size:28px;font-weight:800;letter-spacing:-.01em;color:#FFFFFF}
+.mono{font-family:'JetBrains Mono',monospace;font-size:22px;color:#8E8FA3;font-weight:500}
+.tick{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#1F8A70;color:#FFFFFF}
+.avrow{display:flex;margin-top:10px}
+.av{width:64px;height:64px;border-radius:50%;border:4px solid #1A1B26;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff}
+.av:not(:first-child){margin-left:-14px}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#1F8A70;color:#FFFFFF;border-radius:14px;padding:16px 26px;font-size:26px;font-weight:800;margin-top:18px}
+.pillrow{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
+.pill2{padding:14px 24px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-weight:700;font-size:24px;color:#D6D7E0}
+
+/* Payoff dashboard */
+.dash{position:absolute;left:70px;right:70px;top:520px;background:#FFFFFF;border-radius:28px;padding:40px;box-shadow:0 40px 90px rgba(20,21,31,.15);border:1px solid #EEECE6}
+.vrow{display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid #EFEDE7;font-size:26px}
+.cap{position:absolute;left:80px;right:80px;text-align:center;font-weight:800;font-size:68px;line-height:1.1;letter-spacing:-.035em}
+.cap em{font-style:normal;color:#D91E5C}
+
+/* Pill for end card */
+.pill{display:inline-block;margin:0 7px;padding:13px 24px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#FFFFFF;font-weight:700;font-size:30px}
+
+/* Dot mascot */
+.mdot{position:absolute;line-height:0;z-index:30}
+</style>
+</head>
+<body>
+
+<!-- ============ SCENE 1: CHAOS MONTAGE (0–3s) ============ -->
+<div class="layer" id="chaos">
+  <div class="flash" id="flash1"></div>
+  <div class="stab" id="ch1" style="top:750px;font-size:82px;transform:rotate(2deg)">7 unread messages.</div>
+  <div class="stab" id="ch2" style="top:760px;font-size:68px;transform:rotate(-1deg)">Which version is<br>the <em>right</em> one?</div>
+  <div class="stab" id="ch3" style="top:780px;font-size:78px">The receipt<br>is <em>gone.</em></div>
+  <div class="stab" id="ch4" style="top:760px;font-size:66px;transform:rotate(-2deg)">We owe Amara<br><em>how much?</em></div>
+  <div class="stab" id="ch5" style="top:720px;font-size:88px">The audit is<br><em>next week.</em></div>
+  <div class="stab" id="ch6" style="top:820px;font-size:60px">Not again.</div>
+  <div class="mdot" id="dWorried"></div>
+  <!-- Pileup: all lines shown at once -->
+  <div class="stab" id="pile1" style="top:320px;font-size:44px;transform:rotate(5deg);color:#A3123F">7 unread messages.</div>
+  <div class="stab" id="pile2" style="top:500px;font-size:38px;transform:rotate(-4deg);color:#6B6F80">Which version is the right one?</div>
+  <div class="stab" id="pile3" style="top:680px;font-size:50px;transform:rotate(3deg)">The receipt is gone.</div>
+  <div class="stab" id="pile4" style="top:860px;font-size:42px;transform:rotate(-2deg);color:#A3123F">We owe Amara how much?</div>
+  <div class="stab" id="pile5" style="top:1040px;font-size:56px;transform:rotate(1deg)">The audit is next week.</div>
+  <div class="stab" id="pile6" style="top:1240px;font-size:36px">Not again.</div>
+  <div class="flash" id="flash2"></div>
+</div>
+
+<!-- ============ SCENE 2: HARD STOP (3–3.5s) ============ -->
+<div class="layer" id="stop">
+  <div class="dark" id="blackout"></div>
+</div>
+
+<!-- ============ SCENE 3: BRAND REVEAL (3.5–6.5s) ============ -->
+<div class="layer" id="reveal">
+  <div class="dark" id="revealBg"></div>
+  <div class="wm" id="wm1" style="top:760px;font-size:220px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="mdot" id="dReveal"></div>
+  <div class="tag" id="tagReveal" style="top:1060px;font-weight:600;font-size:46px;color:#B8B8C6">Take a breath.</div>
+</div>
+
+<!-- ============ SCENE 4: SNAP INTO PLACE (6.5–11s) ============ -->
+<div class="layer" id="snaps">
+  <div class="dark" id="snapBg"></div>
+
+  <!-- 4a: Treasury number -->
+  <div class="kick" id="kickT" style="top:620px">CLUB TREASURY</div>
+  <div class="scap" id="capT" style="top:680px;font-size:72px">Every rupee,<br><em>tracked.</em></div>
+  <div class="snapcard" id="cardT" style="top:920px">
+    <div class="t2">TOTAL BALANCE</div>
+    <div class="bal">LKR <span id="nBal">0</span></div>
+    <div class="bar" id="barT" style="background:#D91E5C;width:100%"></div>
+    <div class="pillrow">
+      <div class="pill2">Admin</div><div class="pill2">Projects</div><div class="pill2">Cash</div>
+    </div>
+  </div>
+
+  <!-- 4b: Approval tick -->
+  <div class="kick" id="kickA" style="top:620px">APPROVALS</div>
+  <div class="scap" id="capA" style="top:680px;font-size:72px">One tap.<br><em>Approved.</em></div>
+  <div class="snapcard" id="cardA" style="top:920px">
+    <div class="row" style="gap:20px">
+      <div class="mono">RV-0087</div>
+      <div style="flex:1">
+        <div class="t1">Projector rental</div>
+        <div class="t2" style="margin-top:4px">Dineth · Admin fund</div>
+      </div>
+      <div class="tick" id="tickMark" style="opacity:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)">
+      <div class="row" style="justify-content:space-between">
+        <div class="t2">AMOUNT</div>
+        <div class="t1" style="font-family:'JetBrains Mono',monospace;font-size:32px">LKR 2,800</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4c: Event check-in -->
+  <div class="kick" id="kickE" style="top:620px">CHECK-IN</div>
+  <div class="scap" id="capE" style="top:680px;font-size:72px">Show up.<br><em>Get counted.</em></div>
+  <div class="snapcard" id="cardE" style="top:920px">
+    <div class="t2">LEADERSHIP WORKSHOP · SUN</div>
+    <div class="avrow">
+      <div class="av" style="background:#D91E5C">DR</div>
+      <div class="av" style="background:#5446D0">NF</div>
+      <div class="av" style="background:#1F8A70">AK</div>
+    </div>
+    <div style="margin-top:18px;font-size:36px;font-weight:800;color:#FFFFFF"><span id="nCheckin">0</span> checked in</div>
+    <div class="badge" id="hrsBadge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg>+3 h logged</div>
+  </div>
+</div>
+
+<!-- ============ SCENE 5: PAYOFF (11–14s) ============ -->
+<div class="layer" id="payoff">
+  <!-- Flash replay of chaos -->
+  <div class="stab" id="replayA" style="top:500px;font-size:56px;transform:rotate(3deg);color:#A3123F">7 unread messages.</div>
+  <div class="stab" id="replayB" style="top:700px;font-size:48px;transform:rotate(-3deg)">The receipt is gone.</div>
+  <div class="stab" id="replayC" style="top:900px;font-size:62px;transform:rotate(1deg)">The audit is next week.</div>
+
+  <!-- Calm dashboard -->
+  <div class="cap" id="capPayoff" style="top:310px">Every rupee<br>in its <em>place.</em></div>
+  <div class="dash" id="dashPayoff">
+    <div class="row" style="justify-content:space-between">
+      <div style="font-size:28px;font-weight:800">Treasury · 2026-27</div>
+      <div style="font-size:22px;font-weight:700;color:#1F8A70;background:#E1F3E8;padding:8px 16px;border-radius:8px">All balanced</div>
+    </div>
+    <div style="font-size:80px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-top:16px">LKR <span id="nBal2">0</span></div>
+    <div style="display:flex;gap:6px;margin-top:18px">
+      <div class="bar" id="b1" style="flex:80;background:#D91E5C;height:20px;border-radius:10px"></div>
+      <div class="bar" id="b2" style="flex:55;background:#5446D0;height:20px;border-radius:10px"></div>
+      <div class="bar" id="b3" style="flex:18;background:#1F8A70;height:20px;border-radius:10px"></div>
+    </div>
+    <div class="vrow vr"><span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#6B6F80">RV-0087</span><b style="flex:1;font-size:24px">Projector rental</b><b style="color:#C23A33;font-size:24px">−2,800</b></div>
+    <div class="vrow vr"><span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#6B6F80">RV-0092</span><b style="flex:1;font-size:24px">Workshop printing</b><b style="color:#1F8A70;font-size:24px">+1,400</b></div>
+    <div class="vrow vr"><span class="mono" style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#6B6F80">JV-0095</span><b style="flex:1;font-size:24px">Dues collected · 8 members</b><b style="color:#1F8A70;font-size:24px">+6,000</b></div>
+  </div>
+  <div class="mdot" id="dProud"></div>
+</div>
+
+<!-- ============ SCENE 6: END CARD (14–17s) ============ -->
+<div class="layer" id="endcard">
+  <div class="dark" id="endBg"></div>
+  <div class="wm" id="wm2" style="top:680px;font-size:200px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="mdot" id="dEnd"></div>
+  <div class="tag" id="tagEnd" style="top:960px;font-weight:700;font-size:44px;color:#FFFFFF">Built for Rotaract treasurers</div>
+  <div class="tag" id="urlEnd" style="top:1080px;font-weight:800;font-size:58px;letter-spacing:-.01em">vaultpro.cloud</div>
+  <div class="tag" id="ctaEnd" style="top:1180px;font-weight:600;font-size:34px;color:#B8B8C6">Your whole treasury, sorted.</div>
+</div>
+
+<script src="../kit/vendor/gsap.min.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script>
+<script>
+function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+function counter(el, to, dur) {
+  var o = { v: 0 };
+  return gsap.to(o, { v: to, duration: dur, ease: 'power2.out', onUpdate: function () {
+    document.getElementById(el).textContent = fmt(o.v);
+  }});
+}
+
+function putDot(id, name, w, fx, fy, opt) {
+  opt = opt || {};
+  var s = pose(name, w, opt), vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number), k = w / vb[2];
+  var el = document.getElementById(id); el.innerHTML = s;
+  el.style.left = (fx - (100 - vb[0]) * k) + 'px';
+  el.style.top = (fy - (206 - vb[1]) * k) + 'px';
+  gsap.set(el, { transformOrigin: ((100 - vb[0]) / vb[2] * 100) + '% ' + ((206 - vb[1]) / vb[3] * 100) + '%' });
+}
+function lockDot(wmId, id, F) {
+  var wm = document.getElementById(wmId), sp = wm.querySelector('.dot');
+  var fx = wm.offsetLeft + sp.offsetLeft + sp.offsetWidth * 0.5 + F * 0.22;
+  var fy = wm.offsetTop + sp.offsetTop + F * 0.80;
+  putDot(id, 'wave', F * 0.86, fx, fy, { dark: true, noShadow: true });
+}
+
+// Place Dots
+putDot('dWorried', 'worried', 180, 540, 1120);
+putDot('dProud', 'proud', 220, 160, 1790);
+var dotsPlaced = false;
+function placeLocks() {
+  if (dotsPlaced || document.fonts.status !== 'loaded') return;
+  lockDot('wm1', 'dReveal', 220);
+  lockDot('wm2', 'dEnd', 190);
+  dotsPlaced = true;
+}
+placeLocks();
+
+// ---------- INITIAL STATES ----------
+var tl = gsap.timeline({ paused: true, defaults: { duration: 0.5, ease: 'power3.out' } });
+
+gsap.set(['#stop', '#reveal', '#snaps', '#payoff', '#endcard'], { autoAlpha: 0 });
+// Chaos stabs all hidden
+gsap.set(['#ch1','#ch2','#ch3','#ch4','#ch5','#ch6'], { autoAlpha: 0, scale: 0.85 });
+gsap.set(['#pile1','#pile2','#pile3','#pile4','#pile5','#pile6'], { autoAlpha: 0 });
+gsap.set(['#flash1','#flash2'], { autoAlpha: 0 });
+gsap.set('#dWorried', { autoAlpha: 0, y: 100 });
+// Reveal
+gsap.set('#tagReveal', { autoAlpha: 0, y: 24 });
+gsap.set('#dReveal', { autoAlpha: 0 });
+// Snaps
+gsap.set(['#kickT','#kickA','#kickE'], { autoAlpha: 0, y: 18 });
+gsap.set(['#capT','#capA','#capE'], { autoAlpha: 0, y: 30 });
+gsap.set(['#cardT','#cardA','#cardE'], { autoAlpha: 0, y: 60, scale: 0.97 });
+gsap.set('#barT', { scaleX: 0 });
+gsap.set('#hrsBadge', { autoAlpha: 0, scale: 0.5 });
+// Payoff
+gsap.set(['#replayA','#replayB','#replayC'], { autoAlpha: 0 });
+gsap.set('#capPayoff', { autoAlpha: 0, y: 30 });
+gsap.set('#dashPayoff', { autoAlpha: 0, y: 500 });
+gsap.set(['#b1','#b2','#b3'], { scaleX: 0 });
+gsap.set('.vr', { autoAlpha: 0, x: 50 });
+gsap.set('#dProud', { autoAlpha: 0, y: 200 });
+// End card
+gsap.set(['#tagEnd','#urlEnd','#ctaEnd'], { autoAlpha: 0, y: 20 });
+gsap.set('#dEnd', { autoAlpha: 0 });
+
+// ============ SCENE 1: CHAOS (0–3.0s) ============
+tl.addLabel('chaos1', 0)
+  // ch1: "7 unread messages." (0–0.4s)
+  .fromTo('#ch1', { autoAlpha: 0, scale: 1.3, y: 40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.18, ease: 'power4.out' }, 0)
+  .to('#flash1', { autoAlpha: 0.15, duration: 0.06 }, 0)
+  .to('#flash1', { autoAlpha: 0, duration: 0.12 }, 0.06)
+  .to('#ch1', { autoAlpha: 0, duration: 0.08 }, 0.32)
+
+  // ch2: "Which version is the right one?" (0.4–0.8s)
+  .addLabel('chaos2', 0.4)
+  .fromTo('#ch2', { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.18, ease: 'power4.out' }, 0.4)
+  .to('#ch2', { autoAlpha: 0, duration: 0.08 }, 0.72)
+
+  // ch3: "The receipt is gone." (0.8–1.2s)
+  .addLabel('chaos3', 0.8)
+  .fromTo('#ch3', { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: 'power4.out' }, 0.8)
+  .to('#ch3', { autoAlpha: 0, duration: 0.08 }, 1.12)
+
+  // ch4: "We owe Amara how much?" (1.2–1.6s)
+  .addLabel('chaos4', 1.2)
+  .fromTo('#ch4', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: 'power4.out' }, 1.2)
+  .to('#ch4', { autoAlpha: 0, duration: 0.08 }, 1.52)
+
+  // ch5: "The audit is next week." (1.6–2.0s)
+  .addLabel('chaos5', 1.6)
+  .fromTo('#ch5', { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.18, ease: 'power4.out' }, 1.6)
+  .to('#flash1', { autoAlpha: 0.12, duration: 0.06 }, 1.6)
+  .to('#flash1', { autoAlpha: 0, duration: 0.12 }, 1.66)
+  .to('#ch5', { autoAlpha: 0, duration: 0.08 }, 1.92)
+
+  // ch6: "Not again." + worried Dot (2.0–2.5s)
+  .addLabel('chaos6', 2.0)
+  .fromTo('#ch6', { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.15, ease: 'power4.out' }, 2.0)
+  .fromTo('#dWorried', { autoAlpha: 0, y: 100, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, ease: 'back.out(1.8)' }, 2.1)
+  .to('#dWorried', { rotation: -5, duration: 0.12, yoyo: true, repeat: 2, ease: 'sine.inOut' }, 2.3)
+  .to('#ch6', { autoAlpha: 0, duration: 0.08 }, 2.42)
+  .to('#dWorried', { autoAlpha: 0, duration: 0.08 }, 2.42)
+
+  // ch7: Pileup — all lines at once (2.5–3.0s)
+  .addLabel('chaos7', 2.5)
+  .to(['#pile1','#pile2','#pile3','#pile4','#pile5','#pile6'], { autoAlpha: 1, duration: 0.12, stagger: 0.03 }, 2.5)
+  .to('#flash2', { autoAlpha: 0.35, duration: 0.15 }, 2.75)
+  .to('#flash2', { autoAlpha: 0, duration: 0.1 }, 2.9);
+
+// ============ SCENE 2: HARD STOP (3.0–3.5s) ============
+tl.addLabel('stop', 3.0)
+  .set('#stop', { autoAlpha: 1 }, 3.0)
+  .set('#chaos', { autoAlpha: 0 }, 3.0)
+  .to({}, { duration: 0.5 }, 3.0);
+
+// ============ SCENE 3: BRAND REVEAL (3.5–6.5s) ============
+tl.addLabel('reveal', 3.5)
+  .set('#reveal', { autoAlpha: 1 }, 3.5)
+  .set('#stop', { autoAlpha: 0 }, 3.5)
+  .fromTo('#wm1 span:not(.dot)', { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, stagger: 0.06, duration: 0.55, ease: 'power4.out' }, 3.65)
+  .fromTo('#wm1 .dot', { autoAlpha: 0, y: -400 }, { autoAlpha: 1, y: 0, duration: 0.75, ease: 'bounce.out' }, 4.05)
+  // Full stop → Dot (lockDot)
+  .to('#wm1 .dot', { scale: 0, duration: 0.14, ease: 'power2.in' }, 4.85)
+  .fromTo('#dReveal', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2.6)' }, 4.9)
+  .to('#dReveal', { scaleY: 0.88, scaleX: 1.06, duration: 0.09, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 5.35)
+  .to('#dReveal', { rotation: 6, duration: 0.13, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 5.5)
+  .to('#tagReveal', { autoAlpha: 1, y: 0, duration: 0.5 }, 5.1)
+  .to(['#wm1','#dReveal','#tagReveal'], { autoAlpha: 0, duration: 0.35 }, 6.15);
+
+// ============ SCENE 4: SNAP INTO PLACE (6.5–11.0s) ============
+// 4a: Treasury (6.5–7.8s)
+tl.addLabel('snap1', 6.5)
+  .set('#snaps', { autoAlpha: 1 }, 6.5)
+  .set('#reveal', { autoAlpha: 0 }, 6.5)
+  .to('#kickT', { autoAlpha: 1, y: 0, duration: 0.4 }, 6.55)
+  .to('#capT', { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power4.out' }, 6.6)
+  .to('#cardT', { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: 'power4.out' }, 6.7)
+  .add(counter('nBal', 94320, 0.9), 6.85)
+  .to('#barT', { scaleX: 1, duration: 0.6, ease: 'power2.out' }, 7.0)
+  .to(['#kickT','#capT','#cardT'], { autoAlpha: 0, duration: 0.25 }, 7.55);
+
+// 4b: Approval (7.8–9.2s)
+tl.addLabel('snap2', 7.8)
+  .to('#kickA', { autoAlpha: 1, y: 0, duration: 0.4 }, 7.85)
+  .to('#capA', { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power4.out' }, 7.9)
+  .to('#cardA', { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: 'power4.out' }, 8.0)
+  .to('#tickMark', { opacity: 1, duration: 0.01 }, 8.5)
+  .fromTo('#tickMark', { scale: 2.2 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' }, 8.5)
+  .to(['#kickA','#capA','#cardA'], { autoAlpha: 0, duration: 0.25 }, 8.95);
+
+// 4c: Check-in (9.2–11.0s)
+tl.addLabel('snap3', 9.2)
+  .to('#kickE', { autoAlpha: 1, y: 0, duration: 0.4 }, 9.25)
+  .to('#capE', { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power4.out' }, 9.3)
+  .to('#cardE', { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: 'power4.out' }, 9.4)
+  .add(counter('nCheckin', 19, 0.7), 9.6)
+  .fromTo('#hrsBadge', { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, 10.2)
+  .to(['#kickE','#capE','#cardE'], { autoAlpha: 0, duration: 0.3 }, 10.7);
+
+// ============ SCENE 5: PAYOFF (11.0–14.0s) ============
+// 5a: Flash replay of chaos (11.0–11.5s)
+tl.addLabel('payoff1', 11.0)
+  .set('#payoff', { autoAlpha: 1 }, 11.0)
+  .set('#snaps', { autoAlpha: 0 }, 11.0)
+  .to('#replayA', { autoAlpha: 1, duration: 0.1 }, 11.0)
+  .to('#replayB', { autoAlpha: 1, duration: 0.1 }, 11.1)
+  .to('#replayC', { autoAlpha: 1, duration: 0.1 }, 11.2)
+  .to(['#replayA','#replayB','#replayC'], { autoAlpha: 0, x: 1200, duration: 0.3, ease: 'power3.in' }, 11.35)
+
+  // 5b: Calm dashboard (11.5–14.0s)
+  .addLabel('payoff2', 11.5)
+  .to('#capPayoff', { autoAlpha: 1, y: 0, duration: 0.5 }, 11.55)
+  .fromTo('#dashPayoff', { autoAlpha: 0, y: 500, rotation: 2 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.7, ease: 'power4.out' }, 11.65)
+  .add(counter('nBal2', 94320, 1.0), 11.9)
+  .to('#b1', { scaleX: 1, duration: 0.5 }, 12.1)
+  .to('#b2', { scaleX: 1, duration: 0.5 }, 12.2)
+  .to('#b3', { scaleX: 1, duration: 0.5 }, 12.3)
+  .to('.vr', { autoAlpha: 1, x: 0, stagger: 0.12, duration: 0.4 }, 12.5)
+  .fromTo('#dProud', { autoAlpha: 0, y: 200, rotation: 10 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.5, ease: 'back.out(1.7)' }, 13.0)
+  .to('#dProud', { autoAlpha: 0, duration: 0.2 }, 13.7);
+
+// ============ SCENE 6: END CARD (14.0–17.0s) ============
+tl.addLabel('end1', 14.0)
+  .set('#endcard', { autoAlpha: 1 }, 14.0)
+  .set('#payoff', { autoAlpha: 0 }, 14.05)
+  .fromTo('#wm2 span:not(.dot)', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, stagger: 0.04, duration: 0.45, ease: 'power4.out' }, 14.15)
+  .fromTo('#wm2 .dot', { autoAlpha: 0, y: -350 }, { autoAlpha: 1, y: 0, duration: 0.65, ease: 'bounce.out' }, 14.5)
+  .to('#wm2 .dot', { scale: 0, duration: 0.12, ease: 'power2.in' }, 15.05)
+  .fromTo('#dEnd', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2.6)' }, 15.1)
+  .to('#dEnd', { rotation: 6, duration: 0.13, yoyo: true, repeat: 2, ease: 'sine.inOut' }, 15.55)
+  .addLabel('end2', 15.3)
+  .to('#tagEnd', { autoAlpha: 1, y: 0, duration: 0.4 }, 15.35)
+  .fromTo('#urlEnd', { autoAlpha: 0, scale: 0.92 }, { autoAlpha: 1, scale: 1, duration: 0.4 }, 15.6)
+  .to('#ctaEnd', { autoAlpha: 1, y: 0, duration: 0.35 }, 15.85)
+  .to({}, { duration: 1.0 }, 16.0);
+
+window.DURATION = tl.duration();
+window.seek = function (t) { placeLocks(); tl.time(t, false); };
+window.seek(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — Matale's Day Reel</title>
+<style>
+@font-face{font-family:'Gelasio';font-weight:700;src:url(../brand/fonts/gelasio-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:500;src:url(../brand/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:600;src:url(../brand/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:700;src:url(../brand/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:800;src:url(../brand/fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-weight:800;src:url(../brand/fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:600;src:url(../brand/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#EDEBE4}
+body{font-family:'PJS',sans-serif;color:#14151F;position:relative}
+
+/* Ambient Studio Background with subtle depth */
+.studio-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 36%, #FFFFFF 0%, #EDE9DF 70%, #DDD8CD 100%);
+}
+
+.layer{position:absolute;inset:0}
+
+/* ==================== SUBTITLE PILL IN VIEWER'S EYELINE ==================== */
+/* Sits directly above the table at top:320px, so eye reads text and sees table action together */
+.subtitle-container{
+  position:absolute;left:70px;right:70px;top:300px;height:130px;
+  z-index:45;pointer-events:none;
+}
+.sub-pill{
+  position:absolute;inset:0;
+  background:#14151F;border:3px solid #2B2E4A;border-radius:65px;
+  box-shadow:0 18px 45px rgba(20,21,31,0.22);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:10px 36px;
+  opacity:0;transform:translateY(20px);
+}
+.pill-title{
+  font-family:'PJS',sans-serif;font-weight:800;font-size:38px;line-height:1.12;
+  letter-spacing:-.03em;color:#FFFFFF;white-space:nowrap;
+}
+.pill-title em{font-style:normal;color:#FF6F98}
+.pill-sub{
+  font-family:'PJS',sans-serif;font-weight:600;font-size:24px;line-height:1.2;
+  color:#A8ABC0;margin-top:4px;letter-spacing:-.01em;white-space:nowrap;
+}
+.pill-sub em{font-style:normal;color:#F2B33D}
+
+/* ==================== MEETING TABLE SCENE ==================== */
+.scene-table-container{position:absolute;left:60px;top:460px;width:960px;height:1040px;z-index:10}
+
+.table-surface{
+  position:absolute;left:50px;top:80px;width:860px;height:860px;
+  border-radius:96px;background:#FAF8F5;border:14px solid #DFD9CE;
+  box-shadow:0 36px 85px rgba(20,21,31,0.15), 0 10px 25px rgba(20,21,31,0.06);
+}
+.table-wood-grain{position:absolute;inset:0;border-radius:82px;overflow:hidden;opacity:.32;pointer-events:none}
+
+/* Member positions around the table */
+.member-seat{position:absolute;z-index:15;transform-origin:center center}
+#seatKaveen{left:400px;top:-10px;width:160px;height:180px}
+#seatDilani{left:-30px;top:410px;width:160px;height:180px}
+#seatTariq{left:830px;top:410px;width:160px;height:180px}
+
+/* Stress alert markers over members */
+.stress-marker{
+  position:absolute;width:36px;height:36px;border-radius:50%;
+  background:#D91E5C;color:#FFFFFF;font-weight:800;font-size:22px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(217,30,92,0.4);
+  z-index:22;opacity:0;
+}
+
+/* ==================== THE ENHANCED PROBLEM CLUTTER ==================== */
+.clutter-item{position:absolute;z-index:12}
+
+/* Mismatched Balances Card (center top) */
+.discrepancy-card{
+  position:absolute;left:280px;top:180px;width:400px;
+  background:#FFFFFF;border:2.5px solid #D91E5C;border-radius:14px;
+  padding:12px 16px;box-shadow:0 8px 24px rgba(217,30,92,0.18);
+  font-family:'PJS',sans-serif;z-index:13;
+}
+.discrepancy-badge{
+  display:inline-block;background:#FCE7EE;color:#D91E5C;
+  font-size:12px;font-weight:800;padding:3px 8px;border-radius:4px;letter-spacing:.05em;
+}
+
+/* Ledgers */
+.ledger-book{
+  position:absolute;border-radius:12px;padding:12px 14px;
+  box-shadow:0 10px 24px rgba(20,21,31,.12);border:2px solid rgba(0,0,0,.08);
+}
+
+/* Loose problem receipts */
+.receipt-paper{
+  background:#FFFFFF;border:1.5px solid #DDD8CE;border-radius:6px;
+  padding:8px 12px;box-shadow:0 4px 14px rgba(20,21,31,.08);
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:#14151F;
+}
+.receipt-flag{
+  display:inline-block;font-size:11px;font-weight:800;padding:2px 6px;
+  border-radius:3px;margin-top:4px;
+}
+
+/* WhatsApp Urgent Notification Cards */
+.chat-bubble{
+  position:absolute;width:320px;background:#FFFFFF;border-radius:14px;
+  padding:10px 14px;box-shadow:0 10px 28px rgba(20,21,31,0.16);
+  border-left:5px solid #25D366;font-family:'PJS',sans-serif;z-index:14;
+}
+.chat-sender{font-size:13px;font-weight:800;color:#128C7E;display:flex;align-items:center;gap:6px}
+.chat-msg{font-size:14px;font-weight:700;color:#14151F;margin-top:3px;line-height:1.2}
+
+/* Phone vibe */
+.phone-vibe{
+  position:absolute;width:110px;height:196px;border-radius:26px;
+  background:#14151F;padding:8px;border:3px solid #2B2E4A;
+  box-shadow:0 14px 32px rgba(20,21,31,.25);z-index:13;
+}
+
+/* Coffee Mugs */
+.coffee-mug{
+  position:absolute;width:44px;height:44px;border-radius:50%;
+  background:#FFFFFF;border:4px solid #DFD9CE;
+  display:flex;align-items:center;justify-content:center;
+}
+.mug-coffee{width:26px;height:26px;border-radius:50%;background:#8C5836}
+
+/* ==================== THE SHOCKWAVE TRANSITION ==================== */
+.shockwave-ring{
+  position:absolute;left:480px;top:510px;width:10px;height:10px;
+  border-radius:50%;border:8px solid #1F8A70;
+  box-shadow:0 0 50px rgba(31,138,112,0.7), inset 0 0 30px rgba(31,138,112,0.4);
+  transform:translate(-50%, -50%) scale(0);
+  opacity:0;pointer-events:none;z-index:24;
+}
+.shockwave-inner{
+  position:absolute;left:480px;top:510px;width:10px;height:10px;
+  border-radius:50%;border:5px solid #D91E5C;
+  transform:translate(-50%, -50%) scale(0);
+  opacity:0;pointer-events:none;z-index:24;
+}
+
+/* ==================== MID-TIDY SOLUTION CARDS ==================== */
+.voucher-card{
+  position:absolute;background:#FFFFFF;border-radius:14px;padding:14px 20px;
+  border:2.5px solid #1F8A70;box-shadow:0 12px 30px rgba(31,138,112,.2);
+  z-index:20;font-size:18px;font-weight:700;
+}
+.balance-strip{
+  position:absolute;background:#FFFFFF;border-radius:16px;padding:14px 22px;
+  border:2.5px solid #5446D0;box-shadow:0 14px 34px rgba(84,70,208,.2);
+  z-index:20;display:flex;align-items:center;gap:14px;
+}
+.attendance-strip{
+  position:absolute;background:#FFFFFF;border-radius:14px;padding:14px 20px;
+  border:2.5px solid #D91E5C;box-shadow:0 12px 30px rgba(217,30,92,.2);
+  z-index:20;
+}
+
+/* ==================== ON-TABLE TABLET REVEAL ==================== */
+.center-tablet{
+  position:absolute;left:250px;top:340px;width:460px;height:340px;
+  border-radius:32px;background:#14151F;padding:12px;border:4px solid #2B2E4A;
+  box-shadow:0 30px 70px rgba(20,21,31,.28);z-index:18;
+}
+.tablet-screen{
+  width:100%;height:100%;border-radius:22px;background:#FAF8F5;
+  padding:26px 22px;display:flex;flex-direction:column;align-items:center;
+  text-align:center;justify-content:center;position:relative;overflow:hidden;
+}
+
+/* Dot mascot & Confetti */
+.mdot{position:absolute;line-height:0;z-index:25;transform-origin:center bottom}
+.confetti-box{position:absolute;inset:0;pointer-events:none;z-index:30}
+
+/* ==================== SCENE 6: END CARD & SEAL ==================== */
+.dark-overlay{position:absolute;inset:0;background:#14151F;z-index:50}
+.wm{
+  position:absolute;left:0;right:0;text-align:center;
+  font-family:'Gelasio',Georgia,serif;font-weight:700;letter-spacing:-.04em;
+  color:#FFFFFF;line-height:1;z-index:55;
+}
+.wm span{display:inline-block}
+.wm .dot{color:#D91E5C}
+.tag{position:absolute;left:0;right:0;text-align:center;color:#FFFFFF;z-index:55}
+.seal-badge{
+  position:absolute;left:400px;top:980px;width:280px;height:280px;
+  z-index:60;transform-origin:center center;
+}
+</style>
+</head>
+<body>
+
+<div class="studio-bg"></div>
+
+<!-- ==================== SCENE CONTAINER ==================== -->
+<div class="layer" id="sceneRoot">
+
+  <!-- ==================== HIGH-VISIBILITY SUBTITLE PILLS (EYELINE) ==================== -->
+  <div class="subtitle-container">
+    <!-- Problem 1: Numbers clash -->
+    <div class="sub-pill" id="pill1a">
+      <div class="pill-title">3 BOARD MEMBERS. <em>3 DIFFERENT NUMBERS.</em></div>
+      <div class="pill-sub">President sees Rs 45,000 · Treasurer sees Rs 28,000</div>
+    </div>
+    <!-- Problem 2: Missing receipts & audit deadline -->
+    <div class="sub-pill" id="pill1b">
+      <div class="pill-title">AUDIT IN 3 DAYS. <em>HALF THE RECEIPTS GONE.</em></div>
+      <div class="pill-sub">WhatsApp is flooding · Discrepancy: <em>-Rs 17,000</em></div>
+    </div>
+    <!-- Scene 2: Dot superhero arrival -->
+    <div class="sub-pill" id="pill2">
+      <div class="pill-title">THEN DOT STEPS IN. <em>CHAOS CLEARS.</em></div>
+      <div class="pill-sub">One tap resets the entire board table</div>
+    </div>
+    <!-- Scene 3: Clean system -->
+    <div class="sub-pill" id="pill3">
+      <div class="pill-title">ONE REAL-TIME SYSTEM. <em>EVERY RECORD TIED.</em></div>
+      <div class="pill-sub">Dual-signed vouchers · Balanced bank · QR hours logged</div>
+    </div>
+    <!-- Scene 4: Total calm -->
+    <div class="sub-pill" id="pill4">
+      <div class="pill-title">FROM MIDNIGHT PANIC <em>TO TOTAL CALM.</em></div>
+      <div class="pill-sub">Books balanced · No missing slips · Audit ready</div>
+    </div>
+    <!-- Scene 5: Matale Reveal -->
+    <div class="sub-pill" id="pill5">
+      <div class="pill-title">ROTARACT CLUB OF MATALE <em>IS ON VAULT.</em></div>
+      <div class="pill-sub">First official club partner live in production</div>
+    </div>
+  </div>
+
+  <!-- ==================== TABLE FLAT-LAY SCENE ==================== -->
+  <div class="scene-table-container" id="tableContainer">
+    <!-- Table Surface -->
+    <div class="table-surface" id="tableSurface">
+      <svg class="table-wood-grain" width="100%" height="100%" viewBox="0 0 860 860">
+        <line x1="215" y1="0" x2="215" y2="860" stroke="#DDD6C8" stroke-width="2"/>
+        <line x1="430" y1="0" x2="430" y2="860" stroke="#DDD6C8" stroke-width="2"/>
+        <line x1="645" y1="0" x2="645" y2="860" stroke="#DDD6C8" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <!-- Member Seats -->
+    <div class="member-seat" id="seatKaveen"></div>
+    <div class="member-seat" id="seatDilani"></div>
+    <div class="member-seat" id="seatTariq"></div>
+
+    <!-- Stress Exclamation Marks -->
+    <div class="stress-marker" id="stressKaveen" style="left:460px;top:-40px">!</div>
+    <div class="stress-marker" id="stressDilani" style="left:70px;top:380px">!</div>
+    <div class="stress-marker" id="stressTariq" style="left:820px;top:380px">!</div>
+
+    <!-- ==================== ENHANCED PROBLEM CLUTTER ==================== -->
+    <!-- Red Discrepancy Card slamming between Kaveen & Dilani -->
+    <div class="clutter-item discrepancy-card" id="discrepancyBox" style="left:280px;top:170px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="discrepancy-badge">⚠️ AUDIT WARNING</span>
+        <span style="font-family:'JetBrains Mono';font-size:12px;font-weight:700;color:#D91E5C">DAY -3</span>
+      </div>
+      <div style="font-size:18px;font-weight:800;color:#14151F;margin-top:6px;display:flex;justify-content:space-between">
+        <span>Bank vs Books:</span>
+        <span style="color:#D91E5C;font-family:'JetBrains Mono'">-Rs 17,000</span>
+      </div>
+      <div style="font-size:12px;color:#6B6F80;margin-top:4px">Kaveen: Rs 45,000 · Dilani: Rs 28,000</div>
+    </div>
+
+    <!-- Messy Ledgers -->
+    <div class="clutter-item ledger-book" id="ledgA" style="left:150px;top:280px;width:160px;height:190px;background:#5446D0;color:#fff;transform:rotate(-12deg)">
+      <div style="font-size:13px;font-weight:800">TREASURY v2</div>
+      <div style="font-size:11px;opacity:.8;margin-top:2px">Draft 4 (Unbalanced)</div>
+      <div style="margin-top:35px;height:5px;background:rgba(255,255,255,.25);border-radius:3px"></div>
+      <div style="margin-top:8px;height:5px;background:rgba(255,255,255,.25);border-radius:3px;width:65%"></div>
+      <div style="position:absolute;right:-10px;top:25px;width:24px;height:16px;background:#D91E5C;border-radius:3px"></div>
+    </div>
+
+    <div class="clutter-item ledger-book" id="ledgB" style="left:590px;top:320px;width:160px;height:200px;background:#2B2E4A;color:#fff;transform:rotate(14deg)">
+      <div style="font-size:13px;font-weight:800">PROJECT LOG</div>
+      <div style="font-size:11px;opacity:.8;margin-top:2px">14 Unverified Entries</div>
+      <div style="margin-top:40px;height:5px;background:rgba(255,255,255,.25);border-radius:3px"></div>
+      <div style="margin-top:8px;height:5px;background:rgba(255,255,255,.25);border-radius:3px;width:75%"></div>
+      <div style="position:absolute;left:-10px;top:35px;width:24px;height:16px;background:#F2B33D;border-radius:3px"></div>
+    </div>
+
+    <!-- Scattered Missing Receipts with Panic Tags -->
+    <div class="clutter-item receipt-paper" id="rcp1" style="left:330px;top:280px;transform:rotate(6deg)">
+      <div style="font-weight:700">HALL RENT</div>
+      <div style="color:#D91E5C;font-weight:800;font-size:15px">Rs 28,000</div>
+      <span class="receipt-flag" style="background:#FCE7EE;color:#D91E5C">NO VOUCHER!</span>
+    </div>
+
+    <div class="clutter-item receipt-paper" id="rcp2" style="left:240px;top:520px;transform:rotate(-16deg)">
+      <div style="font-weight:700">BANNER PRINT</div>
+      <div style="font-size:14px">Rs 4,850</div>
+      <span class="receipt-flag" style="background:#FFF3D6;color:#B36B00">MISSING INVOICE</span>
+    </div>
+
+    <div class="clutter-item receipt-paper" id="rcp3" style="left:540px;top:540px;transform:rotate(18deg)">
+      <div style="font-weight:700">SOUND SYSTEM</div>
+      <div style="color:#D91E5C;font-weight:800;font-size:15px">Rs 14,200?</div>
+      <span class="receipt-flag" style="background:#FCE7EE;color:#D91E5C">LOST SLIP</span>
+    </div>
+
+    <!-- Buzzing Phone with WhatsApp Floods -->
+    <div class="clutter-item phone-vibe" id="phoneVibe" style="left:425px;top:400px;transform:rotate(-4deg)">
+      <div style="height:100%;border-radius:18px;background:#202336;padding:10px 8px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <div style="font-size:20px">💬</div>
+        <div style="font-size:12px;font-weight:800;color:#25D366;margin-top:4px">WhatsApp (18)</div>
+        <div style="font-size:10px;color:#D0D3E2;margin-top:4px">"Where is the receipt??"</div>
+      </div>
+    </div>
+
+    <!-- Panicked WhatsApp Chat Bubbles -->
+    <div class="clutter-item chat-bubble" id="chatA" style="left:120px;top:380px;opacity:0;transform:scale(0.8)">
+      <div class="chat-sender"><span>💬 Dilani (Treasurer)</span><span style="font-size:11px;color:#888;margin-left:auto">11:42 PM</span></div>
+      <div class="chat-msg">"I can't balance the ledger without the hall rent slip!!"</div>
+    </div>
+
+    <div class="clutter-item chat-bubble" id="chatB" style="left:500px;top:430px;opacity:0;transform:scale(0.8)">
+      <div class="chat-sender"><span>💬 Kaveen (President)</span><span style="font-size:11px;color:#888;margin-left:auto">11:43 PM</span></div>
+      <div class="chat-msg">"District audit is in 3 days. Send the files now!"</div>
+    </div>
+
+    <!-- Coffee Mugs -->
+    <div class="clutter-item coffee-mug" id="mug1" style="left:140px;top:560px"><div class="mug-coffee"></div></div>
+    <div class="clutter-item coffee-mug" id="mug2" style="left:730px;top:250px"><div class="mug-coffee"></div></div>
+
+    <!-- ==================== THE SHOCKWAVE SYSTEM ==================== -->
+    <div class="shockwave-ring" id="shockwaveRing"></div>
+    <div class="shockwave-inner" id="shockwaveInner"></div>
+
+    <!-- ==================== MID-TIDY SOLUTION ASSETS ==================== -->
+    <div class="voucher-card" id="dilaniVoucher" style="left:140px;top:480px;opacity:0">
+      <div style="font-size:12px;color:#1F8A70;letter-spacing:.06em">PAYMENT VOUCHER</div>
+      <div style="font-size:20px;color:#14151F;font-weight:800;margin-top:2px">PV-0024 · Hall Rent</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+        <span style="font-size:14px;background:#E1F3E8;color:#1F8A70;padding:3px 8px;border-radius:6px;font-weight:800">Approved ✓</span>
+        <span style="font-family:'JetBrains Mono';font-size:16px;font-weight:700">Rs 28,000</span>
+      </div>
+    </div>
+
+    <div class="balance-strip" id="kaveenBalance" style="left:280px;top:210px;opacity:0">
+      <div style="width:40px;height:40px;border-radius:10px;background:#ECEAFB;color:#5446D0;display:flex;align-items:center;justify-content:center;font-size:22px">📊</div>
+      <div>
+        <div style="font-size:12px;font-weight:800;color:#5446D0;letter-spacing:.05em">CLUB BUDGET RECONCILED</div>
+        <div style="font-size:20px;font-weight:800;color:#14151F">All accounts balanced</div>
+      </div>
+    </div>
+
+    <div class="attendance-strip" id="tariqRoster" style="left:540px;top:480px;opacity:0">
+      <div style="font-size:12px;color:#D91E5C;letter-spacing:.06em;font-weight:800">MEETING ATTENDANCE</div>
+      <div style="font-size:18px;font-weight:800;color:#14151F;margin-top:2px">18 / 18 Members Logged</div>
+      <div style="font-size:13px;color:#1F8A70;font-weight:700;margin-top:4px">Service hours recorded ✓</div>
+    </div>
+
+    <!-- ==================== ON-TABLE TABLET REVEAL ==================== -->
+    <div class="center-tablet" id="centerTablet" style="opacity:0;transform:scale(0.85)">
+      <div class="tablet-screen">
+        <div style="font-size:13px;font-weight:800;color:#D91E5C;letter-spacing:.12em;text-transform:uppercase">OFFICIAL PARTNER CLUB</div>
+        <div style="font-size:32px;font-weight:800;letter-spacing:-.03em;color:#14151F;margin-top:8px;line-height:1.15">Rotaract Club of Matale</div>
+        <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;justify-content:center">
+          <span style="font-size:13px;font-weight:800;padding:6px 12px;border-radius:6px;background:#FCE7EE;color:#D91E5C">Treasury V2</span>
+          <span style="font-size:13px;font-weight:800;padding:6px 12px;border-radius:6px;background:#ECEAFB;color:#5446D0">QR Check-in</span>
+          <span style="font-size:13px;font-weight:800;padding:6px 12px;border-radius:6px;background:#E1F3E8;color:#1F8A70">Audit Ready</span>
+        </div>
+        <div style="margin-top:16px;font-size:14px;font-weight:700;color:#18794E;display:flex;align-items:center;gap:6px">
+          <span>✓</span> Live in Production · District 3220
+        </div>
+      </div>
+    </div>
+
+    <!-- Confetti particles overlay -->
+    <div class="confetti-box" id="confettiBox"></div>
+
+    <!-- Dot Mascot in the Table Scene -->
+    <div class="mdot" id="tableDot"></div>
+  </div>
+</div>
+
+<!-- ==================== SCENE 6: END CARD & PARTNER SEAL ==================== -->
+<div class="layer dark-overlay" id="endCard" style="opacity:0;pointer-events:none">
+  <div class="wm" id="wmEnd" style="top:540px;font-size:220px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="tag" id="endTag" style="top:800px;font-weight:700;font-size:46px">The club-management platform</div>
+
+  <div class="seal-badge" id="partnerSeal" style="opacity:0;transform:scale(2.2)">
+    <svg viewBox="0 0 280 280" width="280" height="280">
+      <circle cx="140" cy="140" r="130" fill="#1F8A70" stroke="#FAF8F5" stroke-width="6"/>
+      <circle cx="140" cy="140" r="116" fill="none" stroke="#FAF8F5" stroke-width="3" stroke-dasharray="6 6"/>
+      <circle cx="140" cy="140" r="102" fill="#166653"/>
+      <text x="140" y="102" text-anchor="middle" font-family="'Plus Jakarta Sans'" font-weight="800" font-size="16" fill="#F2B33D" letter-spacing="2">OFFICIAL PARTNER</text>
+      <text x="140" y="138" text-anchor="middle" font-family="'Plus Jakarta Sans'" font-weight="800" font-size="28" fill="#FFFFFF">MATALE</text>
+      <text x="140" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans'" font-weight="700" font-size="15" fill="#D6F4EC">ROTARACT CLUB</text>
+      <path d="M140 185 L143 194 L152 194 L145 199 L148 208 L140 203 L132 208 L135 199 L128 194 L137 194 Z" fill="#F2B33D"/>
+    </svg>
+  </div>
+
+  <div class="mdot" id="stampDot"></div>
+  <div class="tag" id="endUrl" style="top:1320px;font-weight:800;font-size:64px;letter-spacing:-.01em">vaultpro.cloud</div>
+  <div class="tag" id="endCta" style="top:1430px;font-weight:600;font-size:36px;color:#C9CAD3">Bring your club on board</div>
+</div>
+
+<script src="../kit/vendor/gsap.min.js"></script>
+<script src="../kit/dot.js"></script>
+<script src="../kit/poses.js"></script>
+<script src="../kit/members.js"></script>
+<script>
+// Mount Member characters in their table seats
+putMember('seatKaveen', 'kaveen', 160, 400, 0, { expression: 'worried', arms: 'worried' });
+putMember('seatDilani', 'dilani', 160, -30, 420, { expression: 'worried', arms: 'worried' });
+putMember('seatTariq', 'tariq', 160, 830, 420, { expression: 'worried', arms: 'worried', style: 'transform:scaleX(-1)' });
+
+// Mount confetti particles
+function createConfetti() {
+  const box = document.getElementById('confettiBox');
+  const colors = ['#D91E5C', '#1F8A70', '#5446D0', '#F2B33D'];
+  for (let i = 0; i < 35; i++) {
+    const c = document.createElement('div');
+    const color = colors[i % colors.length];
+    const size = 12 + (i % 8) * 2;
+    const isStar = i % 4 === 0;
+    c.className = 'conf-particle';
+    Object.assign(c.style, {
+      position: 'absolute',
+      left: (120 + Math.random() * 720) + 'px',
+      top: (180 + Math.random() * 640) + 'px',
+      width: size + 'px',
+      height: (isStar ? size : size * 0.6) + 'px',
+      background: color,
+      borderRadius: isStar ? '50%' : '3px',
+      transform: `rotate(${Math.random() * 360}deg)`,
+      opacity: 0,
+    });
+    box.appendChild(c);
+  }
+}
+createConfetti();
+
+// Mount Dot
+function mountDots() {
+  const td = document.getElementById('tableDot');
+  td.innerHTML = pose('happy', 210);
+  Object.assign(td.style, { left: '375px', top: '480px', opacity: 0, transform: 'translateY(-800px)' });
+
+  const sd = document.getElementById('stampDot');
+  sd.innerHTML = pose('wave', 220, { dark: true, noShadow: true });
+  Object.assign(sd.style, { left: '160px', top: '1000px', opacity: 0 });
+}
+mountDots();
+
+// Helper to switch member SVG expression & arm groups smoothly
+function setMembers(expr, arms) {
+  ['seatKaveen', 'seatDilani', 'seatTariq'].forEach(seatId => {
+    const host = document.getElementById(seatId);
+    if (!host) return;
+    host.querySelectorAll('.expr-worried, .expr-hopeful, .expr-happy').forEach(el => el.style.display = 'none');
+    host.querySelectorAll('.arms-worried, .arms-table, .arms-cheer').forEach(el => el.style.display = 'none');
+    const targetExpr = host.querySelector(`.expr-${expr}`);
+    if (targetExpr) targetExpr.style.display = 'inline';
+    const targetArms = host.querySelector(`.arms-${arms}`);
+    if (targetArms) targetArms.style.display = 'inline';
+  });
+}
+
+// =========================================================================
+// GSAP MASTER TIMELINE (17.6s total duration)
+// =========================================================================
+var tl = gsap.timeline({ paused: true, defaults: { duration: 0.5, ease: 'power3.out' } });
+
+// Initial setup
+gsap.set(['#pill1b', '#pill2', '#pill3', '#pill4', '#pill5'], { autoAlpha: 0, y: 25 });
+gsap.set('#pill1a', { autoAlpha: 1, y: 0 });
+gsap.set('#endCard', { autoAlpha: 0 });
+gsap.set('.conf-particle', { scale: 0, autoAlpha: 0 });
+gsap.set(['#stressKaveen', '#stressDilani', '#stressTariq'], { scale: 0, autoAlpha: 0 });
+gsap.set('#tableDot', { autoAlpha: 0, y: -800 });
+
+// -------------------------------------------------------------------------
+// SCENE 1: THE ACCENTUATED PROBLEM (0.0s - 4.8s)
+// -------------------------------------------------------------------------
+tl.addLabel('s1', 0);
+
+// Beat 1 (0.0s - 1.8s): The Numbers Clash
+tl.fromTo('#discrepancyBox', { scale: 0.7, autoAlpha: 0, y: -30 }, { scale: 1, autoAlpha: 1, y: 0, duration: 0.45, ease: 'back.out(2)' }, 0.2);
+tl.to('#seatDilani', { y: 6, duration: 0.1, repeat: 18, yoyo: true, ease: 'sine.inOut' }, 0.4);
+tl.to('#seatTariq', { rotation: 3, duration: 0.12, repeat: 14, yoyo: true, ease: 'sine.inOut' }, 0.5);
+tl.to('#seatKaveen', { y: 8, duration: 0.12, repeat: 16, yoyo: true, ease: 'sine.inOut' }, 0.3);
+
+// Beat 2 (1.8s - 3.2s): Missing Receipts & WhatsApp Chat Panic
+tl.to('#pill1a', { autoAlpha: 0, y: -20, duration: 0.25 }, 1.8)
+  .to('#pill1b', { autoAlpha: 1, y: 0, duration: 0.35 }, 1.95);
+
+// WhatsApp messages pop in
+tl.fromTo('#chatA', { autoAlpha: 0, scale: 0.6, x: -30 }, { autoAlpha: 1, scale: 1, x: 0, duration: 0.35, ease: 'back.out(2)' }, 2.0)
+  .fromTo('#chatB', { autoAlpha: 0, scale: 0.6, x: 30 }, { autoAlpha: 1, scale: 1, x: 0, duration: 0.35, ease: 'back.out(2)' }, 2.4);
+
+// Phone vibrates intensely
+tl.to('#phoneVibe', { rotation: -14, x: 5, duration: 0.07, repeat: 32, yoyo: true, ease: 'none' }, 2.0);
+
+// Stress alert markers pop over members
+tl.to(['#stressKaveen', '#stressDilani', '#stressTariq'], { 
+  scale: 1, autoAlpha: 1, duration: 0.25, stagger: 0.12, ease: 'back.out(3)' 
+}, 2.3);
+
+// -------------------------------------------------------------------------
+// SCENE 2: DOT SUPERHERO ENTRANCE & SHOCKWAVE CLEARING (4.8s - 7.0s)
+// -------------------------------------------------------------------------
+tl.addLabel('s2', 4.8);
+
+tl.to('#pill1b', { autoAlpha: 0, y: -20, duration: 0.25 }, 's2')
+  .to('#pill2', { autoAlpha: 1, y: 0, duration: 0.35 }, 's2+=0.2');
+
+// Dot drops from above with superhero landing into center table (t = 5.2s)
+tl.fromTo('#tableDot', 
+  { y: -800, autoAlpha: 0, scaleY: 1.5, scaleX: 0.6, rotation: 12 },
+  { y: 0, autoAlpha: 1, scaleY: 1, scaleX: 1, rotation: 0, duration: 0.42, ease: 'power4.in' },
+  's2+=0.08'
+);
+
+// Impact squash and stretch on Dot
+tl.to('#tableDot', { scaleY: 0.62, scaleX: 1.38, duration: 0.1, yoyo: true, repeat: 1, ease: 'power2.out' }, 's2+=0.5');
+
+// PHYSICAL SHOCKWAVE EXPANSION at Dot impact (5.3s)
+tl.fromTo('#shockwaveRing', 
+  { scale: 0, autoAlpha: 0.95 },
+  { scale: 95, autoAlpha: 0, duration: 0.7, ease: 'power2.out' },
+  's2+=0.5'
+);
+tl.fromTo('#shockwaveInner', 
+  { scale: 0, autoAlpha: 0.85 },
+  { scale: 75, autoAlpha: 0, duration: 0.55, ease: 'power2.out' },
+  's2+=0.55'
+);
+
+// RADIAL CLUTTER BLAST: Clutter items launch outwards off the table!
+tl.to(['#chatA', '#ledgA', '#rcp2'], { x: -500, y: 180, rotation: -70, autoAlpha: 0, duration: 0.5, ease: 'power3.in' }, 's2+=0.52')
+  .to(['#chatB', '#ledgB', '#rcp3'], { x: 500, y: 180, rotation: 70, autoAlpha: 0, duration: 0.5, ease: 'power3.in' }, 's2+=0.52')
+  .to(['#discrepancyBox', '#rcp1'], { y: -450, rotation: 30, autoAlpha: 0, duration: 0.48, ease: 'power3.in' }, 's2+=0.52')
+  .to('#phoneVibe', { y: 480, scale: 0.3, autoAlpha: 0, duration: 0.48, ease: 'power3.in' }, 's2+=0.52')
+  .to(['#mug1', '#mug2'], { x: -350, autoAlpha: 0, duration: 0.4 }, 's2+=0.52')
+  .to(['#stressKaveen', '#stressDilani', '#stressTariq'], { scale: 0, autoAlpha: 0, duration: 0.2 }, 's2+=0.52');
+
+// Members relieved and hopeful
+tl.call(() => setMembers('hopeful', 'table'), null, 's2+=0.7')
+  .to(['#seatDilani', '#seatTariq', '#seatKaveen'], { y: -12, duration: 0.35, stagger: 0.08, ease: 'back.out(2)' }, 's2+=0.7');
+
+// -------------------------------------------------------------------------
+// SCENE 3: DOT ACTIVELY HELPS (7.0s - 10.4s)
+// -------------------------------------------------------------------------
+tl.addLabel('s3', 7.0);
+
+tl.to('#pill2', { autoAlpha: 0, y: -20, duration: 0.25 }, 's3')
+  .to('#pill3', { autoAlpha: 1, y: 0, duration: 0.35 }, 's3+=0.15');
+
+// Beat 1 (7.2s): Dilani Voucher
+tl.to('#tableDot', { left: 140, top: 580, duration: 0.45, ease: 'power3.inOut' }, 's3+=0.1')
+  .fromTo('#dilaniVoucher', { autoAlpha: 0, scale: 0.5, y: 30 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: 'back.out(2)' }, 's3+=0.35')
+  .to('#seatDilani', { rotation: -6, duration: 0.18, yoyo: true, repeat: 1 }, 's3+=0.4');
+
+// Beat 2 (8.2s): Kaveen Budget
+tl.to('#tableDot', { left: 400, top: 380, duration: 0.45, ease: 'power3.inOut' }, 's3+=1.1')
+  .fromTo('#kaveenBalance', { autoAlpha: 0, scale: 0.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: 'back.out(2.2)' }, 's3+=1.35')
+  .to('#seatKaveen', { y: -16, duration: 0.18, yoyo: true, repeat: 1 }, 's3+=1.4');
+
+// Beat 3 (9.2s): Tariq Roster
+tl.to('#tableDot', { left: 620, top: 580, duration: 0.45, ease: 'power3.inOut' }, 's3+=2.1')
+  .fromTo('#tariqRoster', { autoAlpha: 0, scale: 0.6, x: 20 }, { autoAlpha: 1, scale: 1, x: 0, duration: 0.4, ease: 'back.out(2)' }, 's3+=2.35')
+  .to('#seatTariq', { rotation: 6, duration: 0.18, yoyo: true, repeat: 1 }, 's3+=2.4');
+
+// -------------------------------------------------------------------------
+// SCENE 4: GROUP CELEBRATION (10.4s - 12.6s)
+// -------------------------------------------------------------------------
+tl.addLabel('s4', 10.4);
+
+tl.to('#pill3', { autoAlpha: 0, y: -20, duration: 0.25 }, 's4')
+  .to('#pill4', { autoAlpha: 1, y: 0, duration: 0.35 }, 's4+=0.15');
+
+// Cards slide away
+tl.to(['#dilaniVoucher', '#kaveenBalance', '#tariqRoster'], { autoAlpha: 0, scale: 0.85, duration: 0.3, ease: 'power2.in' }, 's4');
+
+// All members jump into CHEER pose!
+tl.call(() => setMembers('happy', 'cheer'), null, 's4+=0.1')
+  .to(['#seatDilani', '#seatTariq', '#seatKaveen'], { 
+    y: -26, duration: 0.26, stagger: 0.08, yoyo: true, repeat: 3, ease: 'sine.inOut' 
+  }, 's4+=0.15');
+
+// Dot hops into center and celebrates
+tl.to('#tableDot', { left: 400, top: 560, duration: 0.4, ease: 'back.out(2)' }, 's4+=0.1')
+  .to('#tableDot', { rotation: 12, duration: 0.14, repeat: 7, yoyo: true, ease: 'sine.inOut' }, 's4+=0.2');
+
+// Confetti burst!
+tl.to('.conf-particle', { 
+  autoAlpha: 1, scale: 1, y: '+=60', rotation: '+=180', 
+  duration: 0.75, stagger: 0.015, ease: 'power2.out' 
+}, 's4+=0.2');
+
+// -------------------------------------------------------------------------
+// SCENE 5: MATALE NAMED TABLET REVEAL (12.6s - 14.8s)
+// -------------------------------------------------------------------------
+tl.addLabel('s5', 12.6);
+
+tl.to('#pill4', { autoAlpha: 0, y: -20, duration: 0.25 }, 's5')
+  .to('#pill5', { autoAlpha: 1, y: 0, duration: 0.35 }, 's5+=0.15');
+
+tl.to('.conf-particle', { autoAlpha: 0, duration: 0.3 }, 's5');
+
+// Central tablet illuminates with partner reveal
+tl.to('#centerTablet', { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'power4.out' }, 's5+=0.15');
+
+// Members settle with proud happy smiles resting on table
+tl.call(() => setMembers('happy', 'table'), null, 's5+=0.3')
+  .to(['#seatDilani', '#seatTariq', '#seatKaveen'], { y: 0, rotation: 0, duration: 0.35 }, 's5+=0.3');
+
+// Dot stands proudly below tablet
+tl.to('#tableDot', { left: 375, top: 700, duration: 0.45, ease: 'power3.out' }, 's5+=0.2');
+
+// -------------------------------------------------------------------------
+// SCENE 6: END CARD & PARTNER SEAL STAMP (14.8s - 17.6s)
+// -------------------------------------------------------------------------
+tl.addLabel('s6', 14.8);
+
+// Dark overlay wipes in
+tl.to('#endCard', { autoAlpha: 1, pointerEvents: 'auto', duration: 0.45, ease: 'power2.inOut' }, 's6');
+
+// Wordmark letters drop in
+tl.fromTo('#wmEnd span:not(.dot)', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, stagger: 0.04, duration: 0.35, ease: 'power4.out' }, 's6+=0.15');
+tl.fromTo('#wmEnd .dot', { autoAlpha: 0, y: -250 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'bounce.out' }, 's6+=0.3');
+tl.fromTo('#endTag', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 's6+=0.5');
+
+// Dot hops in
+tl.to('#stampDot', { autoAlpha: 1, duration: 0.2 }, 's6+=0.45')
+  .fromTo('#stampDot', { y: 100 }, { y: 0, duration: 0.3, ease: 'back.out(2)' }, 's6+=0.45');
+
+// Partner seal stamp impact! (at 15.5s)
+tl.fromTo('#partnerSeal', 
+  { scale: 2.2, autoAlpha: 0 }, 
+  { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'power4.in' }, 
+  's6+=0.7'
+);
+
+// Impact bounce
+tl.to('#partnerSeal', { scale: 1.08, duration: 0.1, yoyo: true, repeat: 1, ease: 'sine.out' }, 's6+=1.0');
+tl.to('#stampDot', { y: -14, duration: 0.1, yoyo: true, repeat: 1 }, 's6+=1.0');
+
+// URL & CTA visible from 15.8s through 17.6s!
+tl.fromTo('#endUrl', { autoAlpha: 0, scale: 0.92 }, { autoAlpha: 1, scale: 1, duration: 0.35 }, 's6+=0.95');
+tl.fromTo('#endCta', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 's6+=1.05');
+tl.to({}, { duration: 0.8 }, 's6+=2.0');
+
+// Bindings for render-reel.cjs
+window.DURATION = tl.duration();
+window.seek = function(t) { tl.time(t, false); };
+window.seek(0);
+</script>
+</body>
+</html>

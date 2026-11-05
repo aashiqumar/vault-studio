@@ -1,0 +1,52 @@
+You are making a narrative marketing reel for Vault, a club-management app for Rotaract clubs in Sri Lanka. This one tells a real, approved story: Rotaract Club of Matale is Vault's first named club partner. The person giving you this brief is the Vice President of that club and has personally authorized naming it — you do not need to seek further consent for using the club's name, but you DO still need to follow every other rule in CLAUDE.md (see Legal section especially — no Rotary/Rotaract logos or wheel symbols anywhere, even though the club itself is named).
+
+Work inside the vault-studio project folder with file read/write and shell access (Node, Python, and the ability to read JPG/PNG frames you render).
+
+SETUP — read these in full before writing any code
+1. CLAUDE.md in the repo root — especially "Reels," "Dot (the mascot)," the quality checklist, Claims, and Legal.
+2. .claude/skills/vault-reel/SKILL.md.
+3. templates/reel.html and templates/apple-reel.html — study the GSAP timeline mechanics (one paused gsap.timeline(), labels, window.DURATION/window.seek, the putDot()/placeDot()/lockDot() helpers). Reuse these MECHANICS. Do not reuse their sample content (event names, numbers, attendee initials) — invent your own.
+4. Run: node scripts/library.cjs status — read it fully.
+
+THE VISUAL PROBLEM YOU ARE SPECIFICALLY FIXING
+Every reel and post made in this repo so far uses the same two compositions: a flat color background with soft blobs, or a phone-mockup screen centered in frame. This reel must NOT default to either formula as its primary device. Instead:
+- Build an actual illustrated SCENE (a meeting table, seen from above/flat-lay angle) using simple flat-vector primitives in the same drawn-in-code house style as Dot (kit/dot.js) — rounded shapes, the brand's flat color palette, no gradients-for-decoration, no drop shadows, no photoreal or stock imagery.
+- Use the SAME table composition at the start, middle, and the "Matale" reveal — a callback: open on it cluttered, return to it tidy. The visual contrast should carry the story, not just the captions.
+- Use at least one physical/match-cut transition (e.g. the clutter visually clearing in a path as Dot walks through it), not a plain crossfade between every scene.
+
+YOU NEED TO BUILD ONE NEW THING: simple illustrated "club member" characters
+The kit currently only has Dot and small circular avatar-initials (like "KS" in a colored circle) — neither is enough to show people reacting with real feeling. Build 3-4 simple flat "member" characters as reusable SVG, drawn the same disciplined way Dot is (rounded body shapes, the brand palette for clothing/accents, simple arcs/dots for faces): a worried expression (for the opening) and a happy/cheering expression (for the payoff) at minimum. Keep them simple and iconographic, NOT detailed illustration, NOT emoji, NOT stock people. Put this new primitive in its own file (e.g. kit/members.js) following the pattern of kit/dot.js and kit/poses.js, so it's reusable in future reels/posts, not one-off inline SVG.
+
+THE STORY — "Matale's Day" (16-18s, vertical 1080x1920)
+1. 0-4s — THE PROBLEM: the table scene, flat-lay/overhead framing, cluttered — scattered papers, a buzzing phone, 3-4 member characters with worried expressions. Kinetic text stabs: invent your own short phrases about manual reports/audits being hard to reconcile between exco members (keep it relatable, not a specific accusation — e.g. "Everyone's tracking something different" rather than naming a literal dispute).
+2. 4-7s — DOT ARRIVES: Dot enters from off-frame (walking/rolling in, not a center pop-in). The clutter visually clears in Dot's path. Members look up, hopeful — shift their expression.
+3. 7-11s — DOT ACTIVELY HELPS: same table, now mid-tidy. Dot hands one member a clean report, taps something into place for another — show Dot DOING something for specific members, not just standing near a UI. Quick, satisfying motion (snaps, not long holds).
+4. 11-13s — THEY'RE HAPPY: a group moment — members + Dot together, cheering/high-five, happy expressions, confetti or sparkles (reuse Dot's existing party/confetti visual motifs from kit/poses.js for consistency).
+5. 13-15s — MATALE, NAMED: same table composition as scene 1 and 3, now fully tidy, with "Welcome aboard, Rotaract Club of Matale" as the reveal — framed as part of the scene (e.g. on a screen/tablet sitting on the table), not a generic separate announcement card.
+6. 15-18s — END CARD: Dot stamps a "Partner" badge/seal onto the frame (an actual small motion beat, not a static hold). Vault wordmark, vaultpro.cloud.
+
+Write your own exact scene table (times, caption text, character expressions, Dot's actions, SFX) before writing any code.
+
+BUILD IT
+- One paused gsap.timeline(), labelled scenes, nothing animated outside the timeline (no CSS animation, setTimeout, requestAnimationFrame) — render-reel.cjs seeks frame by frame at 30fps.
+- Preview stills first at each scene's busiest moment (render-reel.cjs --preview). Read every still yourself. Check safe areas (250px top, 340px bottom), that member characters and Dot never overlap captions or each other awkwardly, and that the "worried" vs "happy" expressions actually read clearly at a glance.
+- Fix and re-preview before the full render.
+- Audio: copy scripts/audio/compose_reel.py or compose_apple_reel.py as a base. This story needs a clear emotional arc in the sound too — tense/sparse under the chaos, a warm resolving chord under Dot's arrival, upbeat under the celebration. Set DUR to your exact duration and place cues on your actual scene times.
+- Full render with --audio.
+- Pull 5-6 frames from the finished MP4 at key moments (chaos table, Dot arriving, Dot helping a member, the group celebration, the Matale reveal, end card) and read them to verify.
+- Caption: write one, following CLAUDE.md's caption structure (hook, 2-3 value lines, one CTA), plain warm voice, max one pun, 3-5 hashtags from hashtag_sets in content/library.json (use set D). Alt text too.
+
+GUARDRAILS (draft for review, not a live publish)
+- Record it via node scripts/library.cjs add with "status": "draft" and no "post_date". Do not schedule a date, do not touch any existing library item (there is an existing draft/unscheduled item L12 about Matale — leave it alone, this reel is a separate new entry).
+- Do not overwrite any existing file in assets/, templates/, or kit/ — new filenames only for the reel template, the audio script, and the new kit/members.js file.
+- Do not run node scripts/library.cjs calendar.
+- Follow the Claims section in CLAUDE.md exactly for any product-feature claim (Finance V2 is confirmed live, so direct claims like "Vault does X" are fine for those specific features — check the list in CLAUDE.md before claiming anything else).
+- No Rotary/Rotaract logos, gear/wheel symbols, or Rotary colours anywhere, even though the club is named.
+
+DELIVER BACK
+1. Your scene table, written before the code.
+2. The new kit/members.js file and a quick description of what it draws.
+3. The final MP4 plus the 5-6 verification frames.
+4. Your own grading against CLAUDE.md's quality checklist and the Reels section — what you fixed, what you're unsure about.
+5. The caption, alt text, and which hashtag set you used.
+6. Anything about the illustrated-scene approach, the new member characters, or the emotional audio arc you found hard to get right.

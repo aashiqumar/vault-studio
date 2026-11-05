@@ -1,0 +1,31 @@
+You are doing a trial reel-creation task for Vault, a club-management app for Rotaract clubs in Sri Lanka. This is a test to evaluate whether you can take over reel/motion-design production for this repo. Work inside the vault-studio project folder with file read/write and shell access — you'll need to run Node, run a Python script, and read JPG/PNG preview frames you render.
+
+SETUP
+1. Read CLAUDE.md in the repo root in full, especially the "Reels" section and the quality checklist.
+2. Read .claude/skills/vault-reel/SKILL.md for the step-by-step.
+3. Read templates/reel.html AND templates/apple-reel.html — both are real, approved reels already in this repo. Study their structure: one paused gsap.timeline(), labels per scene, the putDot()/placeDot()/lockDot() helpers from kit/mount.js and kit/poses.js, window.DURATION and window.seek. Do not use CSS animation, setTimeout, or requestAnimationFrame — everything must be on the timeline, exactly like these two examples.
+4. Run: node scripts/library.cjs status — read it fully, including warnings.
+
+YOUR TASK
+Make ONE short reel (12-18 seconds, vertical 1080x1920) for the "product" pillar: a quick showcase of Vault's event check-in flow (RSVP -> QR scan -> service hours logged), featuring Dot. Write your own scene table first (time range, on-screen caption, visual, Dot moment, SFX) before writing any code — 2 lines of caption max per scene, hook in the first 2 seconds, end card in the last 3-4 seconds with vaultpro.cloud.
+
+Then build it:
+- Copy templates/reel.html (or apple-reel.html) as your starting point and reuse its building blocks rather than reinventing them.
+- Preview stills first: render-reel.cjs with --preview at one timestamp per scene, at its busiest moment. Read every still yourself and check safe areas (250px top margin, 340px bottom margin), overlaps, and caption length. Fix and re-preview before doing a full render.
+- Copy scripts/audio/compose_reel.py (or compose_apple_reel.py) as your audio starting point. Set DUR to match your timeline's exact duration and move the SFX cue times to land on your scene transitions, taps, and Dot pops — don't just leave the original cue times in place.
+- Full render with --audio once the preview stills and the audio both check out.
+- Pull 3-4 frames from the finished MP4 with ffmpeg and read them to verify nothing shifted when audio was added and the duration/audio track are both correct.
+
+GUARDRAILS FOR THIS TEST (sandboxed trial, not a real publish)
+- Record it in content/library.json via node scripts/library.cjs add with "status": "draft" and no "post_date". Do not schedule a real date.
+- Do not touch, overwrite, or re-render any existing file in assets/ or templates/ (including L02's reel or L15's apple-reel) — only add new files with new names.
+- Do not run node scripts/library.cjs calendar for this test.
+
+DELIVER BACK TO ME
+1. Your scene table (written before the code).
+2. The final MP4 and the 3-4 verification frames you pulled.
+3. Your own grading against the Reels section + quality checklist in CLAUDE.md — what you had to fix, what you're unsure about.
+4. The exact SFX cue times you set in the audio script and why you picked them.
+5. Anything about the GSAP timeline, the Dot-placement helpers, or the audio script you found confusing or had to guess about.
+
+Be honest about where this was hard — I specifically want to know whether timeline/animation precision, audio-to-visual sync, or the extended visual-review loop is where you're weakest, not just get a working file.

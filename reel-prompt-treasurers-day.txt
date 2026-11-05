@@ -1,0 +1,42 @@
+You are making a high-energy marketing reel for Vault, a club-management app for Rotaract clubs in Sri Lanka. Work inside the vault-studio project folder with file read/write and shell access (Node, Python, and the ability to read JPG/PNG frames you render).
+
+SETUP — read these before writing any code
+1. CLAUDE.md in the repo root, in full — especially "Reels," the quality checklist, Claims, and Legal.
+2. .claude/skills/vault-reel/SKILL.md for the step-by-step.
+3. templates/reel.html and templates/apple-reel.html — both are real, approved reels already in this repo. Study their GSAP timeline structure (one paused gsap.timeline(), labels per scene, window.DURATION/window.seek, the putDot()/placeDot()/lockDot() helpers) and copy THOSE MECHANICS.
+4. Run: node scripts/library.cjs status — read it fully including warnings.
+
+THE ONE RULE THAT MATTERS MOST
+Reuse the CODE PATTERNS from reel.html/apple-reel.html (the timeline structure, the Dot-placement helpers, the phone-mockup CSS). Do NOT reuse their CONTENT. Specifically: do not reuse "Beach clean-up at Unawatuna," the same attendee initials (KS/ZA/TM), the same "33 going," the same "7:00 AM / 4 hours," or any other sample data already baked into those two files. Invent a different fictional event, different numbers, different names. If what you ship contains the same fictional details as an existing file, you have failed this task — CLAUDE.md is explicit that reworded or copied old content doesn't count as new.
+
+THE CONCEPT — "The Treasurer's Day"
+This is a fast-cut, rhythm-driven reel, NOT a slow premium one (that's what apple-reel.html already is — don't repeat its pacing or mood). 16-18 seconds, vertical 1080x1920. Tension-and-release structure:
+
+1. 0-3s — CHAOS MONTAGE: fast cuts, roughly 0.4s each, of a treasurer's stressful morning. Kinetic text stabs (not phone mockups) like "7 unread messages." / "Which version is correct?" / "Where did that receipt go?" Quick, frantic, a bit messy on purpose.
+2. 3-3.5s — HARD STOP: cut to black or near-black, a beat of stillness. Let it breathe for half a second.
+3. 3.5-6.5s — BRAND REVEAL: the Vault wordmark assembles, its full stop snaps into Dot (reuse the lockDot() technique from the reference files — this IS an established brand device, fine to reuse as a mechanic).
+4. 6.5-11s — SNAP INTO PLACE: rapid, satisfying motion — numbers counting up fast, bars filling with quick snaps, 2-3 feature beats in quick succession (~1.3s each: a treasury number, an approval tick, an event check-in — invent your own fictional numbers/names for all of these, see the rule above). This section should feel like tension releasing into order.
+5. 11-14s — PAYOFF: a quick before/after — a flash replay of the opening chaos, then a wipe to the calm Vault UI.
+6. 14-17s — END CARD: fast punch-in on the wordmark + Dot, one tagline, vaultpro.cloud. Keep it short and confident, don't linger.
+
+Write this out as your own scene table (exact times, caption text, Dot pose/mood, SFX) BEFORE writing any code.
+
+BUILD IT
+- One paused gsap.timeline(), labels per scene, nothing animated outside the timeline (no CSS animation, setTimeout, or requestAnimationFrame) — render-reel.cjs seeks it frame by frame.
+- Preview stills first: render-reel.cjs --preview at one timestamp per scene, at its busiest moment. Read every still yourself. Check safe areas (250px top, 340px bottom), text legibility at fast-cut speed (captions must still be readable even though they're on screen briefly), and that nothing overlaps Dot, phones, or the footer.
+- Fix and re-preview before the full render.
+- Audio: copy scripts/audio/compose_reel.py or compose_apple_reel.py as a starting point, but this piece needs tighter, punchier percussive hits on the fast cuts (think quick clicks/taps on every 0.4s chaos-cut) rather than a soft ambient pad throughout. Set DUR to your exact timeline duration and place every SFX cue to match your actual cut times — don't leave placeholder times from the reference script.
+- Full render with --audio.
+- Pull 4-5 frames from the finished MP4 with ffmpeg at key moments (a chaos cut, the hard-stop black frame, the brand reveal, a snap-into-place beat, the end card) and read them to verify timing, legibility, and that audio landed correctly.
+
+GUARDRAILS (sandboxed — this is a draft for review, not a live publish)
+- Record it via node scripts/library.cjs add with "status": "draft" and no "post_date". Do not schedule a real date, do not touch any existing item.
+- Do not overwrite or re-render any existing file in assets/ or templates/ (including reel.html, apple-reel.html, or checkin-reel.html from an earlier trial) — new filenames only.
+- Do not run node scripts/library.cjs calendar.
+
+DELIVER BACK
+1. Your scene table, written before the code.
+2. The final MP4 plus the 4-5 verification frames.
+3. Confirm explicitly, in writing, that every fictional event name/number/detail in this reel is NEW and does not match reel.html, apple-reel.html, or checkin-reel.html.
+4. Your own grading against the quality checklist and the Reels section of CLAUDE.md — what you fixed, what you're unsure about.
+5. Anything about the fast-cut timing or the percussive audio sync you found hard to get right.

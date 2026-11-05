@@ -192,14 +192,14 @@ A tiny rose vault-bot: rounded-square body, round door with a cream face plate, 
 - Dot's Tips posts are written in Dot's voice and close with "📌 Save it".
 
 ## Claims (must be true when posted)
-Features from the Finance V2 ledger are being built and may not be live yet:
+Vault is in production (confirmed 2026-10-14). Finance V2 is live, so these can be claimed outright — "Vault does…", not "Vault is built to…":
 - recording money moved between accounts;
 - tagging entries to club or project money;
 - "owed back" tracking;
 - vouchers and approvals;
 - a one-click year-end audit pack.
 
-If the brief doesn't confirm a feature is live, write "Vault is built to…" / "coming to Vault" rather than "Vault does…". Don't say "recommended by the district" unless the user confirms written approval.
+For any *future* feature not covered above, default back to hedged language ("Vault is built to…" / "coming to Vault") until the user confirms it's live — update this list when they do. Don't say "recommended by the district" unless the user confirms written approval.
 
 ## Legal
 - No Rotary or Rotaract logos, wheel symbols or Rotary International colours anywhere.

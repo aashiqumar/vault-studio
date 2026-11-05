@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — today's seed posts</title>
+<link rel="stylesheet" href="../brand/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#888;font-family:'PJS',sans-serif;color:#14151F}
+.post{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:40px;background:var(--paper)}
+.kick{font-size:30px;font-weight:800;letter-spacing:.12em;color:var(--rose)}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1.02}.h em{font-style:normal;color:var(--rose)}
+.p{font-size:42px;line-height:1.4;color:var(--ink-2);font-weight:600}
+.foot{position:absolute;left:80px;right:80px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-size:30px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- A: Keep every receipt (tips, light) -->
+<section class="post" id="a" data-export="vault-seed-01-keep-receipts">
+  <div style="position:absolute;left:80px;right:80px;top:130px">
+    <div class="kick">TREASURER TIP</div>
+    <div class="h" style="font-size:96px;margin-top:22px">Keep every receipt, <em>even the small ones.</em></div>
+    <div class="p" style="margin-top:36px;max-width:820px">A Rs 300 tea bill with no receipt is the one the auditor asks about.</div>
+    <div style="margin-top:56px;padding:36px 40px;border-radius:16px;background:#FFFFFF;border:2px solid var(--line);max-width:760px">
+      <div class="kick" style="font-size:26px">HOW VAULT HELPS</div>
+      <div style="font-size:36px;font-weight:700;margin-top:12px;line-height:1.35;color:var(--ink)">Snap it at the counter. Vault files it with the entry, so nothing gets left at home.</div>
+    </div>
+  </div>
+  <div class="foot"><span data-logo data-h="43"></span><span style="color:var(--mute)">vaultpro.cloud</span></div>
+</section>
+
+<!-- B: Maker-checker (tips, dark) -->
+<section class="post" id="b" data-export="vault-seed-02-maker-checker" style="background:#14151F;color:#fff">
+  <div style="position:absolute;left:80px;right:80px;top:150px">
+    <div class="kick" style="color:#FF8FB1">WHY TWO SIGN-OFFS</div>
+    <div class="h" style="font-size:88px;margin-top:22px">Never let one person approve <em style="color:#FF6F98">their own payment.</em></div>
+    <div class="p" style="color:#C9CAD3;margin-top:36px;max-width:840px">Maker-checker means a mistake — or a shortcut — gets caught before the money moves, not after.</div>
+  </div>
+  <div class="foot" style="color:#9A9CAB"><span data-logo data-h="43" data-color="#FFFFFF"></span><span>Built into every approval</span></div>
+</section>
+
+<script src="../kit/glyphs.js"></script><script src="../kit/logo.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script><script src="../kit/mount.js"></script>
+<script>
+mountLogos();
+placeDot('a', 'receipt', 300, 860, 1150);
+placeDot('b', 'balanced', 300, 850, 1170, { dark: true });
+</script>
+</body>
+</html>

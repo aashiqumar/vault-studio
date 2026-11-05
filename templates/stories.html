@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — stories (1080×1920)</title>
+<link rel="stylesheet" href="../brand/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#888;font-family:'PJS',sans-serif;color:#14151F}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;margin-bottom:40px;background:var(--paper)}
+.kick{font-size:32px;font-weight:800;letter-spacing:.12em;color:var(--rose)}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.h em{font-style:normal;color:var(--rose)}
+.p{font-size:40px;line-height:1.4;color:var(--ink-2);font-weight:600}
+.safe-top{position:absolute;left:80px;right:80px;top:250px}
+.foot{position:absolute;left:80px;right:80px;bottom:340px;display:flex;justify-content:space-between;align-items:center;font-size:28px;font-weight:700}
+.chip{display:inline-block;padding:24px 36px;border-radius:12px;background:#FFFFFF;border:2px solid var(--line);font-weight:800;font-size:40px}
+</style>
+</head>
+<body>
+
+<!-- S01: post-reveal reaction story (worried Dot) -->
+<section class="story" id="s1" data-export="vault-s01-whatsapp-excel-react" style="background:#14151F;color:#fff">
+  <div class="safe-top">
+    <div class="kick" style="color:#FF8FB1">YESTERDAY'S POST</div>
+    <div class="h" style="font-size:88px;margin-top:28px">Still feel personally victimized by Excel<em style="color:#FF6F98">?</em></div>
+    <div class="p" style="color:#C9CAD3;margin-top:34px">We see you. Dot does too.</div>
+  </div>
+  <div id="s1dot" style="position:absolute;left:0;right:0;top:850px;display:flex;justify-content:center"></div>
+  <div class="foot" style="color:#9A9CAB;justify-content:center;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <span style="font-size:34px;font-weight:800;color:#fff">Tap below if this is you 👇</span>
+    <span data-logo data-h="36" data-color="#FFFFFF"></span>
+  </div>
+</section>
+
+<!-- S02: poll story -->
+<section class="story" id="s2" data-export="vault-s02-tracking-poll">
+  <div class="safe-top">
+    <div class="kick">QUICK POLL</div>
+    <div class="h" style="font-size:84px;margin-top:28px">How does your club track money<em>?</em></div>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;top:700px;display:flex;flex-direction:column;gap:26px;align-items:stretch">
+    <div class="chip">📱 WhatsApp</div>
+    <div class="chip">📊 Excel</div>
+    <div class="chip">📓 Notebook</div>
+    <div class="chip">🧠 Treasurer's memory 😅</div>
+  </div>
+  <div id="s2dot" style="position:absolute;left:0;right:730px;top:1260px;display:flex;justify-content:center"></div>
+  <div class="foot" style="justify-content:center"><span data-logo data-h="36"></span></div>
+</section>
+
+<script src="../kit/glyphs.js"></script><script src="../kit/logo.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script><script src="../kit/mount.js"></script>
+<script>
+document.getElementById('s1dot').innerHTML = pose('worried', 420, { dark: true });
+document.getElementById('s2dot').innerHTML = pose('thinking', 320);
+mountLogos();
+</script>
+</body>
+</html>

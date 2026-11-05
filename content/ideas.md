@@ -14,7 +14,7 @@ Pick from here when planning. When an idea becomes a library entry, change `[ ]`
 - [ ] Never pay a vendor in cash without a receipt. Post. Pose: worried.
 - [ ] Outgoing treasurer handover checklist (7 items). Carousel, July peak. Pose: clipboard.
 - [ ] Budget before the project: estimate vs actual. Carousel. Pose: thinking.
-- [ ] Fundraisers: record income and costs separately; don't net them. Post. Pose: point.
+- [x → L16] Fundraisers: record income and costs separately; don't net them. Post. Pose: point.
 - [ ] Sponsorship in kind: how to note donated goods. Post. Pose: thinking.
 - [ ] Refunds and cancellations: reverse, never delete. Post ⚑. Pose: oops → happy.
 - [ ] The club needs its own bank account, not the treasurer's personal one. Post. Pose: worried.

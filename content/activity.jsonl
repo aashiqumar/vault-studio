@@ -1,0 +1,307 @@
+{"ts":"2026-10-14T11:21:23.056Z","type":"check","msg":"Freshness check \"Rotaract Club of Matale officially using Vault\": fresh"}
+{"ts":"2026-10-14T11:22:07.376Z","type":"render","msg":"Rendering templates/matale-announcement.html","page":"templates/matale-announcement.html"}
+{"ts":"2026-10-14T11:22:07.554Z","type":"file","msg":"Rendered vault-matale-01-announcement","file":"out/matale/vault-matale-01-announcement.png"}
+{"ts":"2026-10-14T11:22:56.298Z","type":"render","msg":"Rendering templates/matale-announcement.html","page":"templates/matale-announcement.html"}
+{"ts":"2026-10-14T11:22:56.446Z","type":"file","msg":"Rendered vault-matale-01-announcement","file":"out/matale/vault-matale-01-announcement.png"}
+{"ts":"2026-10-14T11:23:36.113Z","type":"library","msg":"Added L12: Rotaract Club of Matale officially using Vault","id":"L12"}
+{"ts":"2026-10-14T11:23:37.171Z","type":"library","msg":"You moved S01 from Sat 17 Oct to Thu 15 Oct","id":"S01","by":"user"}
+{"ts":"2026-10-14T11:23:38.527Z","type":"done","msg":"Rotaract Club of Matale adoption announcement ready (L12) — community pillar, rose bg, Dot in party mode"}
+{"ts":"2026-10-14T11:23:38.767Z","type":"library","msg":"You moved S01 from Thu 15 Oct to Fri 16 Oct","id":"S01","by":"user"}
+{"ts":"2026-10-14T11:23:40.638Z","type":"library","msg":"You moved L01 from Mon 19 Oct to Thu 15 Oct","id":"L01","by":"user"}
+{"ts":"2026-10-14T11:32:39.149Z","type":"library","msg":"Updated L04: notes=Finance V2 confirmed live in prod (14 Oct) — 'Vault does this for you' claim checked and OK.","id":"L04"}
+{"ts":"2026-10-14T11:32:39.186Z","type":"library","msg":"Updated L08: notes=Finance V2 confirmed live in prod (14 Oct) — vouchers and audit pack claims checked and OK.","id":"L08"}
+{"ts":"2026-10-14T11:32:45.913Z","type":"library","msg":"Updated L08: notes=Finance V2 confirmed live in prod (14 Oct) — vouchers and audit pack are real, caption verified OK.","id":"L08"}
+{"ts":"2026-10-14T11:32:50.187Z","type":"step","msg":"Vault confirmed in prod: updated CLAUDE.md Claims section (Finance V2 claims no longer hedged), resolved L04/L08 claims checks, regenerated calendar.md"}
+{"ts":"2026-10-14T11:34:59.818Z","type":"check","msg":"Freshness check \"Dot's Tip: approve as you go, not once a month\": fresh"}
+{"ts":"2026-10-14T11:34:59.848Z","type":"check","msg":"Freshness check \"Meet Dot, the mascot\": 2 problem(s)"}
+{"ts":"2026-10-14T11:35:56.403Z","type":"render","msg":"Rendering templates/dot-sheets.html","page":"templates/dot-sheets.html"}
+{"ts":"2026-10-14T11:35:56.547Z","type":"file","msg":"Rendered dot-post-meet-dot","file":"out/dot-sheets/dot-post-meet-dot.png"}
+{"ts":"2026-10-14T11:35:56.646Z","type":"file","msg":"Rendered dot-post-tip-1","file":"out/dot-sheets/dot-post-tip-1.png"}
+{"ts":"2026-10-14T11:36:11.982Z","type":"render","msg":"Rendering templates/dot-sheets.html","page":"templates/dot-sheets.html"}
+{"ts":"2026-10-14T11:36:12.130Z","type":"file","msg":"Rendered dot-post-tip-1","file":"out/dot-sheets/dot-post-tip-1.png"}
+{"ts":"2026-10-14T11:36:22.309Z","type":"library","msg":"Updated L03: background=ink","id":"L03"}
+{"ts":"2026-10-14T11:36:22.343Z","type":"library","msg":"Updated L07: topic=Dot's Tip #1: approve as you go, not once a month angle=Habit tip: approve entries promptly instead of batching at month-end hook=Dot's Tip #1 💡 Approve as you go, not once a month. dot_pose=clipboard layout=headline + Dot with clipboard + pencil, ink bg caption=Dot's Tip #1 💡 Approve as you go, not once a month.\nA pile of 40 entries waiting for sign-off at month-end is how mistakes slip through. Approve each one within a day or two, while you still remember what it was for.\nVault makes it one tap, so there's no excuse to batch it.\n📌 Save it · 📤 Share it with your board notes=Replaced old topic (repeated L04 carousel slide 3). Fresh angle + pose (clipboard), re-rendered 14 Oct.","id":"L07"}
+{"ts":"2026-10-14T11:36:27.885Z","type":"library","msg":"Updated L07: keywords=approvals,weekly,habit,treasurer-tip,backlog","id":"L07"}
+{"ts":"2026-10-14T11:37:39.814Z","type":"render","msg":"Rendering templates/stories.html","page":"templates/stories.html"}
+{"ts":"2026-10-14T11:37:39.929Z","type":"file","msg":"Rendered vault-s01-whatsapp-excel-react","file":"out/stories/vault-s01-whatsapp-excel-react.png"}
+{"ts":"2026-10-14T11:37:40.026Z","type":"file","msg":"Rendered vault-s02-tracking-poll","file":"out/stories/vault-s02-tracking-poll.png"}
+{"ts":"2026-10-14T11:37:59.175Z","type":"render","msg":"Rendering templates/stories.html","page":"templates/stories.html"}
+{"ts":"2026-10-14T11:37:59.294Z","type":"file","msg":"Rendered vault-s01-whatsapp-excel-react","file":"out/stories/vault-s01-whatsapp-excel-react.png"}
+{"ts":"2026-10-14T11:37:59.391Z","type":"file","msg":"Rendered vault-s02-tracking-poll","file":"out/stories/vault-s02-tracking-poll.png"}
+{"ts":"2026-10-14T11:38:04.698Z","type":"file","msg":"Contact sheet (2 images)","file":"out/stories-preview.jpg"}
+{"ts":"2026-10-14T11:38:14.942Z","type":"library","msg":"Updated S01: angle=Post-reveal reaction, continues L01's WhatsApp/Excel problem hook hook=Still feel personally victimized by Excel? keywords=excel,whatsapp,reaction,relatable,engagement dot_pose=worried background=ink layout=headline + worried Dot + reaction CTA, ink bg hashtag_set=D files=assets/2026-10-stories/vault-s01-whatsapp-excel-react.png caption=Still feel personally victimized by Excel? 😅 We see you — Dot does too. Tap the sticker if this is you 👇 notes=Original brief (\"Someone's moving in on Monday\" countdown) assumed L01 would post on a Monday; the user later moved L01 to Thu 15 Oct (locked). Since this story's own date (16 Oct, locked) falls AFTER L01 now, re-angled it as a post-reveal reaction instead of a pre-launch teaser so the copy stays accurate. Flagged to user. status=ready","id":"S01"}
+{"ts":"2026-10-14T11:38:14.978Z","type":"library","msg":"Updated S02: angle=Engagement poll, sets up a future carousel/story from the answers hook=How does your club track money? keywords=poll,tracking,whatsapp,excel,engagement dot_pose=thinking background=paper layout=headline + 4 poll-option chips + Dot, paper bg hashtag_set=A files=assets/2026-10-stories/vault-s02-tracking-poll.png caption=How does your club track money? 👇 WhatsApp / Excel / Notebook / Treasurer's memory 😅 — vote below, we're curious. notes=Native IG poll sticker goes over the 4 chips when posting. status=ready","id":"S02"}
+{"ts":"2026-10-14T11:38:20.172Z","type":"done","msg":"Calendar aligned: L07 topic swapped (fixed overlap), L03 bg swapped (fixed grid), S01+S02 stories produced. All 4 flagged warnings clear."}
+{"ts":"2026-10-14T11:59:03.659Z","type":"library","msg":"Moved L02 from Wed 21 Oct to Sat 17 Oct","id":"L02"}
+{"ts":"2026-10-14T11:59:03.697Z","type":"library","msg":"Moved L03 from Fri 23 Oct to Mon 19 Oct","id":"L03"}
+{"ts":"2026-10-14T11:59:10.504Z","type":"library","msg":"Updated L02: notes=Soundtrack: scripts/audio/compose_reel.py. Part of launch-week burst: posts Sat 17 Oct, 2 days after L01.","id":"L02"}
+{"ts":"2026-10-14T11:59:10.538Z","type":"library","msg":"Updated L03: notes=Pin to profile until 12 Nov. Part of launch-week burst: posts Mon 19 Oct, closing out the 3-post seed.","id":"L03"}
+{"ts":"2026-10-14T11:59:10.576Z","type":"library","msg":"Updated S01: notes=Original brief assumed a Monday launch; re-angled as a post-reveal reaction since it runs the day after L01 (Thu 15 Oct). Still accurate at its date (Fri 16 Oct).","id":"S01"}
+{"ts":"2026-10-14T11:59:13.528Z","type":"plan","msg":"Launch-week burst: pulled L02 (reel) to Sat 17 Oct and L03 (Meet Dot) to Mon 19 Oct, so the profile shows 3 posts (Thu/Sat/Mon) within the first 5 days instead of 1 post sitting alone for a week. Normal cadence resumes Mon 26 Oct."}
+{"ts":"2026-10-14T12:07:57.837Z","type":"check","msg":"Freshness check \"Keep every receipt, even the small ones\": fresh"}
+{"ts":"2026-10-14T12:07:57.862Z","type":"check","msg":"Freshness check \"Two people approve every payment, maker-checker\": fresh"}
+{"ts":"2026-10-14T12:07:57.887Z","type":"check","msg":"Freshness check \"Rotaract Club of Matale officially using Vault\": 1 problem(s)"}
+{"ts":"2026-10-14T12:08:41.938Z","type":"render","msg":"Rendering templates/today-seed.html","page":"templates/today-seed.html"}
+{"ts":"2026-10-14T12:08:42.047Z","type":"file","msg":"Rendered vault-seed-01-keep-receipts","file":"out/today-seed/vault-seed-01-keep-receipts.png"}
+{"ts":"2026-10-14T12:08:42.145Z","type":"file","msg":"Rendered vault-seed-02-maker-checker","file":"out/today-seed/vault-seed-02-maker-checker.png"}
+{"ts":"2026-10-14T12:09:05.072Z","type":"render","msg":"Rendering templates/today-seed.html","page":"templates/today-seed.html"}
+{"ts":"2026-10-14T12:09:05.210Z","type":"file","msg":"Rendered vault-seed-01-keep-receipts","file":"out/today-seed/vault-seed-01-keep-receipts.png"}
+{"ts":"2026-10-14T12:09:11.058Z","type":"file","msg":"Contact sheet (3 images)","file":"out/seed-preview.jpg"}
+{"ts":"2026-10-14T12:09:27.190Z","type":"library","msg":"Added L13: Keep every receipt, even the small ones","id":"L13"}
+{"ts":"2026-10-14T12:09:27.225Z","type":"library","msg":"Added L14: Two people approve every payment (maker-checker)","id":"L14"}
+{"ts":"2026-10-14T12:09:30.011Z","type":"library","msg":"Moved L12 from unscheduled to Wed 14 Oct","id":"L12"}
+{"ts":"2026-10-14T12:09:30.046Z","type":"library","msg":"Updated L12: notes=Part of today's 3-post profile seed (with L13, L14), requested same-day to avoid an empty-looking profile. Still needs the club's OK to be publicly named before posting.","id":"L12"}
+{"ts":"2026-10-14T12:09:38.403Z","type":"done","msg":"3 posts seeded for today (14 Oct): L12 Matale announcement, L13 receipts tip, L14 maker-checker tip — fills the empty profile before L01 drops tomorrow"}
+{"ts":"2026-10-14T12:11:35.492Z","type":"library","msg":"Moved L12 from Wed 14 Oct to unscheduled","id":"L12"}
+{"ts":"2026-10-14T12:11:35.525Z","type":"library","msg":"Updated L12: notes=Waiting on Rotaract Club of Matale's approval before posting. Pulled from today's seed batch; L13/L14 stand alone for 14 Oct.","id":"L12"}
+{"ts":"2026-10-14T12:13:36.167Z","type":"check","msg":"Freshness check \"Apple-style premium showcase reel: Vault + Dot, brand reveal and 3 product beats\": fresh"}
+{"ts":"2026-10-14T12:15:04.119Z","type":"file","msg":"Reel preview at 1.2s","file":"out/apple-prev/t-1.20.jpg"}
+{"ts":"2026-10-14T12:15:04.191Z","type":"file","msg":"Reel preview at 5s","file":"out/apple-prev/t-5.00.jpg"}
+{"ts":"2026-10-14T12:15:04.295Z","type":"file","msg":"Reel preview at 8s","file":"out/apple-prev/t-8.00.jpg"}
+{"ts":"2026-10-14T12:15:04.366Z","type":"file","msg":"Reel preview at 12s","file":"out/apple-prev/t-12.00.jpg"}
+{"ts":"2026-10-14T12:15:04.425Z","type":"file","msg":"Reel preview at 15s","file":"out/apple-prev/t-15.00.jpg"}
+{"ts":"2026-10-14T12:15:25.377Z","type":"file","msg":"Reel preview at 15.8s","file":"out/apple-prev/t-15.80.jpg"}
+{"ts":"2026-10-14T12:17:02.410Z","type":"reel","msg":"Rendering reel templates/apple-reel.html: 492 frames","progress":0,"total":492}
+{"ts":"2026-10-14T12:17:02.458Z","type":"reel","msg":"Frame 0/492","progress":0,"total":492}
+{"ts":"2026-10-14T12:17:05.462Z","type":"reel","msg":"Frame 60/492","progress":60,"total":492}
+{"ts":"2026-10-14T12:17:08.468Z","type":"reel","msg":"Frame 120/492","progress":120,"total":492}
+{"ts":"2026-10-14T12:17:11.464Z","type":"reel","msg":"Frame 180/492","progress":180,"total":492}
+{"ts":"2026-10-14T12:17:14.446Z","type":"reel","msg":"Frame 240/492","progress":240,"total":492}
+{"ts":"2026-10-14T12:17:17.455Z","type":"reel","msg":"Frame 300/492","progress":300,"total":492}
+{"ts":"2026-10-14T12:17:20.578Z","type":"reel","msg":"Frame 360/492","progress":360,"total":492}
+{"ts":"2026-10-14T12:17:23.612Z","type":"reel","msg":"Frame 420/492","progress":420,"total":492}
+{"ts":"2026-10-14T12:17:26.602Z","type":"reel","msg":"Frame 480/492","progress":480,"total":492}
+{"ts":"2026-10-14T12:17:30.556Z","type":"file","msg":"Reel encoded: vault-apple-reel.mp4","file":"out/vault-apple-reel.mp4","progress":492,"total":492}
+{"ts":"2026-10-14T12:18:04.469Z","type":"library","msg":"Added L15: Apple-style premium showcase reel: Vault + Dot, brand reveal and 2 product beats","id":"L15"}
+{"ts":"2026-10-14T12:18:07.261Z","type":"done","msg":"Apple-style showcase reel ready (L15, 16.4s): brand reveal with Dot + treasury/events beats. Part of today's 3-piece seed with L13/L14."}
+{"ts":"2026-10-15T05:49:37.876Z","type":"check","msg":"Freshness check \"Chasing dues in WhatsApp: 47 unread messages\": 1 problem(s)"}
+{"ts":"2026-10-15T05:58:53.175Z","type":"check","msg":"Freshness check \"Fundraisers: record income and costs separately; don't net them\": fresh"}
+{"ts":"2026-10-15T06:01:39.077Z","type":"step","msg":"Building tips post: fundraiser income vs costs (don't net them) — pose: point, bg: paper"}
+{"ts":"2026-10-15T06:02:21.501Z","type":"render","msg":"Rendering templates/tip-fundraiser-netting.html","page":"templates/tip-fundraiser-netting.html"}
+{"ts":"2026-10-15T06:02:21.646Z","type":"file","msg":"Rendered vault-tip-fundraiser-netting","file":"out/tip-fundraiser-netting/vault-tip-fundraiser-netting.png"}
+{"ts":"2026-10-15T06:03:05.293Z","type":"step","msg":"Round 2: fixed Dot overlapping card (moved Dot bottom-right clear of card), reduced headline to 3 lines at 88px, compressed card layout, removed save nudge from post"}
+{"ts":"2026-10-15T06:03:53.770Z","type":"render","msg":"Rendering templates/tip-fundraiser-netting.html","page":"templates/tip-fundraiser-netting.html"}
+{"ts":"2026-10-15T06:03:53.895Z","type":"file","msg":"Rendered vault-tip-fundraiser-netting","file":"out/tip-fundraiser-netting/vault-tip-fundraiser-netting.png"}
+{"ts":"2026-10-15T06:10:59.766Z","type":"render","msg":"Rendering templates/tip-fundraiser-netting.html","page":"templates/tip-fundraiser-netting.html"}
+{"ts":"2026-10-15T06:10:59.891Z","type":"file","msg":"Rendered vault-tip-fundraiser-netting","file":"out/tip-fundraiser-netting/vault-tip-fundraiser-netting.png"}
+{"ts":"2026-10-15T06:11:50.627Z","type":"render","msg":"Rendering templates/tip-fundraiser-netting.html","page":"templates/tip-fundraiser-netting.html"}
+{"ts":"2026-10-15T06:11:50.776Z","type":"file","msg":"Rendered vault-tip-fundraiser-netting","file":"out/tip-fundraiser-netting/vault-tip-fundraiser-netting.png"}
+{"ts":"2026-10-15T06:12:23.086Z","type":"render","msg":"Rendering templates/tip-fundraiser-netting.html","page":"templates/tip-fundraiser-netting.html"}
+{"ts":"2026-10-15T06:12:23.196Z","type":"file","msg":"Rendered vault-tip-fundraiser-netting","file":"out/tip-fundraiser-netting/vault-tip-fundraiser-netting.png"}
+{"ts":"2026-10-15T06:13:26.249Z","type":"library","msg":"Added L16: Fundraisers: record income and costs separately; don't net them","id":"L16"}
+{"ts":"2026-10-15T06:13:50.755Z","type":"done","msg":"L16 draft ready: vault-tip-fundraiser-netting.png — tips post, Dot point pose, paper bg. Status: draft (trial task)."}
+{"ts":"2026-10-15T09:47:45.813Z","type":"check","msg":"Freshness check \"Event check-in flow: RSVP, QR scan, service hours logged\": 1 problem(s)"}
+{"ts":"2026-10-15T09:54:27.220Z","type":"check","msg":"Freshness check \"Event check-in flow: RSVP, QR scan, service hours logged\": fresh"}
+{"ts":"2026-10-15T10:13:55.453Z","type":"check","msg":"Freshness check \"Event check-in flow: RSVP, QR scan, service hours logged\": fresh"}
+{"ts":"2026-10-15T10:18:47.387Z","type":"file","msg":"Reel preview at 1.6s","file":"out/checkin-prev/t-1.60.jpg"}
+{"ts":"2026-10-15T10:18:47.433Z","type":"file","msg":"Reel preview at 4.2s","file":"out/checkin-prev/t-4.20.jpg"}
+{"ts":"2026-10-15T10:18:47.469Z","type":"file","msg":"Reel preview at 7.8s","file":"out/checkin-prev/t-7.80.jpg"}
+{"ts":"2026-10-15T10:18:47.502Z","type":"file","msg":"Reel preview at 10.5s","file":"out/checkin-prev/t-10.50.jpg"}
+{"ts":"2026-10-15T10:18:47.537Z","type":"file","msg":"Reel preview at 14.5s","file":"out/checkin-prev/t-14.50.jpg"}
+{"ts":"2026-10-15T10:34:43.371Z","type":"file","msg":"Reel preview at 1.6s","file":"out/checkin-prev/t-1.60.jpg"}
+{"ts":"2026-10-15T10:34:43.419Z","type":"file","msg":"Reel preview at 4.2s","file":"out/checkin-prev/t-4.20.jpg"}
+{"ts":"2026-10-15T10:34:43.449Z","type":"file","msg":"Reel preview at 7.8s","file":"out/checkin-prev/t-7.80.jpg"}
+{"ts":"2026-10-15T10:34:43.482Z","type":"file","msg":"Reel preview at 10.5s","file":"out/checkin-prev/t-10.50.jpg"}
+{"ts":"2026-10-15T10:34:43.517Z","type":"file","msg":"Reel preview at 14.5s","file":"out/checkin-prev/t-14.50.jpg"}
+{"ts":"2026-10-15T10:37:46.324Z","type":"reel","msg":"Rendering reel templates/checkin-reel.html: 456 frames","progress":0,"total":456}
+{"ts":"2026-10-15T10:37:46.372Z","type":"reel","msg":"Frame 0/456","progress":0,"total":456}
+{"ts":"2026-10-15T10:37:48.744Z","type":"reel","msg":"Frame 60/456","progress":60,"total":456}
+{"ts":"2026-10-15T10:37:51.240Z","type":"reel","msg":"Frame 120/456","progress":120,"total":456}
+{"ts":"2026-10-15T10:37:53.356Z","type":"reel","msg":"Frame 180/456","progress":180,"total":456}
+{"ts":"2026-10-15T10:37:55.454Z","type":"reel","msg":"Frame 240/456","progress":240,"total":456}
+{"ts":"2026-10-15T10:37:57.488Z","type":"reel","msg":"Frame 300/456","progress":300,"total":456}
+{"ts":"2026-10-15T10:37:59.599Z","type":"reel","msg":"Frame 360/456","progress":360,"total":456}
+{"ts":"2026-10-15T10:38:01.755Z","type":"reel","msg":"Frame 420/456","progress":420,"total":456}
+{"ts":"2026-10-15T10:38:06.064Z","type":"file","msg":"Reel encoded: checkin-reel.mp4","file":"out/checkin-reel.mp4","progress":456,"total":456}
+{"ts":"2026-10-15T10:54:30.118Z","type":"library","msg":"Added L17: Event check-in flow: RSVP, QR scan, service hours logged","id":"L17"}
+{"ts":"2026-10-15T10:56:37.585Z","type":"done","msg":"L17 draft ready: vault-reel-event-checkin.mp4 (15.2s product reel with audio, RSVP -> QR scan -> service hours logged). Status: draft (trial task)."}
+{"ts":"2026-10-15T11:23:35.402Z","type":"file","msg":"Reel preview at 1s","file":"out/treasurer-prev/t-1.00.jpg"}
+{"ts":"2026-10-15T11:23:35.430Z","type":"file","msg":"Reel preview at 2.3s","file":"out/treasurer-prev/t-2.30.jpg"}
+{"ts":"2026-10-15T11:23:35.461Z","type":"file","msg":"Reel preview at 3.2s","file":"out/treasurer-prev/t-3.20.jpg"}
+{"ts":"2026-10-15T11:23:35.500Z","type":"file","msg":"Reel preview at 5.3s","file":"out/treasurer-prev/t-5.30.jpg"}
+{"ts":"2026-10-15T11:23:35.552Z","type":"file","msg":"Reel preview at 7.3s","file":"out/treasurer-prev/t-7.30.jpg"}
+{"ts":"2026-10-15T11:23:35.587Z","type":"file","msg":"Reel preview at 8.6s","file":"out/treasurer-prev/t-8.60.jpg"}
+{"ts":"2026-10-15T11:23:35.635Z","type":"file","msg":"Reel preview at 10.1s","file":"out/treasurer-prev/t-10.10.jpg"}
+{"ts":"2026-10-15T11:23:35.680Z","type":"file","msg":"Reel preview at 12.8s","file":"out/treasurer-prev/t-12.80.jpg"}
+{"ts":"2026-10-15T11:23:35.713Z","type":"file","msg":"Reel preview at 15.8s","file":"out/treasurer-prev/t-15.80.jpg"}
+{"ts":"2026-10-15T11:24:14.630Z","type":"file","msg":"Reel preview at 10.5s","file":"out/treasurer-prev2/t-10.50.jpg"}
+{"ts":"2026-10-15T11:24:14.661Z","type":"file","msg":"Reel preview at 13.2s","file":"out/treasurer-prev2/t-13.20.jpg"}
+{"ts":"2026-10-15T11:26:07.153Z","type":"reel","msg":"Rendering reel templates/treasurer-reel.html: 510 frames","progress":0,"total":510}
+{"ts":"2026-10-15T11:26:07.200Z","type":"reel","msg":"Frame 0/510","progress":0,"total":510}
+{"ts":"2026-10-15T11:26:09.203Z","type":"reel","msg":"Frame 60/510","progress":60,"total":510}
+{"ts":"2026-10-15T11:26:11.254Z","type":"reel","msg":"Frame 120/510","progress":120,"total":510}
+{"ts":"2026-10-15T11:26:13.270Z","type":"reel","msg":"Frame 180/510","progress":180,"total":510}
+{"ts":"2026-10-15T11:26:15.352Z","type":"reel","msg":"Frame 240/510","progress":240,"total":510}
+{"ts":"2026-10-15T11:26:17.415Z","type":"reel","msg":"Frame 300/510","progress":300,"total":510}
+{"ts":"2026-10-15T11:26:19.575Z","type":"reel","msg":"Frame 360/510","progress":360,"total":510}
+{"ts":"2026-10-15T11:26:21.621Z","type":"reel","msg":"Frame 420/510","progress":420,"total":510}
+{"ts":"2026-10-15T11:26:23.620Z","type":"reel","msg":"Frame 480/510","progress":480,"total":510}
+{"ts":"2026-10-15T11:26:28.960Z","type":"file","msg":"Reel encoded: treasurer-reel.mp4","file":"out/treasurer-reel.mp4","progress":510,"total":510}
+{"ts":"2026-10-15T11:27:21.828Z","type":"library","msg":"Added N001: The Treasurer's Day: fast-cut tension-and-release reel showing a treasurer's chaotic morning resolved by Vault","id":"N001"}
+{"ts":"2026-10-15T11:27:28.343Z","type":"done","msg":"Treasurer's Day reel (N001): 17s fast-cut reel with percussive soundtrack, draft status"}
+{"ts":"2026-10-15T12:20:55.008Z","type":"check","msg":"Freshness check \"Welcoming Rotaract Club of Matale: from board chaos to calm with Vault\": fresh"}
+{"ts":"2026-10-15T12:21:02.052Z","type":"step","msg":"Starting Matale announcement reel: board chaos to harmony with Vault"}
+{"ts":"2026-10-15T12:23:10.946Z","type":"file","msg":"Reel preview at 2.5s","file":"out/matale-prev/t-2.50.jpg"}
+{"ts":"2026-10-15T12:23:10.985Z","type":"file","msg":"Reel preview at 3.4s","file":"out/matale-prev/t-3.40.jpg"}
+{"ts":"2026-10-15T12:23:11.020Z","type":"file","msg":"Reel preview at 5.5s","file":"out/matale-prev/t-5.50.jpg"}
+{"ts":"2026-10-15T12:23:11.063Z","type":"file","msg":"Reel preview at 7.6s","file":"out/matale-prev/t-7.60.jpg"}
+{"ts":"2026-10-15T12:23:11.107Z","type":"file","msg":"Reel preview at 8.8s","file":"out/matale-prev/t-8.80.jpg"}
+{"ts":"2026-10-15T12:23:11.143Z","type":"file","msg":"Reel preview at 10.6s","file":"out/matale-prev/t-10.60.jpg"}
+{"ts":"2026-10-15T12:23:11.214Z","type":"file","msg":"Reel preview at 12.8s","file":"out/matale-prev/t-12.80.jpg"}
+{"ts":"2026-10-15T12:23:11.257Z","type":"file","msg":"Reel preview at 15.8s","file":"out/matale-prev/t-15.80.jpg"}
+{"ts":"2026-10-15T12:24:58.170Z","type":"file","msg":"Reel preview at 12.8s","file":"out/matale-prev/t-12.80.jpg"}
+{"ts":"2026-10-15T12:26:14.757Z","type":"reel","msg":"Rendering reel templates/matale-reel.html: 510 frames","progress":0,"total":510}
+{"ts":"2026-10-15T12:26:14.795Z","type":"reel","msg":"Frame 0/510","progress":0,"total":510}
+{"ts":"2026-10-15T12:26:16.795Z","type":"reel","msg":"Frame 60/510","progress":60,"total":510}
+{"ts":"2026-10-15T12:26:18.827Z","type":"reel","msg":"Frame 120/510","progress":120,"total":510}
+{"ts":"2026-10-15T12:26:20.825Z","type":"reel","msg":"Frame 180/510","progress":180,"total":510}
+{"ts":"2026-10-15T12:26:23.179Z","type":"reel","msg":"Frame 240/510","progress":240,"total":510}
+{"ts":"2026-10-15T12:26:25.201Z","type":"reel","msg":"Frame 300/510","progress":300,"total":510}
+{"ts":"2026-10-15T12:26:27.196Z","type":"reel","msg":"Frame 360/510","progress":360,"total":510}
+{"ts":"2026-10-15T12:26:29.264Z","type":"reel","msg":"Frame 420/510","progress":420,"total":510}
+{"ts":"2026-10-15T12:26:31.276Z","type":"reel","msg":"Frame 480/510","progress":480,"total":510}
+{"ts":"2026-10-15T12:26:35.981Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":510,"total":510}
+{"ts":"2026-10-15T12:27:59.415Z","type":"library","msg":"Added N002: Welcoming Rotaract Club of Matale: from board chaos to calm with Vault","id":"N002"}
+{"ts":"2026-10-15T12:28:12.569Z","type":"done","msg":"Rotaract Club of Matale onboarding reel ready (N002): 17s fast-cut tension-to-harmony reel with custom board avatars and synthesised soundtrack"}
+{"ts":"2026-10-15T12:36:33.109Z","type":"file","msg":"Reel preview at 2.5s","file":"out/matale-prev/t-2.50.jpg"}
+{"ts":"2026-10-15T12:36:33.154Z","type":"file","msg":"Reel preview at 4.14s","file":"out/matale-prev/t-4.14.jpg"}
+{"ts":"2026-10-15T12:36:33.216Z","type":"file","msg":"Reel preview at 4.35s","file":"out/matale-prev/t-4.35.jpg"}
+{"ts":"2026-10-15T12:36:33.267Z","type":"file","msg":"Reel preview at 5.5s","file":"out/matale-prev/t-5.50.jpg"}
+{"ts":"2026-10-15T12:36:33.323Z","type":"file","msg":"Reel preview at 8.8s","file":"out/matale-prev/t-8.80.jpg"}
+{"ts":"2026-10-15T12:36:33.365Z","type":"file","msg":"Reel preview at 12.8s","file":"out/matale-prev/t-12.80.jpg"}
+{"ts":"2026-10-15T12:36:33.405Z","type":"file","msg":"Reel preview at 15.8s","file":"out/matale-prev/t-15.80.jpg"}
+{"ts":"2026-10-15T12:40:08.838Z","type":"file","msg":"Reel preview at 2.5s","file":"out/matale-prev/t-2.50.jpg"}
+{"ts":"2026-10-15T12:40:08.889Z","type":"file","msg":"Reel preview at 4.14s","file":"out/matale-prev/t-4.14.jpg"}
+{"ts":"2026-10-15T12:40:08.940Z","type":"file","msg":"Reel preview at 4.35s","file":"out/matale-prev/t-4.35.jpg"}
+{"ts":"2026-10-15T12:40:08.989Z","type":"file","msg":"Reel preview at 5.5s","file":"out/matale-prev/t-5.50.jpg"}
+{"ts":"2026-10-15T12:40:09.048Z","type":"file","msg":"Reel preview at 8.8s","file":"out/matale-prev/t-8.80.jpg"}
+{"ts":"2026-10-15T12:40:09.091Z","type":"file","msg":"Reel preview at 12.8s","file":"out/matale-prev/t-12.80.jpg"}
+{"ts":"2026-10-15T12:40:09.133Z","type":"file","msg":"Reel preview at 15.8s","file":"out/matale-prev/t-15.80.jpg"}
+{"ts":"2026-10-15T12:41:14.013Z","type":"file","msg":"Reel preview at 4.14s","file":"out/matale-prev/t-4.14.jpg"}
+{"ts":"2026-10-15T12:41:14.057Z","type":"file","msg":"Reel preview at 4.35s","file":"out/matale-prev/t-4.35.jpg"}
+{"ts":"2026-10-15T12:42:00.590Z","type":"file","msg":"Reel preview at 4.14s","file":"out/matale-prev/t-4.14.jpg"}
+{"ts":"2026-10-15T12:42:00.637Z","type":"file","msg":"Reel preview at 4.35s","file":"out/matale-prev/t-4.35.jpg"}
+{"ts":"2026-10-15T12:42:26.992Z","type":"reel","msg":"Rendering reel templates/matale-reel.html: 510 frames","progress":0,"total":510}
+{"ts":"2026-10-15T12:42:27.026Z","type":"reel","msg":"Frame 0/510","progress":0,"total":510}
+{"ts":"2026-10-15T12:42:29.263Z","type":"reel","msg":"Frame 60/510","progress":60,"total":510}
+{"ts":"2026-10-15T12:42:31.594Z","type":"reel","msg":"Frame 120/510","progress":120,"total":510}
+{"ts":"2026-10-15T12:42:34.489Z","type":"reel","msg":"Frame 180/510","progress":180,"total":510}
+{"ts":"2026-10-15T12:42:37.084Z","type":"reel","msg":"Frame 240/510","progress":240,"total":510}
+{"ts":"2026-10-15T12:42:39.546Z","type":"reel","msg":"Frame 300/510","progress":300,"total":510}
+{"ts":"2026-10-15T12:42:41.673Z","type":"reel","msg":"Frame 360/510","progress":360,"total":510}
+{"ts":"2026-10-15T12:42:44.078Z","type":"reel","msg":"Frame 420/510","progress":420,"total":510}
+{"ts":"2026-10-15T12:42:46.139Z","type":"reel","msg":"Frame 480/510","progress":480,"total":510}
+{"ts":"2026-10-15T12:42:51.189Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":510,"total":510}
+{"ts":"2026-10-15T12:44:23.661Z","type":"library","msg":"Updated N002: --notes 17s vertical reel (1080x1920) at 135 BPM. 3D perspective board member avatars (Pres. Kaveen, Treas. Dilani, Sec. Tariq) experiencing manual friction, followed by Vault mascot Dot's 3D superhero landing with shockwaves, transitioning to live synchronized app showcase and restored harmony. Complies with RI non-endorsement policy.","id":"N002"}
+{"ts":"2026-10-16T05:39:53.349Z","type":"library","msg":"Updated L12: notes=Approved by the user, who is VP of Rotaract Club of Matale. Cleared to post — needs a date.","id":"L12"}
+{"ts":"2026-10-16T06:14:20.681Z","type":"check","msg":"Freshness check \"Welcoming Rotaract Club of Matale: table story from chaos to calm with Vault\": 1 problem(s)"}
+{"ts":"2026-10-16T06:15:08.426Z","type":"check","msg":"Freshness check \"Matale's Day: from board table chaos to calm with Vault\": fresh"}
+{"ts":"2026-10-16T06:17:11.135Z","type":"file","msg":"Reel preview at 2.4s","file":"out/matale-prev/t-2.40.jpg"}
+{"ts":"2026-10-16T06:17:11.181Z","type":"file","msg":"Reel preview at 5.2s","file":"out/matale-prev/t-5.20.jpg"}
+{"ts":"2026-10-16T06:17:11.218Z","type":"file","msg":"Reel preview at 9s","file":"out/matale-prev/t-9.00.jpg"}
+{"ts":"2026-10-16T06:17:11.272Z","type":"file","msg":"Reel preview at 11.8s","file":"out/matale-prev/t-11.80.jpg"}
+{"ts":"2026-10-16T06:17:11.322Z","type":"file","msg":"Reel preview at 14s","file":"out/matale-prev/t-14.00.jpg"}
+{"ts":"2026-10-16T06:17:11.364Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T06:25:06.477Z","type":"file","msg":"Reel preview at 2.4s","file":"out/matale-prev/t-2.40.jpg"}
+{"ts":"2026-10-16T06:25:06.524Z","type":"file","msg":"Reel preview at 5.2s","file":"out/matale-prev/t-5.20.jpg"}
+{"ts":"2026-10-16T06:25:06.557Z","type":"file","msg":"Reel preview at 9s","file":"out/matale-prev/t-9.00.jpg"}
+{"ts":"2026-10-16T06:25:06.594Z","type":"file","msg":"Reel preview at 11.8s","file":"out/matale-prev/t-11.80.jpg"}
+{"ts":"2026-10-16T06:25:06.625Z","type":"file","msg":"Reel preview at 14s","file":"out/matale-prev/t-14.00.jpg"}
+{"ts":"2026-10-16T06:25:06.663Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T06:27:35.867Z","type":"file","msg":"Reel preview at 9s","file":"out/matale-prev/t-9.00.jpg"}
+{"ts":"2026-10-16T06:27:35.899Z","type":"file","msg":"Reel preview at 10.3s","file":"out/matale-prev/t-10.30.jpg"}
+{"ts":"2026-10-16T06:27:35.944Z","type":"file","msg":"Reel preview at 11.8s","file":"out/matale-prev/t-11.80.jpg"}
+{"ts":"2026-10-16T06:27:35.984Z","type":"file","msg":"Reel preview at 14s","file":"out/matale-prev/t-14.00.jpg"}
+{"ts":"2026-10-16T06:31:31.272Z","type":"reel","msg":"Rendering reel templates/matale-table-reel.html: 528 frames","progress":0,"total":528}
+{"ts":"2026-10-16T06:31:31.317Z","type":"reel","msg":"Frame 0/528","progress":0,"total":528}
+{"ts":"2026-10-16T06:31:33.408Z","type":"reel","msg":"Frame 60/528","progress":60,"total":528}
+{"ts":"2026-10-16T06:31:35.423Z","type":"reel","msg":"Frame 120/528","progress":120,"total":528}
+{"ts":"2026-10-16T06:31:37.475Z","type":"reel","msg":"Frame 180/528","progress":180,"total":528}
+{"ts":"2026-10-16T06:31:39.472Z","type":"reel","msg":"Frame 240/528","progress":240,"total":528}
+{"ts":"2026-10-16T06:31:41.489Z","type":"reel","msg":"Frame 300/528","progress":300,"total":528}
+{"ts":"2026-10-16T06:31:43.490Z","type":"reel","msg":"Frame 360/528","progress":360,"total":528}
+{"ts":"2026-10-16T06:31:45.488Z","type":"reel","msg":"Frame 420/528","progress":420,"total":528}
+{"ts":"2026-10-16T06:31:47.606Z","type":"reel","msg":"Frame 480/528","progress":480,"total":528}
+{"ts":"2026-10-16T06:31:54.550Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":528,"total":528}
+{"ts":"2026-10-16T08:22:44.432Z","type":"library","msg":"Added L18: Matale's Day: from board table chaos to calm with Vault","id":"L18"}
+{"ts":"2026-10-16T08:23:54.005Z","type":"done","msg":"Completed Matale's Day narrative marketing reel L18 (17.6s, flat-lay table, custom members kit, synced audio)"}
+{"ts":"2026-10-16T11:48:05.210Z","type":"file","msg":"Reel preview at 1s","file":"out/matale-reel-prev/t-1.00.jpg"}
+{"ts":"2026-10-16T11:48:05.240Z","type":"file","msg":"Reel preview at 5.5s","file":"out/matale-reel-prev/t-5.50.jpg"}
+{"ts":"2026-10-16T11:48:05.272Z","type":"file","msg":"Reel preview at 9.5s","file":"out/matale-reel-prev/t-9.50.jpg"}
+{"ts":"2026-10-16T11:48:05.303Z","type":"file","msg":"Reel preview at 13.5s","file":"out/matale-reel-prev/t-13.50.jpg"}
+{"ts":"2026-10-16T11:48:05.340Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-reel-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T11:48:05.371Z","type":"file","msg":"Reel preview at 19.5s","file":"out/matale-reel-prev/t-19.50.jpg"}
+{"ts":"2026-10-16T11:48:05.406Z","type":"file","msg":"Reel preview at 23.5s","file":"out/matale-reel-prev/t-23.50.jpg"}
+{"ts":"2026-10-16T11:48:05.440Z","type":"file","msg":"Reel preview at 28s","file":"out/matale-reel-prev/t-28.00.jpg"}
+{"ts":"2026-10-16T11:49:23.790Z","type":"file","msg":"Reel preview at 9.5s","file":"out/matale-reel-prev/t-9.50.jpg"}
+{"ts":"2026-10-16T11:49:23.825Z","type":"file","msg":"Reel preview at 13.5s","file":"out/matale-reel-prev/t-13.50.jpg"}
+{"ts":"2026-10-16T11:49:23.866Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-reel-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T11:49:23.906Z","type":"file","msg":"Reel preview at 19.5s","file":"out/matale-reel-prev/t-19.50.jpg"}
+{"ts":"2026-10-16T11:50:15.303Z","type":"file","msg":"Reel preview at 13.2s","file":"out/matale-reel-prev/t-13.20.jpg"}
+{"ts":"2026-10-16T11:50:15.332Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-reel-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T11:51:21.464Z","type":"reel","msg":"Rendering reel templates/matale-reel.html: 888 frames","progress":0,"total":888}
+{"ts":"2026-10-16T11:51:21.503Z","type":"reel","msg":"Frame 0/888","progress":0,"total":888}
+{"ts":"2026-10-16T11:51:23.493Z","type":"reel","msg":"Frame 60/888","progress":60,"total":888}
+{"ts":"2026-10-16T11:51:25.511Z","type":"reel","msg":"Frame 120/888","progress":120,"total":888}
+{"ts":"2026-10-16T11:51:27.513Z","type":"reel","msg":"Frame 180/888","progress":180,"total":888}
+{"ts":"2026-10-16T11:51:29.513Z","type":"reel","msg":"Frame 240/888","progress":240,"total":888}
+{"ts":"2026-10-16T11:51:31.512Z","type":"reel","msg":"Frame 300/888","progress":300,"total":888}
+{"ts":"2026-10-16T11:51:33.531Z","type":"reel","msg":"Frame 360/888","progress":360,"total":888}
+{"ts":"2026-10-16T11:51:35.547Z","type":"reel","msg":"Frame 420/888","progress":420,"total":888}
+{"ts":"2026-10-16T11:51:37.547Z","type":"reel","msg":"Frame 480/888","progress":480,"total":888}
+{"ts":"2026-10-16T11:51:39.544Z","type":"reel","msg":"Frame 540/888","progress":540,"total":888}
+{"ts":"2026-10-16T11:51:41.544Z","type":"reel","msg":"Frame 600/888","progress":600,"total":888}
+{"ts":"2026-10-16T11:51:43.546Z","type":"reel","msg":"Frame 660/888","progress":660,"total":888}
+{"ts":"2026-10-16T11:51:45.547Z","type":"reel","msg":"Frame 720/888","progress":720,"total":888}
+{"ts":"2026-10-16T11:51:47.551Z","type":"reel","msg":"Frame 780/888","progress":780,"total":888}
+{"ts":"2026-10-16T11:51:49.545Z","type":"reel","msg":"Frame 840/888","progress":840,"total":888}
+{"ts":"2026-10-16T11:51:55.364Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":888,"total":888}
+{"ts":"2026-10-16T11:52:30.790Z","type":"library","msg":"Added L19: Matale partner story: board-table chaos resolved by Vault, exco actively helped by Dot","id":"L19"}
+{"ts":"2026-10-16T11:52:33.177Z","type":"done","msg":"Matale partner-story reel built (L19, 29.6s) — new kit/members.js characters, paced deliberately slower so every beat is readable, Dot actively helps each exco member"}
+{"ts":"2026-10-16T12:00:10.106Z","type":"file","msg":"Reel preview at 5.5s","file":"out/matale-reel-prev/t-5.50.jpg"}
+{"ts":"2026-10-16T12:00:10.154Z","type":"file","msg":"Reel preview at 9.5s","file":"out/matale-reel-prev/t-9.50.jpg"}
+{"ts":"2026-10-16T12:00:10.195Z","type":"file","msg":"Reel preview at 19.5s","file":"out/matale-reel-prev/t-19.50.jpg"}
+{"ts":"2026-10-16T12:00:19.356Z","type":"reel","msg":"Rendering reel templates/matale-reel.html: 888 frames","progress":0,"total":888}
+{"ts":"2026-10-16T12:00:19.401Z","type":"reel","msg":"Frame 0/888","progress":0,"total":888}
+{"ts":"2026-10-16T12:00:21.462Z","type":"reel","msg":"Frame 60/888","progress":60,"total":888}
+{"ts":"2026-10-16T12:00:23.579Z","type":"reel","msg":"Frame 120/888","progress":120,"total":888}
+{"ts":"2026-10-16T12:00:25.764Z","type":"reel","msg":"Frame 180/888","progress":180,"total":888}
+{"ts":"2026-10-16T12:00:27.808Z","type":"reel","msg":"Frame 240/888","progress":240,"total":888}
+{"ts":"2026-10-16T12:00:29.810Z","type":"reel","msg":"Frame 300/888","progress":300,"total":888}
+{"ts":"2026-10-16T12:00:31.982Z","type":"reel","msg":"Frame 360/888","progress":360,"total":888}
+{"ts":"2026-10-16T12:00:34.332Z","type":"reel","msg":"Frame 420/888","progress":420,"total":888}
+{"ts":"2026-10-16T12:00:36.408Z","type":"reel","msg":"Frame 480/888","progress":480,"total":888}
+{"ts":"2026-10-16T12:00:38.613Z","type":"reel","msg":"Frame 540/888","progress":540,"total":888}
+{"ts":"2026-10-16T12:00:41.009Z","type":"reel","msg":"Frame 600/888","progress":600,"total":888}
+{"ts":"2026-10-16T12:00:43.307Z","type":"reel","msg":"Frame 660/888","progress":660,"total":888}
+{"ts":"2026-10-16T12:00:45.306Z","type":"reel","msg":"Frame 720/888","progress":720,"total":888}
+{"ts":"2026-10-16T12:00:47.359Z","type":"reel","msg":"Frame 780/888","progress":780,"total":888}
+{"ts":"2026-10-16T12:00:49.373Z","type":"reel","msg":"Frame 840/888","progress":840,"total":888}
+{"ts":"2026-10-16T12:00:55.210Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":888,"total":888}
+{"ts":"2026-10-16T12:01:04.881Z","type":"library","msg":"Updated L19: notes=Redesigned kit/members.js after first pass looked too much like Dot's round mascot eyes on a human head (blank/robotic). Now: almond eyes with highlight, proper eyebrows, 3 distinct hairstyles (bun/glasses/short), clearer smile. Built from scratch in the code pipeline. Paced deliberately slower than earlier reels: each beat settles before its caption appears, holds 2.5s+. Callback framing: same table composition at problem/help/reveal beats. Approved by user (VP of Rotaract Club of Matale) to name the club. Not yet scheduled.","id":"L19"}
+{"ts":"2026-10-16T13:07:38.653Z","type":"file","msg":"Reel preview at 1s","file":"out/matale-revised-prev/t-1.00.jpg"}
+{"ts":"2026-10-16T13:07:38.706Z","type":"file","msg":"Reel preview at 2.8s","file":"out/matale-revised-prev/t-2.80.jpg"}
+{"ts":"2026-10-16T13:07:38.754Z","type":"file","msg":"Reel preview at 5.8s","file":"out/matale-revised-prev/t-5.80.jpg"}
+{"ts":"2026-10-16T13:07:38.811Z","type":"file","msg":"Reel preview at 8.5s","file":"out/matale-revised-prev/t-8.50.jpg"}
+{"ts":"2026-10-16T13:07:38.870Z","type":"file","msg":"Reel preview at 12s","file":"out/matale-revised-prev/t-12.00.jpg"}
+{"ts":"2026-10-16T13:07:38.931Z","type":"file","msg":"Reel preview at 14.5s","file":"out/matale-revised-prev/t-14.50.jpg"}
+{"ts":"2026-10-16T13:07:39.000Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-revised-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T13:13:59.056Z","type":"file","msg":"Reel preview at 1s","file":"out/matale-revised-prev/t-1.00.jpg"}
+{"ts":"2026-10-16T13:13:59.113Z","type":"file","msg":"Reel preview at 5.4s","file":"out/matale-revised-prev/t-5.40.jpg"}
+{"ts":"2026-10-16T13:13:59.156Z","type":"file","msg":"Reel preview at 16.5s","file":"out/matale-revised-prev/t-16.50.jpg"}
+{"ts":"2026-10-16T13:23:06.354Z","type":"file","msg":"Reel preview at 2.8s","file":"out/matale-revised-prev/t-2.80.jpg"}
+{"ts":"2026-10-16T13:23:18.129Z","type":"file","msg":"Reel preview at 8.5s","file":"out/matale-revised-prev/t-8.50.jpg"}
+{"ts":"2026-10-16T13:23:18.165Z","type":"file","msg":"Reel preview at 12s","file":"out/matale-revised-prev/t-12.00.jpg"}
+{"ts":"2026-10-16T13:23:18.198Z","type":"file","msg":"Reel preview at 14.5s","file":"out/matale-revised-prev/t-14.50.jpg"}
+{"ts":"2026-10-16T13:23:49.968Z","type":"reel","msg":"Rendering reel templates/matale-table-reel.html: 528 frames","progress":0,"total":528}
+{"ts":"2026-10-16T13:23:50.011Z","type":"reel","msg":"Frame 0/528","progress":0,"total":528}
+{"ts":"2026-10-16T13:23:52.029Z","type":"reel","msg":"Frame 60/528","progress":60,"total":528}
+{"ts":"2026-10-16T13:23:54.081Z","type":"reel","msg":"Frame 120/528","progress":120,"total":528}
+{"ts":"2026-10-16T13:23:56.708Z","type":"reel","msg":"Frame 180/528","progress":180,"total":528}
+{"ts":"2026-10-16T13:23:58.754Z","type":"reel","msg":"Frame 240/528","progress":240,"total":528}
+{"ts":"2026-10-16T13:24:00.777Z","type":"reel","msg":"Frame 300/528","progress":300,"total":528}
+{"ts":"2026-10-16T13:24:03.241Z","type":"reel","msg":"Frame 360/528","progress":360,"total":528}
+{"ts":"2026-10-16T13:24:05.307Z","type":"reel","msg":"Frame 420/528","progress":420,"total":528}
+{"ts":"2026-10-16T13:24:07.519Z","type":"reel","msg":"Frame 480/528","progress":480,"total":528}
+{"ts":"2026-10-16T13:24:13.395Z","type":"file","msg":"Reel encoded: matale-reel.mp4","file":"out/matale-reel.mp4","progress":528,"total":528}
+{"ts":"2026-10-16T13:35:37.146Z","type":"done","msg":"Delivered revised Matale's Day reel L18: heightened problem scene, eyeline subtitle pills, superhero landing shockwave transition, and synthesized pop song soundtrack"}

@@ -34,7 +34,7 @@
       "layout": "headline + struck-out chips + Dot right",
       "hashtag_set": "D",
       "status": "ready",
-      "post_date": "2026-10-19",
+      "post_date": "2026-10-15",
       "files": [
         "assets/2026-10-launch/vault-01-hook.png"
       ],
@@ -42,7 +42,8 @@
       "notes": "Launch post.",
       "metrics": {},
       "post_time": "19:30",
-      "feedback": []
+      "feedback": [],
+      "date_locked": true
     },
     {
       "id": "L02",
@@ -64,14 +65,14 @@
       "layout": "27s 9:16 GSAP reel",
       "hashtag_set": "D",
       "status": "ready",
-      "post_date": "2026-10-21",
+      "post_date": "2026-10-17",
       "files": [
         "assets/2026-10-launch/vault-reel-v3-poster.jpg",
         "assets/2026-10-launch/vault-reel-v3.mp4",
         "templates/reel.html"
       ],
       "caption": "Your whole club, in one place. ✨\nMembers log what they paid in plain words. The treasurer approves with one tap. Events, check-ins and service hours sort themselves out.\nAnd yes, that little pink thing is Dot. You'll be seeing a lot of Dot 🤖\n🔗 Book a free 15-min demo, link in bio",
-      "notes": "Soundtrack: scripts/audio/compose_reel.py",
+      "notes": "Soundtrack: scripts/audio/compose_reel.py. Part of launch-week burst: posts Sat 17 Oct, 2 days after L01.",
       "metrics": {},
       "post_time": "19:30",
       "feedback": []
@@ -89,16 +90,16 @@
         "intro"
       ],
       "dot_pose": "waveSpark",
-      "background": "paper",
+      "background": "ink",
       "layout": "big headline + large Dot centre + 3 chips",
       "hashtag_set": "C",
       "status": "ready",
-      "post_date": "2026-10-23",
+      "post_date": "2026-10-19",
       "files": [
         "assets/2026-10-launch/dot-post-meet-dot.png"
       ],
       "caption": "Say hello to Dot 👋\nDot is Vault's tiny vault-bot. Dot files every receipt, balances the books, and absolutely lives for event day 🎉\nDot's one rule: every rupee in its place.\nEvery Monday Dot shares one money tip for club treasurers. Turn on notifications so you catch them.\n💬 Tag your club's treasurer. They need a Dot.",
-      "notes": "Pin to profile until 12 Nov.",
+      "notes": "Pin to profile until 12 Nov. Part of launch-week burst: posts Mon 19 Oct, closing out the 3-post seed.",
       "metrics": {},
       "post_time": "19:30",
       "feedback": []
@@ -134,7 +135,7 @@
         "assets/2026-10-launch/vault-10-carousel-5-cta.png"
       ],
       "caption": "3 money mistakes that fail club audits 🧾 (swipe →)\n1️⃣ Counting transfers as income\n2️⃣ Mixing club and project money\n3️⃣ Paying from your own pocket, then forgetting\nEach one is easy to fix once you know it. Slide 5 shows how Vault handles them for you.\n📌 Save this for year-end, and send it to your treasurer.",
-      "notes": "CLAIMS: 'Vault does this for you' depends on Finance V2 being live. Change to 'built to' if not.",
+      "notes": "Finance V2 confirmed live in prod (14 Oct) — 'Vault does this for you' claim checked and OK.",
       "metrics": {},
       "post_time": "19:30",
       "feedback": []
@@ -202,27 +203,27 @@
       "id": "L07",
       "type": "post",
       "pillar": "tips",
-      "topic": "Dot's Tip #1: never mix club money and project money",
-      "angle": "Separate drawers metaphor",
-      "hook": "Dot's Tip #1 💡 Never mix club money and project money.",
+      "topic": "Dot's Tip #1: approve as you go, not once a month",
+      "angle": "Habit tip: approve entries promptly instead of batching at month-end",
+      "hook": "Dot's Tip #1 💡 Approve as you go, not once a month.",
       "keywords": [
-        "funds",
-        "project money",
-        "club money",
-        "mixing",
-        "drawers"
+        "approvals",
+        "weekly",
+        "habit",
+        "treasurer-tip",
+        "backlog"
       ],
-      "dot_pose": "point",
+      "dot_pose": "clipboard",
       "background": "ink",
-      "layout": "headline + Dot + two-drawer cabinet",
+      "layout": "headline + Dot with clipboard + pencil, ink bg",
       "hashtag_set": "C",
       "status": "ready",
       "post_date": "2026-11-02",
       "files": [
         "assets/2026-10-launch/dot-post-tip-1.png"
       ],
-      "caption": "Dot's Tip #1 💡 Never mix club money and project money.\nMoney raised for a project gets spent on that project. Dues run the club. Keep each one in its own drawer, and if one ever pays for the other, write down that it's owed back.\nVault keeps the drawers separate for you.\n📌 Save it · 📤 Share it with your board",
-      "notes": "FRESHNESS WARNING: repeats carousel L04 slide 3 one week later. Consider replacing with a fresh tip (e.g. 'keep every receipt, even small ones') and moving this to week 7+.",
+      "caption": "Dot's Tip #1 💡 Approve as you go, not once a month.\nA pile of 40 entries waiting for sign-off at month-end is how mistakes slip through. Approve each one within a day or two, while you still remember what it was for.\nVault makes it one tap, so there's no excuse to batch it.\n📌 Save it · 📤 Share it with your board",
+      "notes": "Replaced old topic (repeated L04 carousel slide 3). Fresh angle + pose (clipboard), re-rendered 14 Oct.",
       "metrics": {},
       "post_time": "19:30",
       "feedback": []
@@ -252,7 +253,7 @@
         "assets/2026-10-launch/vault-05-audit-ready.png"
       ],
       "caption": "An audit-ready treasury. Every rupee traced. 🔍\nEvery entry gets a voucher number, a receipt and an approval, so at year-end your report is ready for the auditor's signature instead of a weekend of spreadsheets.\nTreasurers, how long did your last audit take? 👇",
-      "notes": "CLAIMS: vouchers and audit pack are Finance V2.",
+      "notes": "Finance V2 confirmed live in prod (14 Oct) — vouchers and audit pack are real, caption verified OK.",
       "metrics": {},
       "post_time": "19:30",
       "feedback": []
@@ -421,41 +422,58 @@
       "id": "S01",
       "type": "story",
       "pillar": "community",
-      "angle": "",
-      "hook": "",
-      "keywords": [],
-      "dot_pose": "",
-      "background": "",
-      "layout": "",
-      "hashtag_set": "",
-      "files": [],
-      "caption": "",
-      "notes": "Run Sat 17 and Sun 18. Asset not made yet.",
+      "angle": "Post-reveal reaction, continues L01's WhatsApp/Excel problem hook",
+      "hook": "Still feel personally victimized by Excel?",
+      "keywords": [
+        "excel",
+        "whatsapp",
+        "reaction",
+        "relatable",
+        "engagement"
+      ],
+      "dot_pose": "worried",
+      "background": "ink",
+      "layout": "headline + worried Dot + reaction CTA, ink bg",
+      "hashtag_set": "D",
+      "files": [
+        "assets/2026-10-stories/vault-s01-whatsapp-excel-react.png"
+      ],
+      "caption": "Still feel personally victimized by Excel? 😅 We see you — Dot does too. Tap the sticker if this is you 👇",
+      "notes": "Original brief assumed a Monday launch; re-angled as a post-reveal reaction since it runs the day after L01 (Thu 15 Oct). Still accurate at its date (Fri 16 Oct).",
       "feedback": [],
       "metrics": {},
       "topic": "Teaser: Dot worried face, \"Someone's moving in on Monday 👀\" + countdown",
-      "status": "idea",
-      "post_date": "2026-10-17",
-      "post_time": "19:30"
+      "status": "ready",
+      "post_date": "2026-10-16",
+      "post_time": "19:30",
+      "date_locked": true
     },
     {
       "id": "S02",
       "type": "story",
       "pillar": "community",
-      "angle": "",
-      "hook": "",
-      "keywords": [],
-      "dot_pose": "",
-      "background": "",
-      "layout": "",
-      "hashtag_set": "",
-      "files": [],
-      "caption": "",
-      "notes": "",
+      "angle": "Engagement poll, sets up a future carousel/story from the answers",
+      "hook": "How does your club track money?",
+      "keywords": [
+        "poll",
+        "tracking",
+        "whatsapp",
+        "excel",
+        "engagement"
+      ],
+      "dot_pose": "thinking",
+      "background": "paper",
+      "layout": "headline + 4 poll-option chips + Dot, paper bg",
+      "hashtag_set": "A",
+      "files": [
+        "assets/2026-10-stories/vault-s02-tracking-poll.png"
+      ],
+      "caption": "How does your club track money? 👇 WhatsApp / Excel / Notebook / Treasurer's memory 😅 — vote below, we're curious.",
+      "notes": "Native IG poll sticker goes over the 4 chips when posting.",
       "feedback": [],
       "metrics": {},
       "topic": "Poll: \"How does your club track money? WhatsApp / Excel / Notebook / Treasurer's memory 😅\"",
-      "status": "idea",
+      "status": "ready",
       "post_date": "2026-10-20",
       "post_time": "19:30"
     },
@@ -586,6 +604,272 @@
       "status": "idea",
       "post_date": "2026-11-15",
       "post_time": ""
+    },
+    {
+      "id": "L12",
+      "type": "post",
+      "pillar": "community",
+      "topic": "Rotaract Club of Matale officially using Vault",
+      "angle": "Real club adoption announcement, celebratory",
+      "hook": "Rotaract Club of Matale is on board.",
+      "keywords": [
+        "matale",
+        "club",
+        "launch",
+        "community",
+        "adoption"
+      ],
+      "dot_pose": "party",
+      "background": "rose",
+      "layout": "headline + 3 ticks + Dot party right, rose bg",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "",
+      "post_time": "10:00",
+      "files": [
+        "assets/2026-10-community/vault-matale-01-announcement.png"
+      ],
+      "caption": "Rotaract Club of Matale is officially on Vault! 🎉\n\nTreasury, events, members and reports — now running from one app instead of six group chats.\n\nWelcome aboard! More clubs coming soon 👀\n\n📲 Book a free demo for your club — link in bio",
+      "notes": "Approved by the user, who is VP of Rotaract Club of Matale. Cleared to post — needs a date.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L13",
+      "type": "post",
+      "pillar": "tips",
+      "topic": "Keep every receipt, even the small ones",
+      "angle": "Habit tip: small-amount receipts are what auditors flag",
+      "hook": "Keep every receipt, even the small ones.",
+      "keywords": [
+        "receipts",
+        "small-amounts",
+        "audit",
+        "habit",
+        "treasurer-tip"
+      ],
+      "dot_pose": "receipt",
+      "background": "paper",
+      "layout": "headline + body + HOW VAULT HELPS card + Dot bottom-right",
+      "hashtag_set": "C",
+      "status": "ready",
+      "post_date": "2026-10-14",
+      "post_time": "14:00",
+      "files": [
+        "assets/2026-10-seed/vault-seed-01-keep-receipts.png"
+      ],
+      "caption": "Keep every receipt, even the small ones 🧾\n\nA Rs 300 tea bill with no receipt is the one the auditor asks about.\n\nSnap it at the counter — Vault files it with the entry automatically.\n\n📌 Save this for your next shopping run for the club",
+      "notes": "Part of todays 3-post profile seed (with L12, L14), requested same-day to avoid an empty-looking profile.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L14",
+      "type": "post",
+      "pillar": "tips",
+      "topic": "Two people approve every payment (maker-checker)",
+      "angle": "Control habit: separation of duties protects the treasurer",
+      "hook": "Never let one person approve their own payment.",
+      "keywords": [
+        "approvals",
+        "maker-checker",
+        "control",
+        "treasurer-tip"
+      ],
+      "dot_pose": "balanced",
+      "background": "ink",
+      "layout": "headline + body + Dot bottom-right, ink bg",
+      "hashtag_set": "C",
+      "status": "ready",
+      "post_date": "2026-10-14",
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-seed/vault-seed-02-maker-checker.png"
+      ],
+      "caption": "Never let one person approve their own payment ✅\n\nMaker-checker means a mistake — or a shortcut — gets caught before the money moves, not after.\n\nIt is built into every approval in Vault.\n\n📌 Save it · 📤 Share it with your board",
+      "notes": "Part of todays 3-post profile seed (with L12, L13), requested same-day to avoid an empty-looking profile. Finance V2 approvals confirmed live, claim checked OK.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L15",
+      "type": "reel",
+      "pillar": "brand",
+      "topic": "Apple-style premium showcase reel: Vault + Dot, brand reveal and 2 product beats",
+      "angle": "Cinematic, minimal, dark — wordmark full stop morphs into Dot, then two quick elegant product beats (treasury, events)",
+      "hook": "Clubs deserve better tools.",
+      "keywords": [
+        "apple-style",
+        "reveal",
+        "dot",
+        "showcase",
+        "premium",
+        "brand"
+      ],
+      "dot_pose": "wave, balanced, scan",
+      "background": "ink",
+      "layout": "16.4s vertical reel: cold open -> brand reveal (lockDot) -> treasury beat -> events beat -> end card",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": "2026-10-14",
+      "post_time": "20:00",
+      "files": [
+        "assets/2026-10-seed/vault-apple-reel.mp4",
+        "assets/2026-10-seed/vault-apple-reel-poster.jpg"
+      ],
+      "caption": "Meet Vault. 🤖✨\n\nYour whole club — treasury, events, members — in one place.\n\nThis is Dot. You will be seeing a lot of Dot.\n\n🔗 vaultpro.cloud",
+      "notes": "Part of todays 3-piece profile seed (L13, L14, L15). Ambient synth soundtrack: scripts/audio/compose_apple_reel.py. Shorter/tighter format than L02s full 27s walkthrough reel (Sat 17 Oct) so they do not feel redundant.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L16",
+      "type": "post",
+      "pillar": "tips",
+      "topic": "Fundraisers: record income and costs separately; don't net them",
+      "angle": "Netting hides both numbers from auditors — show income and costs as separate line items",
+      "hook": "Don't net your fundraiser numbers.",
+      "keywords": [
+        "fundraiser",
+        "income",
+        "costs",
+        "netting",
+        "accounting",
+        "audit"
+      ],
+      "dot_pose": "point",
+      "background": "paper",
+      "layout": "headline + body + HOW TO RECORD IT card + Dot top-right in blob",
+      "hashtag_set": "C",
+      "status": "draft",
+      "post_date": null,
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-tips/vault-tip-fundraiser-netting.png"
+      ],
+      "caption": "Don't net your fundraiser numbers. 🧾\n\nWhat came in and what went out are two different things — auditors need to see both.\n\nTickets and sponsorship on one line. Venue, banners, printing on another. The surplus is what's left.\n\n📌 Save it · share with your fundraising lead.\n\n#DotsTips #TreasurerTips #ClubTreasurer #Rotaract #VaultForClubs",
+      "notes": "Trial content-creation task. Draft — not scheduled. Idea: fundraisers line item from ideas.md (tips section). Freshness check passed 2026-10-15.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L17",
+      "type": "reel",
+      "pillar": "product",
+      "topic": "Event check-in flow: RSVP, QR scan, service hours logged",
+      "angle": "Quick 15s showcase of Vault event check-in: one-tap RSVP updates headcount, QR check-in on arrival, service hours automatically tallied to member profiles",
+      "hook": "Who attended? Stop guessing.",
+      "keywords": [
+        "rsvp",
+        "scan",
+        "checkin",
+        "hours",
+        "events",
+        "attendance"
+      ],
+      "dot_pose": "multiple",
+      "background": "paper",
+      "layout": "phone mockup with event, scanner, profile screens + Dot cameos + end card",
+      "hashtag_set": "A",
+      "status": "draft",
+      "post_date": null,
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-product/vault-reel-event-checkin.mp4",
+        "assets/2026-10-product/vault-reel-event-checkin-poster.jpg"
+      ],
+      "caption": "RSVP with one tap. Scan when you arrive. Hours logged automatically. 📱✨\n\nNo paper sign-up sheets to lose. No guessing who showed up. Vault handles attendance and service hours in real time.\n\nReady to simplify your club events? Link in bio.\n\n#VaultForClubs #Rotaract #ClubEvents #RotaractSriLanka #CommunityService",
+      "notes": "Trial reel-creation task. Draft — not scheduled. Flow: RSVP -> QR scan -> service hours logged. 15.2s GSAP reel with synthesised soundtrack.",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "N001",
+      "type": "reel",
+      "pillar": "product",
+      "topic": "The Treasurer's Day: fast-cut tension-and-release reel showing a treasurer's chaotic morning resolved by Vault",
+      "angle": "Chaos montage (7 kinetic text stabs) → hard stop → brand reveal → 3 snap-into-place feature beats (treasury, approvals, check-in) → before/after payoff → end card",
+      "hook": "7 unread messages. The receipt is gone. The audit is next week. 😱",
+      "keywords": [],
+      "dot_pose": "",
+      "background": "",
+      "layout": "",
+      "hashtag_set": "",
+      "status": "draft",
+      "post_date": "",
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-launch/treasurer-reel.mp4",
+        "assets/2026-10-launch/treasurer-reel-poster.jpg"
+      ],
+      "caption": "",
+      "notes": "17s, 30fps, 1080x1920. Percussive 140 BPM soundtrack. All fictional data new (LKR 94,320, RV-0087, Leadership workshop, DR/NF/AK, 19 checked in, +3h).",
+      "feedback": [],
+      "metrics": {},
+      "pose": "worried",
+      "bg": "ink"
+    },
+    {
+      "id": "L18",
+      "type": "reel",
+      "pillar": "community",
+      "topic": "Matale's Day: from board table chaos to calm with Vault",
+      "angle": "Flat-lay meeting table narrative showing three board members (Pres. Kaveen, Treas. Dilani, Sec. Tariq) overwhelmed by mismatched ledgers and missing receipts, resolved when Dot steps in with synchronized vouchers, balanced budgets, and digital attendance",
+      "hook": "Three board members. Three different spreadsheets.",
+      "keywords": [
+        "matale",
+        "board",
+        "exco",
+        "table",
+        "reconciliation",
+        "treasury"
+      ],
+      "dot_pose": "party",
+      "background": "paper",
+      "layout": "Overhead flat-lay meeting table with custom SVG member busts, match-cut clutter sweep, active Dot guidance, celebration, and on-table partner tablet reveal",
+      "hashtag_set": "D",
+      "status": "draft",
+      "post_date": "",
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-community/vault-reel-matale-day.mp4",
+        "assets/2026-10-community/vault-reel-matale-day-poster.jpg"
+      ],
+      "caption": "Three board members. Three different spreadsheets. Audit in three days. 📋⚡\n\nWhen every exco member tracks separately, meetings turn into midnight receipt hunts. Rotaract Club of Matale switched to Vault — one shared source of truth for dual-sign vouchers, budget balances, and instant QR check-in.\n\nNow, their books stay audit-ready every single day.\n\nReady to bring calm to your club's board table? Visit vaultpro.cloud or link in bio.\n\n#Rotaract #Rotaractors #RotaractSriLanka #SriLankaStartups #VaultForClubs",
+      "notes": "Narrative marketing reel (17.6s, 1080x1920, 30fps). Overhead flat-lay meeting table scene built with flat-vector primitives in kit/members.js (Kaveen, Dilani, Tariq) and kit/dot.js. F major / Dm bespoke synthesized soundtrack in scripts/audio/compose_matale_table_reel.py. Complies with RI non-endorsement policy (no Rotary wheel/logo used).",
+      "feedback": [],
+      "metrics": {}
+    },
+    {
+      "id": "L19",
+      "type": "reel",
+      "pillar": "community",
+      "topic": "Matale partner story: board-table chaos resolved by Vault, exco actively helped by Dot",
+      "angle": "Narrative: overhead flat-lay board table, 3 illustrated exco members go from worried to happy as Dot actively helps each of them, ending on the Matale partner reveal",
+      "hook": "Every club hits this.",
+      "keywords": [
+        "matale",
+        "partner",
+        "story",
+        "exco",
+        "dot-helps",
+        "community"
+      ],
+      "dot_pose": "balanced",
+      "background": "paper",
+      "layout": "29.6s vertical reel: cold open -> table/chaos -> Dot arrives -> Dot helps 2 members in turn (checkmarks) -> celebration -> Matale reveal card (callback framing) -> end card",
+      "hashtag_set": "D",
+      "status": "ready",
+      "post_date": null,
+      "post_time": "19:30",
+      "files": [
+        "assets/2026-10-matale/matale-partner-story.mp4",
+        "assets/2026-10-matale/matale-partner-story-poster.jpg"
+      ],
+      "caption": "Rotaract Club of Matale just became Vault's first official partner club. 🎉\n\nTheir exco used to drown in paperwork — scattered reports, buried approvals, a phone that never stopped buzzing. Watch how Vault helped them get to \"all on the same page.\"\n\n📲 Want this for your club too? Link in bio.",
+      "notes": "Redesigned kit/members.js after first pass looked too much like Dot's round mascot eyes on a human head (blank/robotic). Now: almond eyes with highlight, proper eyebrows, 3 distinct hairstyles (bun/glasses/short), clearer smile. Built from scratch in the code pipeline. Paced deliberately slower than earlier reels: each beat settles before its caption appears, holds 2.5s+. Callback framing: same table composition at problem/help/reveal beats. Approved by user (VP of Rotaract Club of Matale) to name the club. Not yet scheduled.",
+      "feedback": [],
+      "metrics": {}
     }
   ]
 }

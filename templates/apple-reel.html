@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vault — Apple-style showcase reel</title>
+<style>
+@font-face{font-family:'Gelasio';font-weight:700;src:url(../brand/fonts/gelasio-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:500;src:url(../brand/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:600;src:url(../brand/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:700;src:url(../brand/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'PJS';font-weight:800;src:url(../brand/fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2')}
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0B0C11}
+body{font-family:'PJS',sans-serif;color:#fff;position:relative}
+.layer{position:absolute;inset:0}
+.glow{position:absolute;border-radius:50%;filter:blur(2px)}
+.cap{position:absolute;left:90px;right:90px;top:800px;text-align:center;font-weight:800;font-size:84px;line-height:1.08;letter-spacing:-.035em}
+.cap em{font-style:normal;color:#FF6F98}
+.kick{position:absolute;left:0;right:0;top:620px;text-align:center;font-weight:800;font-size:30px;letter-spacing:.14em;color:#FF8FB1}
+.sub{position:absolute;left:0;right:0;text-align:center;font-weight:600;font-size:38px;color:#B8B8C6}
+.wm{position:absolute;left:0;right:0;text-align:center;font-family:'Gelasio',Georgia,serif;font-weight:700;letter-spacing:-.04em;color:#FFFFFF;line-height:1}
+.wm span{display:inline-block}
+.wm .dot{color:#D91E5C}
+.card{position:absolute;left:140px;right:140px;background:#15161F;border-radius:40px;padding:60px 56px;border:1px solid rgba(255,255,255,.08);box-shadow:0 60px 140px rgba(0,0,0,.55)}
+.t2{font-size:28px;font-weight:700;color:#8E8FA3;letter-spacing:.04em}
+.bal{font-size:118px;font-weight:800;letter-spacing:-.03em;line-height:1.02;margin-top:14px}
+.row{display:flex;align-items:center;gap:20px}
+.pillrow{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.pill2{padding:16px 28px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-weight:700;font-size:26px;color:#D6D7E0}
+.avrow{display:flex;margin-top:8px}
+.av{width:72px;height:72px;border-radius:50%;border:4px solid #15161F;margin-left:-18px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#fff}
+.av:first-child{margin-left:0}
+.mdot{position:absolute;line-height:0;z-index:30}
+.url{position:absolute;left:0;right:0;text-align:center;font-weight:800;font-size:58px;letter-spacing:-.01em}
+.tag{position:absolute;left:0;right:0;text-align:center;font-weight:600;font-size:36px;color:#B8B8C6}
+</style>
+</head>
+<body>
+
+<div class="glow" id="glowA" style="width:1100px;height:1100px;left:-400px;top:-200px;background:radial-gradient(circle,rgba(217,30,92,.22),transparent 70%)"></div>
+<div class="glow" id="glowB" style="width:1000px;height:1000px;right:-380px;bottom:-100px;background:radial-gradient(circle,rgba(84,70,208,.20),transparent 70%)"></div>
+
+<!-- s1: cold open statement -->
+<div class="layer" id="s1">
+  <div class="cap" id="s1cap" style="top:860px">Clubs deserve<br><em>better tools.</em></div>
+</div>
+
+<!-- s2: brand reveal -->
+<div class="layer" id="s2">
+  <div class="wm" id="wm1" style="top:760px;font-size:210px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="mdot" id="dA"></div>
+  <div class="sub" id="tag1" style="top:1060px">Meet Vault.</div>
+</div>
+
+<!-- s3: treasury beat -->
+<div class="layer" id="s3">
+  <div class="kick" id="kick3">TREASURY</div>
+  <div class="cap" id="cap3" style="top:700px;font-size:76px">Every rupee,<br><em>tracked.</em></div>
+  <div class="card" id="card3" style="top:980px">
+    <div class="t2">CLUB FUNDS</div>
+    <div class="bal">LKR <span id="nBal">0</span></div>
+    <div class="pillrow">
+      <div class="pill2">Admin</div><div class="pill2">Projects</div><div class="pill2">Cash</div>
+    </div>
+  </div>
+  <div class="mdot" id="dB"></div>
+</div>
+
+<!-- s4: events beat -->
+<div class="layer" id="s4">
+  <div class="kick" id="kick4">EVENTS</div>
+  <div class="cap" id="cap4" style="top:700px;font-size:76px">Service hours,<br><em>sorted.</em></div>
+  <div class="card" id="card4" style="top:980px">
+    <div class="t2">BEACH CLEAN-UP · SAT</div>
+    <div class="avrow" id="avrow">
+      <div class="av" style="background:#D91E5C">KS</div>
+      <div class="av" style="background:#5446D0">ZA</div>
+      <div class="av" style="background:#1F8A70">TM</div>
+      <div class="av" id="avYou" style="background:#F2B33D;color:#14151F;opacity:0">+1</div>
+    </div>
+    <div class="pillrow">
+      <div class="pill2"><span id="nGoing">32</span> going</div><div class="pill2"><span id="nHrs">0</span> h logged</div>
+    </div>
+  </div>
+  <div class="mdot" id="dC"></div>
+</div>
+
+<!-- s5: end card -->
+<div class="layer" id="s5">
+  <div class="wm" id="wm2" style="top:760px;font-size:200px"><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span><span class="dot">.</span></div>
+  <div class="mdot" id="dE"></div>
+  <div class="tag" id="tag2" style="top:1050px;font-weight:700;font-size:44px;color:#fff">Built for Rotaract clubs</div>
+  <div class="url" id="url" style="top:1170px">vaultpro.cloud</div>
+</div>
+
+<script src="../kit/vendor/gsap.min.js"></script>
+<script src="../kit/dot.js"></script><script src="../kit/poses.js"></script>
+<script>
+function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+function counter(el, to, dur){ var o={v:0}; return gsap.to(o,{v:to,duration:dur,ease:'power2.out',onUpdate:function(){ document.getElementById(el).textContent=fmt(o.v); }}); }
+
+function putDot(id, name, w, fx, fy, opt) {
+  opt = opt || {};
+  var s = pose(name, w, opt), vb = s.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number), k = w / vb[2];
+  var el = document.getElementById(id); el.innerHTML = s;
+  el.style.left = (fx - (100 - vb[0]) * k) + 'px'; el.style.top = (fy - (206 - vb[1]) * k) + 'px';
+  gsap.set(el, { transformOrigin: ((100 - vb[0]) / vb[2] * 100) + '% ' + ((206 - vb[1]) / vb[3] * 100) + '%' });
+}
+function lockDot(wmId, id, F) {
+  var wm = document.getElementById(wmId), sp = wm.querySelector('.dot');
+  var fx = wm.offsetLeft + sp.offsetLeft + sp.offsetWidth * 0.5 + F * 0.22;
+  var fy = wm.offsetTop + sp.offsetTop + F * 0.80;
+  putDot(id, 'wave', F * 0.86, fx, fy, { dark: true, noShadow: true });
+}
+
+putDot('dB', 'balanced', 230, 540, 1870, { dark: true });
+putDot('dC', 'scan', 230, 540, 1870, { dark: true });
+var dotsPlaced = false;
+function placeLocks(){ if (dotsPlaced || document.fonts.status !== 'loaded') return; lockDot('wm1','dA',220); lockDot('wm2','dE',190); dotsPlaced = true; }
+placeLocks();
+gsap.set(['#dA','#dB','#dC','#dE'], { autoAlpha: 0 });
+
+gsap.set(['#s2','#s3','#s4','#s5'], { autoAlpha: 0 });
+gsap.set('#s1cap', { autoAlpha: 0, y: 50, scale: 0.97 });
+gsap.set(['#kick3','#kick4'], { autoAlpha: 0, y: 20 });
+gsap.set(['#cap3','#cap4'], { autoAlpha: 0, y: 40 });
+gsap.set(['#card3','#card4'], { autoAlpha: 0, y: 70, scale: 0.97 });
+gsap.set('#avYou', { autoAlpha: 0, scale: 0.5 });
+gsap.set('#tag1', { autoAlpha: 0, y: 24 });
+gsap.set(['#tag2','#url'], { autoAlpha: 0, y: 24 });
+
+var tl = gsap.timeline({ paused: true, defaults: { duration: 0.7, ease: 'power3.out' } });
+
+tl.to(['#glowA','#glowB'], { x: 60, y: -40, duration: 16, ease: 'none' }, 0);
+
+// s1: cold open 0 - 2.3
+tl.addLabel('s1', 0)
+  .to('#s1cap', { autoAlpha: 1, y: 0, scale: 1, duration: 1.0, ease: 'power4.out' }, 's1+=0.2')
+  .to('#s1cap', { autoAlpha: 0, y: -30, duration: 0.4 }, 's1+=1.9');
+
+// s2: brand reveal 2.3 - 6.3
+tl.addLabel('s2', 2.3)
+  .set('#s2', { autoAlpha: 1 }, 's2')
+  .set('#s1', { autoAlpha: 0 }, 's2')
+  .fromTo('#wm1 span:not(.dot)', { autoAlpha: 0, y: 70 }, { autoAlpha: 1, y: 0, stagger: 0.07, duration: 0.65, ease: 'power4.out' }, 's2+=0.1')
+  .to('#wm1 .dot', { scale: 0, duration: 0.15, ease: 'power2.in' }, 's2+=0.75')
+  .fromTo('#dA', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.55, ease: 'back.out(2.4)' }, 's2+=0.8')
+  .to('#dA', { rotation: 6, duration: 0.16, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 's2+=1.4')
+  .to('#tag1', { autoAlpha: 1, y: 0, duration: 0.6 }, 's2+=1.5')
+  .to(['#wm1','#dA','#tag1'], { autoAlpha: 0, duration: 0.4 }, 's2+=3.5');
+
+// s3: treasury beat 6.3 - 10.3
+tl.addLabel('s3', 6.3)
+  .set('#s3', { autoAlpha: 1 }, 's3')
+  .set('#s2', { autoAlpha: 0 }, 's3')
+  .to('#kick3', { autoAlpha: 1, y: 0, duration: 0.5 }, 's3+=0.1')
+  .to('#cap3', { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power4.out' }, 's3+=0.25')
+  .to('#card3', { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, ease: 'power4.out' }, 's3+=0.55')
+  .add(counter('nBal', 182450, 1.2), 's3+=0.9')
+  .fromTo('#dB', { autoAlpha: 0, y: 60, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.8)' }, 's3+=1.3')
+  .to(['#kick3','#cap3','#card3','#dB'], { autoAlpha: 0, duration: 0.4 }, 's3+=3.6');
+
+// s4: events beat 10.3 - 13.8
+tl.addLabel('s4', 10.3)
+  .set('#s4', { autoAlpha: 1 }, 's4')
+  .set('#s3', { autoAlpha: 0 }, 's4')
+  .to('#kick4', { autoAlpha: 1, y: 0, duration: 0.5 }, 's4+=0.1')
+  .to('#cap4', { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power4.out' }, 's4+=0.25')
+  .to('#card4', { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, ease: 'power4.out' }, 's4+=0.55')
+  .to('#avYou', { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, 's4+=1.1')
+  .add(counter('nGoing', 33, 0.01), 's4+=1.1')
+  .add(counter('nHrs', 4, 0.8), 's4+=1.2')
+  .fromTo('#dC', { autoAlpha: 0, y: 60, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.8)' }, 's4+=1.5')
+  .to(['#kick4','#cap4','#card4','#dC'], { autoAlpha: 0, duration: 0.4 }, 's4+=3.1');
+
+// s5: end card 13.8 - 16.0
+tl.addLabel('s5', 13.8)
+  .set('#s5', { autoAlpha: 1 }, 's5')
+  .set('#s4', { autoAlpha: 0 }, 's5')
+  .fromTo('#wm2 span:not(.dot)', { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, stagger: 0.05, duration: 0.5, ease: 'power4.out' }, 's5+=0.1')
+  .to('#wm2 .dot', { scale: 0, duration: 0.12, ease: 'power2.in' }, 's5+=0.55')
+  .fromTo('#dE', { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(2.6)' }, 's5+=0.6')
+  .to('#tag2', { autoAlpha: 1, y: 0, duration: 0.5 }, 's5+=1.0')
+  .to('#url', { autoAlpha: 1, y: 0, duration: 0.5 }, 's5+=1.25')
+  .to({}, { duration: 0.9 }, 's5+=1.7');
+
+window.DURATION = tl.duration();
+window.seek = function(t){ placeLocks(); tl.time(t, false); };
+window.seek(0);
+</script>
+</body>
+</html>
